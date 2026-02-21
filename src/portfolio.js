@@ -175,7 +175,7 @@ const bigProjects = {
   subtitle: "Selected work in AI, NLP, and public-interest data science",
   projects: [
     {
-      image: require("./assets/images/project-covers/mbta-equity-cover.svg"),
+      //image: require("./assets/images/project-covers/mbta-equity-cover.svg"),
       projectName: "Boston Transit Equity Intelligence",
       projectDesc:
         "Built a data-driven transit equity and reliability analysis pipeline for MBTA routes using clustering, time-series indicators, and demographic overlays.",
@@ -191,7 +191,7 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/project-covers/rag-explainable-cover.svg"),
+      //image: require("./assets/images/project-covers/rag-explainable-cover.svg"),
       projectName: "Explainable Hate Speech Detection with RAG",
       projectDesc:
         "Engineered a multilingual QLoRA + RAG workflow that produces grounded, explainable hate-speech and fake-news predictions with reduced hallucination risk.",
@@ -203,7 +203,7 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/project-covers/fakehate-cover.svg"),
+      //image: require("./assets/images/project-covers/fakehate-cover.svg"),
       projectName: "FakeHate Multitask Detection",
       projectDesc:
         "Designed a multitask transformer architecture for code-mixed multilingual fake-news and hate-speech detection, improving macro-F1 across both tasks.",
@@ -215,7 +215,7 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/project-covers/chatbuddy-cover.svg"),
+      // image: require("./assets/images/project-covers/chatbuddy-cover.svg"),
       projectName: "Chat Buddy",
       projectDesc:
         "Built a production-style Flutter app with real-time group chat, role-aware access, and integrated voice/video communication using Firebase and Zego Cloud.",
@@ -253,28 +253,42 @@ const achievementSection = {
       ]
     },
     {
-      title: "MT Evaluation Lead - IndicTrans2 vs Google",
+      title: "Supervised Machine Learning: Regression and Classification",
       subtitle:
-        "Led semantic and BLEU-based comparison on IIT Bombay multilingual data, showing stronger semantic retention for IndicTrans2.",
-      image: require("./assets/images/translators.png"),
-      imageAlt: "Translation Comparison",
+        "Build & train supervised machine learning models for prediction & binary classification tasks, including linear regression & logistic regression",
+      image: require("/Users/sai/Documents/Portfolio/src/assets/images/logos/courseera.png"),
+      imageAlt: "Machine Learning Certification",
       footerLink: [
         {
-          name: "Project Repo",
-          url: "https://github.com/Chava-Sai/Translators_Comparsion"
+          name: "Certification",
+          url: "https://www.coursera.org/account/accomplishments/verify/VZQZWHMFQLRB"
         }
       ]
     },
     {
-      title: "Advanced Learning Algorithms",
+      title: "Deep Learning with PyTorch : Generative Adversarial Network",
       subtitle:
-        "Completed advanced machine learning coursework with emphasis on practical model design and optimization.",
-      image: require("./assets/images/llm-architecture.png"),
+        "Create Discriminator and Generator Network and train a GAN to generate new images based on the MNIST dataset.",
+      image: require("/Users/sai/Documents/Portfolio/src/assets/images/logos/deeplearning.png"),
       imageAlt: "Machine Learning Certification",
       footerLink: [
         {
-          name: "LinkedIn",
-          url: "https://www.linkedin.com/in/chava-srinivasa-sai/"
+          name: "Certification",
+          url: "https://www.coursera.org/account/accomplishments/verify/NCVCS6FMFVGF"
+        }
+      ]
+    },
+
+    {
+      title: "Advanced Learning Algorithms",
+      subtitle:
+        "Build and train a neural network with TensorFlow to perform multi-class classification. ",
+      image: require("/Users/sai/Documents/Portfolio/src/assets/images/logos/courseera.png"),
+      imageAlt: "Machine Learning Certification",
+      footerLink: [
+        {
+          name: "Certification",
+          url: "https://www.coursera.org/account/accomplishments/verify/BRN7G3RGRUJS"
         }
       ]
     }
