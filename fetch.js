@@ -1,7 +1,11 @@
 fs = require("fs");
 const https = require("https");
 process = require("process");
-require("dotenv").config();
+try {
+  require("dotenv").config();
+} catch (error) {
+  // dotenv is optional when no .env-based fetch is needed.
+}
 
 const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 const GITHUB_USERNAME = process.env.GITHUB_USERNAME;
