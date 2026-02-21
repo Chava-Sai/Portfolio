@@ -11,9 +11,16 @@ import StyleContext from "../../contexts/StyleContext";
 
 export default function Greeting() {
   const {isDark} = useContext(StyleContext);
-  if (!greeting.displayGreeting) {
-    return null;
-  }
+
+  if (!greeting.displayGreeting) return null;
+
+  // "Hi, I'm Sai" -> left: "Hi" , right: "I'm Sai"
+  const titleParts = (greeting.title || "").split(",");
+  const titleLeft = titleParts[0] || greeting.title || "";
+  const titleRight = titleParts.slice(1).join(",").trim();
+
+  const fullTitle = titleRight ? `${titleLeft}, ${titleRight}` : greeting.title;
+
   return (
     <Fade bottom duration={1000} distance="40px">
       <div className="greet-main" id="greeting">
@@ -23,10 +30,10 @@ export default function Greeting() {
               <h1
                 className={isDark ? "dark-mode greeting-text" : "greeting-text"}
               >
-                {" "}
-                {greeting.title}{" "}
+                <span className="highlight-name">{fullTitle}</span>
                 <span className="wave-emoji">{emoji("👋")}</span>
               </h1>
+
               <p
                 className={
                   isDark
@@ -36,8 +43,10 @@ export default function Greeting() {
               >
                 {greeting.subTitle}
               </p>
+
               <div id="resume" className="empty-div"></div>
               <SocialMedia />
+
               <div className="button-greeting-div">
                 <Button text="Contact me" href="#contact" />
                 {greeting.resumeLink && (
@@ -52,6 +61,7 @@ export default function Greeting() {
               </div>
             </div>
           </div>
+
           <div className="greeting-image-div">
             {illustration.animated ? (
               <DisplayLottie animationData={landingPerson} />
@@ -59,7 +69,7 @@ export default function Greeting() {
               <img
                 alt="man sitting on table"
                 src={require("../../assets/images/manOnTable.svg")}
-              ></img>
+              />
             )}
           </div>
         </div>

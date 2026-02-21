@@ -14,7 +14,7 @@ export default function Footer() {
             "© 2026 Srinivasa Sai Chava | AI & ML Professional | Boston, MA"
           )}
         </p>
-        <p className={isDark ? "dark-mode footer-text" : "footer-text"}>
+        <p className={isDark ? "dark-mode footer-tagline" : "footer-tagline"}>
           Building intelligent solutions for tomorrow's challenges
         </p>
       </div>

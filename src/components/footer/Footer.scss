@@ -1,15 +1,55 @@
 @import "../../_globalColor";
 
-.footer-text {
-  text-align: center;
-  color: $subTitle !important;
+.footer-div {
+  // ✅ stick to bottom
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 50;
+
+  margin-top: 0; // ✅ remove this
+  padding: 10px 12px; // ✅ nice spacing
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
 }
 
-.dark-mode {
+.footer-text {
+  margin: 75px 0 0 0;
+  text-align: center;
+  color: $subTitle !important;
+
+  font-size: 0.98rem; // ✅ reduce font
+  line-height: 1.2;
+  opacity: 0.9;
+}
+
+.footer-tagline {
+  margin: 9px 0 0 0;
+  text-align: center;
+  font-style: italic;
+  font-size: 0.78rem; // ✅ smaller than first line
+  line-height: 1.2;
+  opacity: 0.8;
+}
+
+.dark-mode.footer-text {
   color: $textColorDark !important;
 }
 
-.footer-div {
-  margin-top: 2rem;
-  padding-bottom: 1rem;
+.dark-mode.footer-tagline {
+  color: $textColorDark !important;
+}
+
+@media (max-width: 480px) {
+  .footer-text {
+    font-size: 0.7rem;
+  }
+  .footer-tagline {
+    font-size: 0.62rem;
+  }
 }

@@ -1,3 +1,4 @@
+/* Greeting.scss (complete) */
 @import "../../_globalColor";
 
 .main {
@@ -6,6 +7,7 @@
   margin: 0px auto;
   margin-top: 4rem;
 }
+
 .greet-main {
   width: 90%;
   padding: 20px 10px;
@@ -21,10 +23,6 @@
   color: $subTitle !important;
 }
 
-.greeting-main {
-  display: flex;
-}
-
 .greeting-main > * {
   flex: 1;
   margin-bottom: 30px;
@@ -38,6 +36,7 @@
   display: flex;
   margin-top: 40px;
 }
+
 .download-link-button {
   text-decoration: none;
 }
@@ -46,6 +45,35 @@
   font-size: 70px;
   line-height: 1.1;
   color: $textColor !important;
+
+  /* subtle overall glow like the screenshot */
+  text-shadow: 0 0 22px rgba(120, 100, 255, 0.15);
+}
+
+/* ✅ Purple gradient + glow like the screenshot (applies to the "name" part) */
+.highlight-name {
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  display: inline-block;
+
+  background: linear-gradient(90deg, #6ea8ff 0%, #8b5cf6 45%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow: 0 0 14px rgba(139, 92, 246, 0.45),
+    0 0 30px rgba(110, 168, 255, 0.18);
+}
+
+/* Dark mode: stronger glow */
+.dark-mode.greeting-text .highlight-name {
+  text-shadow: 0 0 18px rgba(139, 92, 246, 0.65),
+    0 0 40px rgba(110, 168, 255, 0.25);
+}
+
+/* Light mode: much softer glow */
+.greeting-text:not(.dark-mode) .highlight-name {
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.08), 0 0 16px rgba(0, 0, 0, 0.06);
 }
 
 .greeting-text-p {
@@ -58,12 +86,14 @@
   height: auto;
 }
 
+/* optional: glow the wave emoji too */
 .wave-emoji {
   animation-duration: 1.8s;
   animation-iteration-count: infinite;
   animation-name: wave;
   display: inline-block;
   transform-origin: 70% 70%;
+  filter: drop-shadow(0 0 12px rgba(110, 168, 255, 0.35));
 }
 
 @keyframes wave {
@@ -99,22 +129,27 @@
     font-size: 20px;
   }
 }
+
 @media (max-width: 768px) {
   .button-greeting-div {
     justify-content: space-around;
   }
+
   .greeting-text {
     font-size: 30px;
     text-align: center;
   }
+
   .greeting-text-p {
     font-size: 16px;
     line-height: normal;
     text-align: center;
   }
+
   .greeting-main {
     display: block;
   }
+
   .greeting-image-div {
     height: 256px;
   }
