@@ -90,7 +90,7 @@ const educationInfo = {
   schools: [
     {
       schoolName: "Boston University",
-      logo: require("/Users/sai/Documents/Portfolio/src/assets/images/logos/boston-university.png"),
+      logo: require("./assets/images/logos/boston-university.png"),
       subHeader: "Master of Science in Artificial Intelligence",
       duration: "September 2025 - Present",
       desc: "Specializing in machine learning and AI systems.",
@@ -100,7 +100,7 @@ const educationInfo = {
     },
     {
       schoolName: "IIIT Dharwad",
-      logo: require("/Users/sai/Documents/Portfolio/src/assets/images/logos/iiit-dharwad.png"),
+      logo: require("./assets/images/logos/iiit-dharwad.png"),
       subHeader: "Bachelor of Technology in Data Science and AI",
       duration: "November 2021 - May 2025",
       desc: "Focused on multilingual NLP, computer vision, and applied machine learning.",
@@ -134,9 +134,9 @@ const workExperiences = {
     {
       role: "Machine Learning and Flutter Trainer (Contract)",
       company: "Datavalley.ai",
-      companylogo: require("/Users/sai/Documents/Portfolio/src/assets/images/logos/Datavalley Logo.png"),
+      companylogo: require("./assets/images/logos/Datavalley Logo.png"),
       date: "Jan 2025 - Jul 2025",
-      desc: "Conducted hands-on ML and Flutter workshops across partner colleges and mentored teams through deployment. Built and demoed a production-grade Flutter app with role-based auth, ZegoCloud video, and UPI payments.",
+      desc: "Conducted hands-on ML and Flutter workshops across partner colleges and mentored teams through deployment. Built and demoed a production-grade Flutter app with role-based auth, ZegoCloud video, and UPI payments."
       // descBullets: [
       //   "Built and demoed a production-grade Flutter app with role-based auth, ZegoCloud video, and UPI payments."
       // ]
@@ -144,10 +144,10 @@ const workExperiences = {
     {
       role: "Team Lead, AI-Driven Text Analytics",
       company: "IIIT Dharwad",
-      
-      companylogo: require("/Users/sai/Documents/Portfolio/src/assets/images/logos/iiit-dharwad.png"),
+
+      companylogo: require("./assets/images/logos/iiit-dharwad.png"),
       date: "Aug 2023 - Jul 2024",
-      desc: "Led comparative MT evaluation of Google Translate and IndicTrans2 on IIT Bombay multilingual datasets. Implemented STS-based evaluation and showed stronger semantic fidelity for IndicTrans2 on Indian languages.",
+      desc: "Led comparative MT evaluation of Google Translate and IndicTrans2 on IIT Bombay multilingual datasets. Implemented STS-based evaluation and showed stronger semantic fidelity for IndicTrans2 on Indian languages."
       // descBullets: [
       //   "Implemented STS-based evaluation and showed stronger semantic fidelity for IndicTrans2 on Indian languages."
       // ]
@@ -155,9 +155,9 @@ const workExperiences = {
     {
       role: "AI/ML Developer (Freelance)",
       company: "Upwork",
-      companylogo: require("/Users/sai/Documents/Portfolio/src/assets/images/logos/upwork-log.png"),
+      companylogo: require("./assets/images/logos/upwork-log.png"),
       date: "Jan 2023 - Dec 2024",
-      desc: "Delivered machine learning prototypes in computer vision and automation. Built object-detection pipelines and real-time market-signal automation prototypes in Python.",
+      desc: "Delivered machine learning prototypes in computer vision and automation. Built object-detection pipelines and real-time market-signal automation prototypes in Python."
       // descBullets: [
       //   "Built object-detection pipelines and real-time market-signal automation prototypes in Python."
       // ]
@@ -232,13 +232,14 @@ const bigProjects = {
 
 const achievementSection = {
   title: emoji("Achievements And Certifications 🏆"),
-  subtitle: "Publications, research milestones, and recognized project outcomes",
+  subtitle:
+    "Publications, research milestones, and recognized project outcomes",
   achievementsCards: [
     {
       title: "DravidianLangTech @ EACL 2024 Publication",
       subtitle:
         "Co-authored paper on hate speech detection in Telugu-English code-mixed text (Team IIITDWD_SVC).",
-      image: require("/Users/sai/Documents/Portfolio/src/assets/images/logos/acl.png"),
+      image: require("./assets/images/logos/acl.png"),
       imageAlt: "DravidianLangTech Publication",
       footerLink: [
         {
