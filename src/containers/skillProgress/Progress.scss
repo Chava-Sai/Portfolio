@@ -211,13 +211,21 @@
 @media (max-width: 868px) {
   .skills-container {
     flex-direction: column;
+    align-items: stretch;
   }
   .skills-bar {
     line-height: 3rem;
     margin: 20px;
   }
   .skills-image {
-    display: none;
+    display: flex;
     order: 2;
+    margin: 0 20px 20px;
+  }
+  .skill-snapshot-card {
+    width: min(100%, 420px);
+  }
+  .skill-snapshot-lottie {
+    width: min(100%, 240px);
   }
 }
