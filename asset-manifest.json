@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.a922b7ed.css",
+    "main.css": "/Portfolio/static/css/main.36dedab8.css",
     "main.js": "/Portfolio/static/js/main.db862978.js",
     "static/css/64.bba8fa55.chunk.css": "/Portfolio/static/css/64.bba8fa55.chunk.css",
     "static/js/64.56dc6704.chunk.js": "/Portfolio/static/js/64.56dc6704.chunk.js",
@@ -26,7 +26,7 @@
     "static/media/chatbuddy-cover.svg": "/Portfolio/static/media/chatbuddy-cover.42d3cddce634a02420e1365ef91bf3a7.svg",
     "static/media/research-paper.svg": "/Portfolio/static/media/research-paper.ec4f473641a74960c86b15bcc575191f.svg",
     "static/media/talksCardBack.svg": "/Portfolio/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
-    "main.a922b7ed.css.map": "/Portfolio/static/css/main.a922b7ed.css.map",
+    "main.36dedab8.css.map": "/Portfolio/static/css/main.36dedab8.css.map",
     "main.db862978.js.map": "/Portfolio/static/js/main.db862978.js.map",
     "64.bba8fa55.chunk.css.map": "/Portfolio/static/css/64.bba8fa55.chunk.css.map",
     "64.56dc6704.chunk.js.map": "/Portfolio/static/js/64.56dc6704.chunk.js.map",
@@ -34,7 +34,7 @@
     "769.bda0d7b7.chunk.js.map": "/Portfolio/static/js/769.bda0d7b7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a922b7ed.css",
+    "static/css/main.36dedab8.css",
     "static/js/main.db862978.js"
   ]
 }
