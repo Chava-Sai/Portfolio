@@ -1,0 +1,29 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Sidewalk Accessibility Validator</title>
+  <desc id="desc">Cover art for ADA sidewalk accessibility validation project.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+
+  <rect x="90" y="150" width="1020" height="390" rx="30" fill="#ffffff" opacity="0.12"/>
+  <rect x="140" y="220" width="520" height="250" rx="20" fill="#ffffff" opacity="0.92"/>
+  <rect x="700" y="220" width="360" height="250" rx="20" fill="#e2e8f0" opacity="0.95"/>
+
+  <rect x="180" y="280" width="260" height="36" rx="8" fill="#0f172a" opacity="0.85"/>
+  <rect x="180" y="334" width="220" height="28" rx="8" fill="#0ea5e9" opacity="0.9"/>
+  <rect x="180" y="378" width="300" height="28" rx="8" fill="#38bdf8" opacity="0.8"/>
+
+  <path d="M760 360 H980" stroke="#334155" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="820" cy="360" r="20" fill="#10b981"/>
+  <circle cx="900" cy="360" r="20" fill="#10b981"/>
+  <circle cx="980" cy="360" r="20" fill="#f59e0b"/>
+  <rect x="780" y="290" width="170" height="40" rx="10" fill="#0f172a"/>
+  <text x="865" y="318" text-anchor="middle" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#ffffff">ADA CHECK</text>
+
+  <text x="90" y="95" font-size="46" font-family="Arial, Helvetica, sans-serif" font-weight="700" fill="#ffffff">SIDEWALK ACCESSIBILITY VALIDATOR</text>
+  <text x="90" y="620" font-size="34" font-family="Arial, Helvetica, sans-serif" font-weight="600" fill="#e2e8f0">FASTAPI + REACT + PYTORCH + VISION AI</text>
+</svg>
