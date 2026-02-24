@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Portfolio/static/css/main.36dedab8.css",
-    "main.js": "/Portfolio/static/js/main.032254b3.js",
+    "main.js": "/Portfolio/static/js/main.74065c0d.js",
     "static/css/64.bba8fa55.chunk.css": "/Portfolio/static/css/64.bba8fa55.chunk.css",
     "static/js/64.56dc6704.chunk.js": "/Portfolio/static/js/64.56dc6704.chunk.js",
     "static/css/769.b3cbb36b.chunk.css": "/Portfolio/static/css/769.b3cbb36b.chunk.css",
     "static/js/769.bda0d7b7.chunk.js": "/Portfolio/static/js/769.bda0d7b7.chunk.js",
     "static/media/Profile.png": "/Portfolio/static/media/Profile.1d46640c22ad5de9a265.png",
     "static/media/Montserrat-Regular.ttf": "/Portfolio/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
-    "static/media/resume.pdf": "/Portfolio/static/media/resume.9b671ae48213768ca019.pdf",
+    "static/media/resume.pdf": "/Portfolio/static/media/resume.8de823491149321a11f5.pdf",
     "static/media/Agustina.woff": "/Portfolio/static/media/Agustina.eb0c59dda4cc308cba96.woff",
     "static/media/upwork-log.png": "/Portfolio/static/media/upwork-log.7c98be1117ea005a16c3.png",
     "static/media/manOnTable.svg": "/Portfolio/static/media/manOnTable.8f117eb207e57ed8f89d67d595aceb45.svg",
@@ -27,7 +27,7 @@
     "static/media/research-paper.svg": "/Portfolio/static/media/research-paper.ec4f473641a74960c86b15bcc575191f.svg",
     "static/media/talksCardBack.svg": "/Portfolio/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
     "main.36dedab8.css.map": "/Portfolio/static/css/main.36dedab8.css.map",
-    "main.032254b3.js.map": "/Portfolio/static/js/main.032254b3.js.map",
+    "main.74065c0d.js.map": "/Portfolio/static/js/main.74065c0d.js.map",
     "64.bba8fa55.chunk.css.map": "/Portfolio/static/css/64.bba8fa55.chunk.css.map",
     "64.56dc6704.chunk.js.map": "/Portfolio/static/js/64.56dc6704.chunk.js.map",
     "769.b3cbb36b.chunk.css.map": "/Portfolio/static/css/769.b3cbb36b.chunk.css.map",
@@ -35,6 +35,6 @@
   },
   "entrypoints": [
     "static/css/main.36dedab8.css",
-    "static/js/main.032254b3.js"
+    "static/js/main.74065c0d.js"
   ]
 }
