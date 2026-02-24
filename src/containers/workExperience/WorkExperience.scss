@@ -4,6 +4,23 @@
   gap: 1rem 1rem;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .experience-cards-div:hover .experience-card-item {
+    opacity: 0.5;
+    transform: scale(0.97);
+    filter: saturate(0.78);
+  }
+
+  .experience-cards-div:hover .experience-card-item:hover,
+  .experience-cards-div:hover .experience-card-item:focus-visible,
+  .experience-cards-div:hover .experience-card-item:focus-within {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.02);
+    filter: saturate(1.06);
+    z-index: 2;
+  }
+}
+
 .experience-heading {
   font-size: 56px;
   font-weight: 400;

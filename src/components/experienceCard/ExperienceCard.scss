@@ -6,6 +6,8 @@
   box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
   border-radius: 10px;
   border: 1px solid $lightBorder1;
+  transition: transform 220ms ease, opacity 220ms ease, box-shadow 220ms ease,
+    filter 220ms ease, border-color 220ms ease;
 }
 
 .experience-card-dark {
@@ -14,10 +16,21 @@
   box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
   border-radius: 10px;
   border: 1px solid $lightBorder1;
+  transition: transform 220ms ease, opacity 220ms ease, box-shadow 220ms ease,
+    filter 220ms ease, border-color 220ms ease;
 }
 
 .experience-card:hover {
   box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
+}
+
+.experience-card-dark:hover {
+  box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
+}
+
+.experience-card-item:focus-visible {
+  outline: 2px solid rgba(110, 94, 255, 0.65);
+  outline-offset: 2px;
 }
 
 .experience-banner {

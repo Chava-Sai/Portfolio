@@ -3,11 +3,19 @@ import {Fade} from "react-reveal";
 import emoji from "react-easy-emoji";
 import "./Greeting.scss";
 import landingPerson from "../../assets/lottie/landingPerson";
+import codingPerson from "../../assets/lottie/codingPerson";
+import Build from "../../assets/lottie/build";
 import DisplayLottie from "../../components/displayLottie/DisplayLottie";
 import SocialMedia from "../../components/socialMedia/SocialMedia";
 import Button from "../../components/button/Button";
 import {illustration, greeting} from "../../portfolio";
 import StyleContext from "../../contexts/StyleContext";
+
+const greetingAnimations = {
+  landingPerson,
+  codingPerson,
+  build: Build
+};
 
 export default function Greeting() {
   const {isDark} = useContext(StyleContext);
@@ -20,6 +28,8 @@ export default function Greeting() {
   const titleRight = titleParts.slice(1).join(",").trim();
 
   const fullTitle = titleRight ? `${titleLeft}, ${titleRight}` : greeting.title;
+  const selectedGreetingAnimation =
+    greetingAnimations[greeting.greetingAnimation] || landingPerson;
 
   return (
     <Fade bottom duration={1000} distance="40px">
@@ -63,8 +73,14 @@ export default function Greeting() {
           </div>
 
           <div className="greeting-image-div">
-            {illustration.animated ? (
-              <DisplayLottie animationData={landingPerson} />
+            {greeting.profileImage ? (
+              <img
+                alt={`${greeting.username} profile`}
+                className="greeting-profile-image"
+                src={greeting.profileImage}
+              />
+            ) : illustration.animated ? (
+              <DisplayLottie animationData={selectedGreetingAnimation} />
             ) : (
               <img
                 alt="man sitting on table"

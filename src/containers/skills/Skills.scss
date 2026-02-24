@@ -15,6 +15,19 @@
   margin-bottom: 30px;
 }
 
+.skills-image-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 90px;
+  padding-left: -190px;
+  padding-right: 60px;
+}
+
+.skills-image-div > * {
+  width: min(100%, 1500px);
+}
+
 .skills-image-div > img {
   max-width: 100%;
   height: auto;
@@ -60,5 +73,9 @@
   .skills-image-div {
     /* display: none; */
     order: 2;
+    padding-top: 10px;
+  }
+  .skills-image-div > * {
+    width: min(88vw, 380px);
   }
 }
