@@ -278,7 +278,7 @@ const bigProjects = {
     "Selected projects across AI engineering, accessibility, multilingual NLP, and public-interest data science",
   projects: [
     {
-      image: require("./assets/images/project-covers/sidewalk-validator-cover.svg"),
+      //image: require("./assets/images/project-covers/sidewalk-validator-cover.svg"),
       projectName: "Sidewalk Accessibility Validator",
       projectDesc:
         "Prize-winning full-stack ADA compliance system (BU Civics Hack 2026) combining rule-based GeoJSON sidewalk audits with a PyTorch + Llama vision advisor to assess accessibility and generate actionable improvements.",
@@ -290,7 +290,7 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/project-covers/mbta-equity-cover.svg"),
+      //image: require("./assets/images/project-covers/mbta-equity-cover.svg"),
       projectName: "Boston Transit Equity Intelligence",
       projectDesc:
         "Built a transit reliability and equity analysis pipeline for MBTA routes by combining ridership, operational reliability, and demographic signals with clustering and predictive modeling.",
@@ -306,7 +306,7 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/project-covers/rag-explainable-cover.svg"),
+      //image: require("./assets/images/project-covers/rag-explainable-cover.svg"),
       projectName: "Explainable Hate Speech Detection with RAG",
       projectDesc:
         "Engineered a multilingual QLoRA + RAG pipeline for hate-speech and fake-news detection, achieving strong Macro-F1 while improving explanation quality and reducing hallucinations.",
@@ -318,7 +318,7 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/project-covers/fakehate-cover.svg"),
+      //image: require("./assets/images/project-covers/fakehate-cover.svg"),
       projectName: "FakeHate Multitask Detection",
       projectDesc:
         "Developed a multitask deep learning architecture for multilingual fake-news and hate-speech detection using transliteration, translation, transformer embeddings, and cluster-based feature engineering.",
@@ -330,7 +330,7 @@ const bigProjects = {
       ]
     },
     {
-      image: require("./assets/images/project-covers/chatbuddy-cover.svg"),
+      //image: require("./assets/images/project-covers/chatbuddy-cover.svg"),
       projectName: "Chat Buddy",
       projectDesc:
         "Built a production-style Flutter communication app with role-based access, real-time group messaging, and integrated voice/video calling using Firebase and Zego Cloud.",
@@ -354,7 +354,7 @@ const achievementSection = {
       title: "Prize Winner - BU Civics Hack 2026",
       subtitle:
         "Won for the Sidewalk Accessibility Validator project developed for Cyvl's civic accessibility problem statement.",
-      image: require("./assets/images/project-covers/sidewalk-validator-cover.svg"),
+      image: require("/Users/sai/Documents/Portfolio/src/assets/images/logos/BU-spark.png"),
       imageAlt: "BU Civics Hack Prize",
       footerLink: [
         {
@@ -364,10 +364,10 @@ const achievementSection = {
       ]
     },
     {
-      title: "Journal Publication (2026)",
+      title: "Tuijin Jishu/Journal of Propulsion Technology",
       subtitle:
         "Published 'Impact of IDIOT Syndrome: ML-Based Risk Scoring for Health Anxiety' in the Journal of Propulsion Technology.",
-      image: require("./assets/images/logos/research-paper.svg"),
+      image: require("/Users/sai/Documents/Portfolio/src/assets/images/logos/Journal.png"),
       imageAlt: "Journal Publication",
       footerLink: [
         {
