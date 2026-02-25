@@ -354,7 +354,7 @@ const achievementSection = {
       title: "Prize Winner - BU Civics Hack 2026",
       subtitle:
         "Won for the Sidewalk Accessibility Validator project developed for Cyvl's civic accessibility problem statement.",
-      image: require("/Users/sai/Documents/Portfolio/src/assets/images/logos/BU-spark.png"),
+      image: require("./assets/images/logos/BU-spark.png"),
       imageAlt: "BU Civics Hack Prize",
       footerLink: [
         {
@@ -367,7 +367,7 @@ const achievementSection = {
       title: "Tuijin Jishu/Journal of Propulsion Technology",
       subtitle:
         "Published 'Impact of IDIOT Syndrome: ML-Based Risk Scoring for Health Anxiety' in the Journal of Propulsion Technology.",
-      image: require("/Users/sai/Documents/Portfolio/src/assets/images/logos/Journal.png"),
+      image: require("./assets/images/logos/Journal.png"),
       imageAlt: "Journal Publication",
       footerLink: [
         {
