@@ -120,6 +120,10 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 6px;
+  scroll-snap-type: y proximity;
 }
 
 .skill-snapshot-news-item {
@@ -131,6 +135,7 @@
   transition: transform 220ms ease, opacity 220ms ease, box-shadow 220ms ease,
     filter 220ms ease, border-color 220ms ease;
   transform-origin: center center;
+  scroll-snap-align: start;
 }
 
 .skill-snapshot-news-item.inactive {
@@ -188,6 +193,45 @@
   opacity: 0.9;
 }
 
+.skill-snapshot-news-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #4f46e5;
+}
+
+.skill-snapshot-news-link:hover {
+  text-decoration: underline;
+}
+
+.dark-mode .skill-snapshot-news-link {
+  color: #c7c2ff;
+}
+
+.skill-snapshot-news-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.skill-snapshot-news-list::-webkit-scrollbar-track {
+  background: rgba(122, 107, 255, 0.14);
+  border-radius: 10px;
+}
+
+.skill-snapshot-news-list::-webkit-scrollbar-thumb {
+  background: rgba(110, 94, 255, 0.5);
+  border-radius: 10px;
+}
+
+.dark-mode .skill-snapshot-news-list::-webkit-scrollbar-track {
+  background: rgba(122, 107, 255, 0.24);
+}
+
+.dark-mode .skill-snapshot-news-list::-webkit-scrollbar-thumb {
+  background: rgba(172, 165, 255, 0.55);
+}
+
 .skills-image > img {
   margin-left: 0;
   max-width: 90%;
@@ -227,5 +271,8 @@
   }
   .skill-snapshot-lottie {
     width: min(100%, 240px);
+  }
+  .skill-snapshot-news-list {
+    max-height: 280px;
   }
 }

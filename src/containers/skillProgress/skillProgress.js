@@ -25,7 +25,7 @@ export default function StackProgress() {
 
     return (
       <Fade bottom duration={1000} distance="20px">
-        <div className="skills-container">
+        <div className="skills-container" id="proficiency">
           <div className="skills-bar">
             <h1 className="skills-heading">Proficiency</h1>
             {techStack.experience.map((exp, i) => {
@@ -98,6 +98,16 @@ export default function StackProgress() {
                         <p className="skill-snapshot-news-highlight">
                           {item.highlight}
                         </p>
+                        {item.url ? (
+                          <a
+                            className="skill-snapshot-news-link"
+                            href={item.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {item.cta || "Read More"}
+                          </a>
+                        ) : null}
                       </article>
                     ))}
                   </div>

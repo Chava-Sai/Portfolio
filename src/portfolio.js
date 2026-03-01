@@ -164,6 +164,14 @@ const techStack = {
     ],
     latestUpdates: [
       {
+        date: "Mar 2026",
+        title: "In Progress: Telugu LLM Research Publication",
+        highlight:
+          "Working on a new publication focused on Telugu LLM evaluation and research insights.",
+        cta: "View Draft PDF",
+        url: `${process.env.PUBLIC_URL}/papers/Final_LLM_telugu.pdf`
+      },
+      {
         date: "Feb 2026",
         title: "Prize Winner, BU Civics Hack 2026",
         highlight:
