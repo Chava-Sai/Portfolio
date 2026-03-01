@@ -17,6 +17,7 @@ import {
 
 function Header() {
   const {isDark} = useContext(StyleContext);
+  const homeUrl = `${process.env.PUBLIC_URL || ""}/`;
   const viewExperience = workExperiences.display;
   const viewOpenSource = openSource.display;
   const viewSkills = skillsSection.display;
@@ -26,10 +27,15 @@ function Header() {
   const viewBlog = blogSection.display;
   const viewTalks = talkSection.display;
 
+  const handleLogoClick = event => {
+    event.preventDefault();
+    window.location.assign(homeUrl);
+  };
+
   return (
     <Headroom>
       <header className={isDark ? "dark-menu header" : "header"}>
-        <a href="/" className="logo">
+        <a href={homeUrl} className="logo" onClick={handleLogoClick}>
           <span className="grey-color"> &lt;</span>
           <span className="logo-name">{greeting.username}</span>
           <span className="grey-color">/&gt;</span>
