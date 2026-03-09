@@ -168,8 +168,8 @@ const techStack = {
         title: "Building AI Auto Grader (CS581 x Spark Collaboration)",
         highlight:
           "Developing a modular multimodal grading pipeline with extract/describe/compare modes across PDF, Excel, HTML, OCR, and vision workflows.",
-        cta: "View Architecture Deck",
-        url: `${process.env.PUBLIC_URL}/docs/ai-auto-grader-spring-2026.pptx`
+        cta: "GitHub Repo",
+        url: "https://github.com/Chava-Sai/Final-AI-Auto_Grader"
       },
       {
         date: "Mar 2026",
@@ -300,8 +300,8 @@ const bigProjects = {
         "Built a unified modular pipeline for AI-assisted grading with separate extract/describe/full/compare modes. The system handles PDF + XLSX + HTML inputs, performs OCR/vision on diagrams, generates vector-ready chunks, and supports model-provider benchmarking (OpenAI, Gemini, Anthropic) with cost tracking and quality summaries.",
       footerLink: [
         {
-          name: "Project Deck",
-          url: `${process.env.PUBLIC_URL}/docs/ai-auto-grader-spring-2026.pptx`
+          name: "GitHub",
+          url: "https://github.com/Chava-Sai/Final-AI-Auto_Grader"
         }
       ]
     },
