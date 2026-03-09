@@ -165,6 +165,14 @@ const techStack = {
     latestUpdates: [
       {
         date: "Mar 2026",
+        title: "Building AI Auto Grader (CS581 x Spark Collaboration)",
+        highlight:
+          "Developing a modular multimodal grading pipeline with extract/describe/compare modes across PDF, Excel, HTML, OCR, and vision workflows.",
+        cta: "View Architecture Deck",
+        url: `${process.env.PUBLIC_URL}/docs/ai-auto-grader-spring-2026.pptx`
+      },
+      {
+        date: "Mar 2026",
         title: "In Progress: Telugu LLM Research Publication",
         highlight:
           "Working on a new publication focused on Telugu LLM evaluation and research insights.",
@@ -285,6 +293,18 @@ const bigProjects = {
   subtitle:
     "Selected projects across AI engineering, accessibility, multilingual NLP, and public-interest data science",
   projects: [
+    {
+      projectName:
+        "AI Auto Grader - Multimodal Extraction and Grading Pipeline",
+      projectDesc:
+        "Built a unified modular pipeline for AI-assisted grading with separate extract/describe/full/compare modes. The system handles PDF + XLSX + HTML inputs, performs OCR/vision on diagrams, generates vector-ready chunks, and supports model-provider benchmarking (OpenAI, Gemini, Anthropic) with cost tracking and quality summaries.",
+      footerLink: [
+        {
+          name: "Project Deck",
+          url: `${process.env.PUBLIC_URL}/docs/ai-auto-grader-spring-2026.pptx`
+        }
+      ]
+    },
     {
       //image: require("./assets/images/project-covers/sidewalk-validator-cover.svg"),
       projectName: "Sidewalk Accessibility Validator",
