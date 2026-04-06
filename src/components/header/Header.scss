@@ -34,10 +34,6 @@
   overflow: hidden;
 }
 
-.grey-color {
-  color: $subTitle;
-}
-
 .header li a {
   display: block;
   padding: 15px 20px;
@@ -54,18 +50,19 @@
   display: block;
   flex: none;
   float: left;
-  font-size: 1.5em;
+  font-size: 1.3rem;
   text-decoration: none;
-  margin-top: 10px;
+  margin-top: 8px;
   line-height: normal;
+  color: inherit;
 }
 
 .header .logo-name {
-  font-family: "Agustina Regular";
-  font-weight: bold;
-  font-variant-ligatures: no-common-ligatures;
-  -webkit-font-variant-ligatures: no-common-ligatures;
-  padding: 0 10px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  padding: 0;
 }
 
 /* menu */
