@@ -294,10 +294,9 @@ const bigProjects = {
     "Selected projects across AI engineering, accessibility, multilingual NLP, and public-interest data science",
   projects: [
     {
-      projectName:
-        "AI Auto Grader - Multimodal Extraction and Grading Pipeline",
+      projectName: "AI Auto Grader — Automated Assignment Grading with LLMs",
       projectDesc:
-        "Built a unified modular pipeline for AI-assisted grading with separate extract/describe/full/compare modes. The system handles PDF + XLSX + HTML inputs, performs OCR/vision on diagrams, generates vector-ready chunks, and supports model-provider benchmarking (OpenAI, Gemini, Anthropic) with cost tracking and quality summaries.",
+        "Built a full-stack grading system for BU MET CS581 that evaluates PDF/DOCX/PPTX/XLSX submissions against professor rubrics using GPT-4o-mini, Claude Sonnet, and Gemini, with multimodal extraction (OCR + vision + diagram handling) and RAG context injection from lecture materials (ChromaDB). Added a robust rubric-fallback parser, grading calibration workflow, and batch Excel grading pipeline, reducing AI-to-professor score gap from -14 to -2 while delivering grading at about $0.03 per student.",
       footerLink: [
         {
           name: "GitHub",
