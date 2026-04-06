@@ -47,22 +47,54 @@
 }
 
 .header .logo {
-  display: block;
+  display: inline-flex;
+  align-items: center;
   flex: none;
   float: left;
-  font-size: 1.3rem;
   text-decoration: none;
-  margin-top: 8px;
+  margin-top: 4px;
+  padding: 6px 10px 8px;
+  border-radius: 12px;
   line-height: normal;
   color: inherit;
+  transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.header .logo:hover {
+  transform: translateY(-1px);
+  background: rgba(124, 102, 255, 0.12);
 }
 
 .header .logo-name {
   font-family: "Montserrat", sans-serif;
-  font-weight: 700;
-  letter-spacing: 0.01em;
+  font-weight: 800;
+  font-size: clamp(1.05rem, 1.2vw, 1.45rem);
+  letter-spacing: 0.012em;
+  line-height: 1.12;
   white-space: nowrap;
   padding: 0;
+  position: relative;
+  display: inline-block;
+  background: linear-gradient(90deg, #c9d7ff 0%, #eef1ff 35%, #9f87ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 18px rgba(134, 116, 255, 0.2);
+}
+
+.header .logo-name::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 100%;
+  margin-top: 4px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #90a7ff 0%, #8d71ff 100%);
+  opacity: 0.72;
+}
+
+.dark-menu .logo-name {
+  text-shadow: 0 0 24px rgba(134, 116, 255, 0.3);
 }
 
 /* menu */
@@ -175,5 +207,18 @@
 @media (max-width: 960px) and (min-width: 768px) {
   .header {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header .logo {
+    margin-top: 6px;
+    padding: 4px 6px 6px;
+  }
+  .header .logo-name {
+    font-size: 1.02rem;
+  }
+  .header .logo-name::after {
+    margin-top: 3px;
   }
 }
