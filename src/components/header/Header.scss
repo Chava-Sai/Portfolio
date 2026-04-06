@@ -39,6 +39,7 @@
   padding: 15px 20px;
   color: $textColor;
   text-decoration: none;
+  font-size: 1.14rem;
 }
 
 .header li a:hover,
@@ -68,7 +69,7 @@
 .header .logo-name {
   font-family: "Montserrat", sans-serif;
   font-weight: 800;
-  font-size: clamp(1.05rem, 1.2vw, 1.45rem);
+  font-size: clamp(1.45rem, 2vw, 2.15rem);
   letter-spacing: 0.012em;
   line-height: 1.12;
   white-space: nowrap;
@@ -208,6 +209,13 @@
   .header {
     font-size: 12px;
   }
+  .header li a {
+    font-size: 1.04rem;
+    padding: 14px 14px;
+  }
+  .header .logo-name {
+    font-size: 1.35rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -216,9 +224,12 @@
     padding: 4px 6px 6px;
   }
   .header .logo-name {
-    font-size: 1.02rem;
+    font-size: 1.24rem;
   }
   .header .logo-name::after {
     margin-top: 3px;
+  }
+  .header li a {
+    font-size: 1.04rem;
   }
 }
