@@ -164,6 +164,13 @@ const techStack = {
     ],
     latestUpdates: [
       {
+        date: "Apr 2026",
+        title:
+          "Weakly-Supervised Violence Event Detection and Temporal Localization",
+        highlight:
+          "Built a full UCF-Crime pipeline with TRN/boundary refinement and achieved zero-shot XD-Violence transfer (AUC 0.8357, AP 0.8847)."
+      },
+      {
         date: "Mar 2026",
         title: "Building AI Auto Grader (CS581 x Spark Collaboration)",
         highlight:
@@ -293,6 +300,12 @@ const bigProjects = {
   subtitle:
     "Selected projects across AI engineering, accessibility, multilingual NLP, and public-interest data science",
   projects: [
+    {
+      projectName:
+        "Weakly-Supervised Violence Event Detection and Temporal Localization",
+      projectDesc:
+        "Developed a weakly supervised surveillance-video pipeline using frozen I3D features, RTFM-style MIL, top-k pseudo-label classification, temporal refinement, and boundary-aware localization. Completed UCF-Crime violence pipeline and ablations, then evaluated zero-shot cross-dataset transfer on XD-Violence, achieving AUC 0.8357 and AP 0.8847 (90.1% retention of in-domain UCF AUC)."
+    },
     {
       projectName: "AI Auto Grader — Automated Assignment Grading with LLMs",
       projectDesc:
