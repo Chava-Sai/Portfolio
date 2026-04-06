@@ -257,11 +257,11 @@ const workExperiences = {
       company: "Datavalley.ai",
       companylogo: require("./assets/images/logos/Datavalley Logo.png"),
       date: "Jan 2025 - Jul 2025",
-      desc: "Delivered contract-based ML and Flutter training programs for partner colleges, with a strong focus on practical implementation and deployment readiness.",
+      desc: "Led contract ML and Flutter training programs for partner colleges, focused on deployable, industry-style project delivery.",
       descBullets: [
-        "Conducted hands-on workshops and designed industry-aligned lab modules for student teams.",
-        "Built and demoed a production-grade Flutter app with role-based authentication, secure ZegoCloud video, and UPI payment integration.",
-        "Mentored teams through end-to-end project delivery, covering architecture, debugging, and release workflows."
+        "Designed hands-on workshop tracks and lab modules aligned to real production workflows.",
+        "Built and demonstrated a Flutter app with role-based auth, ZegoCloud video, and UPI payments.",
+        "Mentored teams on architecture, debugging, testing, and end-to-end release readiness."
       ]
     },
     {
@@ -269,11 +269,11 @@ const workExperiences = {
       company: "IIIT Dharwad",
       companylogo: require("./assets/images/logos/iiit-dharwad.png"),
       date: "Aug 2023 - Jul 2024",
-      desc: "Led Indian language machine translation evaluation initiatives focused on semantic reliability and language-specific nuance.",
+      desc: "Led AI-driven text analytics research on Indian-language machine translation quality and semantic reliability.",
       descBullets: [
-        "Implemented comparative evaluation pipelines for Google Translate vs. AI4Bharat IndicTrans2 on IIT Bombay multilingual data.",
-        "Designed Semantic Textual Similarity (STS) analysis workflows to quantify semantic preservation.",
-        "Demonstrated stronger semantic fidelity for IndicTrans2 on low-resource Indian language scenarios."
+        "Built evaluation pipelines comparing Google Translate and IndicTrans2 on IIT Bombay multilingual datasets.",
+        "Implemented Semantic Textual Similarity (STS) workflows to quantify semantic preservation across languages.",
+        "Reported stronger nuance retention and semantic fidelity for IndicTrans2 in low-resource settings."
       ]
     },
     {
@@ -281,10 +281,11 @@ const workExperiences = {
       company: "Upwork",
       companylogo: require("./assets/images/logos/upwork-log.png"),
       date: "Jan 2023 - Dec 2024",
-      desc: "Delivered freelance AI/ML prototypes spanning computer vision automation and decision-support tooling.",
+      desc: "Delivered freelance AI/ML solutions spanning computer vision automation and data-driven decision support.",
       descBullets: [
-        "Built object-detection pipelines for brand/logo/payment-page identification using TensorFlow and PyTorch.",
-        "Developed Python-based market-signal automation prototypes with real-time data ingestion and alert logic."
+        "Built object-detection pipelines for logo, brand, and payment-page identification using PyTorch and TensorFlow.",
+        "Developed Python market-signal automation prototypes with real-time ingestion and alerting logic.",
+        "Packaged reproducible client deliverables with documentation, configurable pipelines, and deployment guidance."
       ]
     }
   ]
@@ -304,12 +305,12 @@ const bigProjects = {
       projectName:
         "Weakly-Supervised Violence Event Detection and Temporal Localization",
       projectDesc:
-        "Developed a weakly supervised surveillance-video pipeline using frozen I3D features, RTFM-style MIL, top-k pseudo-label classification, temporal refinement, and boundary-aware localization. Completed UCF-Crime violence pipeline and ablations, then evaluated zero-shot cross-dataset transfer on XD-Violence, achieving AUC 0.8357 and AP 0.8847 (90.1% retention of in-domain UCF AUC)."
+        "Built a weakly supervised surveillance-video pipeline with frozen I3D features, RTFM-style MIL, top-k pseudo-label classification, temporal refinement, and boundary-aware localization. Completed UCF-Crime ablations and achieved zero-shot XD-Violence transfer with AUC 0.8357 and AP 0.8847 (90.1% UCF AUC retention)."
     },
     {
       projectName: "AI Auto Grader — Automated Assignment Grading with LLMs",
       projectDesc:
-        "Built a full-stack grading system for BU MET CS581 that evaluates PDF/DOCX/PPTX/XLSX submissions against professor rubrics using GPT-4o-mini, Claude Sonnet, and Gemini, with multimodal extraction (OCR + vision + diagram handling) and RAG context injection from lecture materials (ChromaDB). Added a robust rubric-fallback parser, grading calibration workflow, and batch Excel grading pipeline, reducing AI-to-professor score gap from -14 to -2 while delivering grading at about $0.03 per student.",
+        "Built a full-stack grading system for BU MET CS581 that evaluates PDF/DOCX/PPTX/XLSX submissions using GPT-4o-mini, Claude, and Gemini with OCR/vision extraction and ChromaDB-based lecture RAG. Added rubric-fallback parsing, grade calibration, and batch Excel grading, reducing the AI-professor gap from -14 to -2 at about $0.03 per student.",
       footerLink: [
         {
           name: "GitHub",
@@ -321,7 +322,7 @@ const bigProjects = {
       //image: require("./assets/images/project-covers/sidewalk-validator-cover.svg"),
       projectName: "Sidewalk Accessibility Validator",
       projectDesc:
-        "Prize-winning full-stack ADA compliance system (BU Civics Hack 2026) combining rule-based GeoJSON sidewalk audits with a PyTorch + Llama vision advisor to assess accessibility and generate actionable improvements.",
+        "Built a prize-winning ADA compliance platform (BU Civics Hack 2026) combining rule-based GeoJSON sidewalk audits with a PyTorch + Llama vision advisor. The system detects accessibility issues and generates actionable, location-aware recommendations for civic teams.",
       footerLink: [
         {
           name: "GitHub",
@@ -333,7 +334,7 @@ const bigProjects = {
       //image: require("./assets/images/project-covers/mbta-equity-cover.svg"),
       projectName: "Boston Transit Equity Intelligence",
       projectDesc:
-        "Built a transit reliability and equity analysis pipeline for MBTA routes by combining ridership, operational reliability, and demographic signals with clustering and predictive modeling.",
+        "Built an MBTA transit equity analytics pipeline combining ridership, reliability, and demographic signals to identify service gaps. Developed clustering and predictive modeling workflows to surface route-level risks and explain key delay drivers for planning.",
       footerLink: [
         {
           name: "GitHub",
@@ -349,7 +350,7 @@ const bigProjects = {
       //image: require("./assets/images/project-covers/rag-explainable-cover.svg"),
       projectName: "Explainable Hate Speech Detection with RAG",
       projectDesc:
-        "Engineered a multilingual QLoRA + RAG pipeline for hate-speech and fake-news detection, achieving strong Macro-F1 while improving explanation quality and reducing hallucinations.",
+        "Engineered a multilingual QLoRA + RAG pipeline for hate-speech and fake-news detection with grounded, explainable outputs. Combined transliteration, transformer embeddings, and retrieval to improve context relevance, reduce hallucinations, and strengthen macro-F1 performance.",
       footerLink: [
         {
           name: "GitHub",
@@ -361,7 +362,7 @@ const bigProjects = {
       //image: require("./assets/images/project-covers/fakehate-cover.svg"),
       projectName: "FakeHate Multitask Detection",
       projectDesc:
-        "Developed a multitask deep learning architecture for multilingual fake-news and hate-speech detection using transliteration, translation, transformer embeddings, and cluster-based feature engineering.",
+        "Developed a multitask deep learning system for multilingual fake-news and hate-speech detection using transliteration, translation, and transformer embeddings. Added cluster-based feature engineering to improve class-wise robustness and deliver strong F1 gains across tasks.",
       footerLink: [
         {
           name: "GitHub",
@@ -373,7 +374,7 @@ const bigProjects = {
       //image: require("./assets/images/project-covers/chatbuddy-cover.svg"),
       projectName: "Chat Buddy",
       projectDesc:
-        "Built a production-style Flutter communication app with role-based access, real-time group messaging, and integrated voice/video calling using Firebase and Zego Cloud.",
+        "Built a production-style Flutter communication app with role-based access, real-time group messaging, and integrated voice/video calling via Firebase and Zego Cloud. Implemented secure authentication flows and session management for reliable low-latency collaboration.",
       footerLink: [
         {
           name: "GitHub",
