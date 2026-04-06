@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.e5cb47e2.css",
-    "main.js": "/Portfolio/static/js/main.902a6328.js",
+    "main.css": "/Portfolio/static/css/main.6b8e755c.css",
+    "main.js": "/Portfolio/static/js/main.18286191.js",
     "static/css/64.bba8fa55.chunk.css": "/Portfolio/static/css/64.bba8fa55.chunk.css",
     "static/js/64.56dc6704.chunk.js": "/Portfolio/static/js/64.56dc6704.chunk.js",
     "static/css/769.b3cbb36b.chunk.css": "/Portfolio/static/css/769.b3cbb36b.chunk.css",
@@ -22,15 +22,15 @@
     "static/media/courseera.png": "/Portfolio/static/media/courseera.431ae41c410504a56b7e.png",
     "index.html": "/Portfolio/index.html",
     "static/media/talksCardBack.svg": "/Portfolio/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
-    "main.e5cb47e2.css.map": "/Portfolio/static/css/main.e5cb47e2.css.map",
-    "main.902a6328.js.map": "/Portfolio/static/js/main.902a6328.js.map",
+    "main.6b8e755c.css.map": "/Portfolio/static/css/main.6b8e755c.css.map",
+    "main.18286191.js.map": "/Portfolio/static/js/main.18286191.js.map",
     "64.bba8fa55.chunk.css.map": "/Portfolio/static/css/64.bba8fa55.chunk.css.map",
     "64.56dc6704.chunk.js.map": "/Portfolio/static/js/64.56dc6704.chunk.js.map",
     "769.b3cbb36b.chunk.css.map": "/Portfolio/static/css/769.b3cbb36b.chunk.css.map",
     "769.bda0d7b7.chunk.js.map": "/Portfolio/static/js/769.bda0d7b7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e5cb47e2.css",
-    "static/js/main.902a6328.js"
+    "static/css/main.6b8e755c.css",
+    "static/js/main.18286191.js"
   ]
 }
