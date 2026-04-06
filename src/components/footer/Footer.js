@@ -11,7 +11,7 @@ export default function Footer() {
       <div className="footer-div">
         <p className={isDark ? "dark-mode footer-text" : "footer-text"}>
           {emoji(
-            "© 2026 Srinivasa Sai Chava | AI & ML Professional | Boston, MA"
+            "© 2026 SRINIVASA SAI CHAVA | AI & ML Professional | Boston, MA"
           )}
         </p>
         <p className={isDark ? "dark-mode footer-tagline" : "footer-tagline"}>

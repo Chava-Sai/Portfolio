@@ -14,7 +14,7 @@ const illustration = {
 };
 
 const greeting = {
-  username: "Srinivasa Sai Chava",
+  username: "SRINIVASA SAI CHAVA",
   title: "Hi, I'm Sai",
   subTitle: emoji(
     "M.S. Artificial Intelligence student at Boston University with hands-on experience building production-focused AI systems across ML/DL, NLP, Computer Vision, RAG, and full-stack deployment. I enjoy translating research into practical products that solve real-world problems in accessibility, trust, and social impact."
