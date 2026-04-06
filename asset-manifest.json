@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Portfolio/static/css/main.740a6032.css",
-    "main.js": "/Portfolio/static/js/main.8688a15e.js",
+    "main.css": "/Portfolio/static/css/main.5be9c85b.css",
+    "main.js": "/Portfolio/static/js/main.4bff2bf7.js",
     "static/css/64.bba8fa55.chunk.css": "/Portfolio/static/css/64.bba8fa55.chunk.css",
     "static/js/64.56dc6704.chunk.js": "/Portfolio/static/js/64.56dc6704.chunk.js",
     "static/css/769.b3cbb36b.chunk.css": "/Portfolio/static/css/769.b3cbb36b.chunk.css",
@@ -19,18 +19,17 @@
     "static/media/BU-spark.png": "/Portfolio/static/media/BU-spark.d861fdfe106c09be54f7.png",
     "static/media/boston-university.png": "/Portfolio/static/media/boston-university.75931f61344279242dcd.png",
     "static/media/courseera.png": "/Portfolio/static/media/courseera.431ae41c410504a56b7e.png",
-    "static/media/skill.svg": "/Portfolio/static/media/skill.35a147662ab0a1d15e579690446e0258.svg",
     "index.html": "/Portfolio/index.html",
     "static/media/talksCardBack.svg": "/Portfolio/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
-    "main.740a6032.css.map": "/Portfolio/static/css/main.740a6032.css.map",
-    "main.8688a15e.js.map": "/Portfolio/static/js/main.8688a15e.js.map",
+    "main.5be9c85b.css.map": "/Portfolio/static/css/main.5be9c85b.css.map",
+    "main.4bff2bf7.js.map": "/Portfolio/static/js/main.4bff2bf7.js.map",
     "64.bba8fa55.chunk.css.map": "/Portfolio/static/css/64.bba8fa55.chunk.css.map",
     "64.56dc6704.chunk.js.map": "/Portfolio/static/js/64.56dc6704.chunk.js.map",
     "769.b3cbb36b.chunk.css.map": "/Portfolio/static/css/769.b3cbb36b.chunk.css.map",
     "769.bda0d7b7.chunk.js.map": "/Portfolio/static/js/769.bda0d7b7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.740a6032.css",
-    "static/js/main.8688a15e.js"
+    "static/css/main.5be9c85b.css",
+    "static/js/main.4bff2bf7.js"
   ]
 }
