@@ -19,6 +19,20 @@ const greeting = {
   subTitle: emoji(
     "M.S. Artificial Intelligence student at Boston University with hands-on experience building production-focused AI systems across ML/DL, NLP, Computer Vision, RAG, and full-stack deployment. I enjoy translating research into practical products that solve real-world problems in accessibility, trust, and social impact."
   ),
+  terminal: {
+    display: true,
+    title: "profile.txt — bash",
+    command: "cat profile.txt",
+    lines: [
+      "M.S. Artificial Intelligence student at Boston University",
+      "Building production-focused AI systems across ML/DL, NLP, Computer Vision, and RAG",
+      "Delivering end-to-end full-stack AI deployment from research to production",
+      "Focused on practical impact in accessibility, trust, and social good"
+    ],
+    followUpCommand: 'echo "Translating research into real-world products"',
+    followUpOutput: "Translating research into real-world products"
+  },
+  tagline: "Multimodal ML  ·  NLP  ·  Agentic AI   ·  RAG",
   profileImage: require("./assets/images/profile/Profile.png"),
   greetingAnimation: "landingPerson",
   resumeLink: "resume",
@@ -305,12 +319,15 @@ const bigProjects = {
       projectName:
         "Weakly-Supervised Violence Event Detection and Temporal Localization",
       projectDesc:
-        "Built a weakly supervised surveillance-video pipeline with frozen I3D features, RTFM-style MIL, top-k pseudo-label classification, temporal refinement, and boundary-aware localization. Completed UCF-Crime ablations and achieved zero-shot XD-Violence transfer with AUC 0.8357 and AP 0.8847 (90.1% UCF AUC retention)."
+        "Built a weakly supervised surveillance-video pipeline with frozen I3D features, RTFM-style MIL, top-k pseudo-label classification, temporal refinement, and boundary-aware localization. Completed UCF-Crime ablations and achieved zero-shot XD-Violence transfer with AUC 0.8357 and AP 0.8847 (90.1% UCF AUC retention).",
+      techStack: ["Python", "PyTorch", "OpenCV", "NumPy", "Pandas"]
     },
     {
+      image: require("./assets/images/project-covers/AI_Auto_Grader.png"),
       projectName: "AI Auto Grader — Automated Assignment Grading with LLMs",
       projectDesc:
         "Built a full-stack grading system for BU MET CS581 that evaluates PDF/DOCX/PPTX/XLSX submissions using GPT-4o-mini, Claude, and Gemini with OCR/vision extraction and ChromaDB-based lecture RAG. Added rubric-fallback parsing, grade calibration, and batch Excel grading, reducing the AI-professor gap from -14 to -2 at about $0.03 per student.",
+      techStack: ["Python", "FastAPI", "LangChain", "RAG", "OpenAI", "Gemini"],
       footerLink: [
         {
           name: "GitHub",
@@ -319,10 +336,11 @@ const bigProjects = {
       ]
     },
     {
-      //image: require("./assets/images/project-covers/sidewalk-validator-cover.svg"),
+      image: require("./assets/images/project-covers/sidewalk.png"),
       projectName: "Sidewalk Accessibility Validator",
       projectDesc:
         "Built a prize-winning ADA compliance platform (BU Civics Hack 2026) combining rule-based GeoJSON sidewalk audits with a PyTorch + Llama vision advisor. The system detects accessibility issues and generates actionable, location-aware recommendations for civic teams.",
+      techStack: ["FastAPI", "React", "Vite", "PyTorch", "Llama"],
       footerLink: [
         {
           name: "GitHub",
@@ -331,10 +349,11 @@ const bigProjects = {
       ]
     },
     {
-      //image: require("./assets/images/project-covers/mbta-equity-cover.svg"),
+      image: require("./assets/images/project-covers/boston_bus.png"),
       projectName: "Boston Transit Equity Intelligence",
       projectDesc:
         "Built an MBTA transit equity analytics pipeline combining ridership, reliability, and demographic signals to identify service gaps. Developed clustering and predictive modeling workflows to surface route-level risks and explain key delay drivers for planning.",
+      techStack: ["Python", "Pandas", "NumPy", "Scikit-learn", "TensorFlow"],
       footerLink: [
         {
           name: "GitHub",
@@ -347,10 +366,11 @@ const bigProjects = {
       ]
     },
     {
-      //image: require("./assets/images/project-covers/rag-explainable-cover.svg"),
+      image: require("./assets/images/project-covers/explainable_hate_speech.png"),
       projectName: "Explainable Hate Speech Detection with RAG",
       projectDesc:
         "Engineered a multilingual QLoRA + RAG pipeline for hate-speech and fake-news detection with grounded, explainable outputs. Combined transliteration, transformer embeddings, and retrieval to improve context relevance, reduce hallucinations, and strengthen macro-F1 performance.",
+      techStack: ["Python", "PyTorch", "NLP", "LangChain", "RAG"],
       footerLink: [
         {
           name: "GitHub",
@@ -359,10 +379,11 @@ const bigProjects = {
       ]
     },
     {
-      //image: require("./assets/images/project-covers/fakehate-cover.svg"),
+      image: require("./assets/images/project-covers/fake_hate_multitask.png"),
       projectName: "FakeHate Multitask Detection",
       projectDesc:
         "Developed a multitask deep learning system for multilingual fake-news and hate-speech detection using transliteration, translation, and transformer embeddings. Added cluster-based feature engineering to improve class-wise robustness and deliver strong F1 gains across tasks.",
+      techStack: ["Python", "PyTorch", "TensorFlow", "NLP", "Scikit-learn"],
       footerLink: [
         {
           name: "GitHub",
@@ -371,10 +392,11 @@ const bigProjects = {
       ]
     },
     {
-      //image: require("./assets/images/project-covers/chatbuddy-cover.svg"),
+      image: require("./assets/images/project-covers/chat_buddy.png"),
       projectName: "Chat Buddy",
       projectDesc:
         "Built a production-style Flutter communication app with role-based access, real-time group messaging, and integrated voice/video calling via Firebase and Zego Cloud. Implemented secure authentication flows and session management for reliable low-latency collaboration.",
+      techStack: ["Flutter", "Firebase", "Python", "Zego Cloud"],
       footerLink: [
         {
           name: "GitHub",
@@ -386,10 +408,64 @@ const bigProjects = {
   display: true
 };
 
+const publicationsSection = {
+  title: "Publications",
+  subtitle:
+    "Research contributions in NLP, multimodal AI, and applied machine learning",
+  display: true,
+  publications: [
+    {
+      venue: "EACL 2024",
+      venueType: "conference",
+      venueColor: "#2563eb",
+      title: "Hate Speech Detection in Telugu-English Code-Mixed Text",
+      image: require("./assets/images/dravidian2024.png"),
+      imageAlt: "ACL Anthology — DravidianLangTech @ EACL 2024",
+      bullets: [
+        "Developed a transformer-based hate speech detection system for Telugu-English code-mixed social media text",
+        "Submitted as Team IIITDWD_SVC to the DravidianLangTech shared task at EACL 2024",
+        "Published in the ACL Anthology proceedings — one of the top NLP venues globally"
+      ],
+      links: [
+        {
+          name: "Paper",
+          url: "https://aclanthology.org/2024.dravidianlangtech-1.19/",
+          icon: "fas fa-file-alt"
+        },
+        {
+          name: "Code",
+          url: "https://github.com/Chava-Sai/IIITDWD_SVC-DravidianLangTech-2024",
+          icon: "fab fa-github"
+        }
+      ]
+    },
+    {
+      venue: "JPT 2026",
+      venueType: "journal",
+      venueColor: "#d97706",
+      title:
+        "Impact of IDIOT Syndrome: ML-Based Risk Scoring for Health Anxiety",
+      image: require("./assets/images/logos/Journal.png"),
+      imageAlt: "Journal of Propulsion Technology",
+      bullets: [
+        "Designed an ML-based clinical risk scoring pipeline to assess health anxiety severity (IDIOT Syndrome)",
+        "Applied classification and regression techniques for patient-level risk stratification",
+        "Published in Tuijin Jishu / Journal of Propulsion Technology (peer-reviewed)"
+      ],
+      links: [
+        {
+          name: "Journal",
+          url: "https://www.propulsiontechjournal.com/index.php/journal/article/view/10395",
+          icon: "fas fa-external-link-alt"
+        }
+      ]
+    }
+  ]
+};
+
 const achievementSection = {
   title: emoji("Achievements And Certifications 🏆"),
-  subtitle:
-    "Publications, awards, and certifications that reflect technical depth and impact",
+  subtitle: "Awards and certifications reflecting hands-on technical depth",
   achievementsCards: [
     {
       title: "Prize Winner - BU Civics Hack 2026",
@@ -401,36 +477,6 @@ const achievementSection = {
         {
           name: "Project Repo",
           url: "https://github.com/Chava-Sai/Sidewalk-Acessibility-Validator-Cyvl"
-        }
-      ]
-    },
-    {
-      title: "Tuijin Jishu/Journal of Propulsion Technology",
-      subtitle:
-        "Published 'Impact of IDIOT Syndrome: ML-Based Risk Scoring for Health Anxiety' in the Journal of Propulsion Technology.",
-      image: require("./assets/images/logos/Journal.png"),
-      imageAlt: "Journal Publication",
-      footerLink: [
-        {
-          name: "Journal Link",
-          url: "https://www.propulsiontechjournal.com/index.php/journal/article/view/10395"
-        }
-      ]
-    },
-    {
-      title: "DravidianLangTech @ EACL 2024 Publication",
-      subtitle:
-        "Co-authored paper on hate speech detection in Telugu-English code-mixed text (Team IIITDWD_SVC).",
-      image: require("./assets/images/logos/acl.png"),
-      imageAlt: "DravidianLangTech Publication",
-      footerLink: [
-        {
-          name: "Publication",
-          url: "https://aclanthology.org/2024.dravidianlangtech-1.19/"
-        },
-        {
-          name: "Code",
-          url: "https://github.com/Chava-Sai/IIITDWD_SVC-DravidianLangTech-2024"
         }
       ]
     },
@@ -531,6 +577,7 @@ export {
   workExperiences,
   openSource,
   bigProjects,
+  publicationsSection,
   achievementSection,
   blogSection,
   talkSection,

@@ -1,7 +1,53 @@
 @import "../_globalColor";
 
-.dark-mode {
+.app-root.dark-mode {
   background-color: $darkBackground;
   color: white;
   transition: "0.1s";
+  min-height: 100vh;
+  position: relative;
+}
+
+.app-root.dark-mode .global-video-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.app-root.dark-mode .global-video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.28;
+  filter: saturate(1.1) contrast(1.05);
+}
+
+.app-root.dark-mode .global-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(6, 10, 24, 0.69) 0%,
+    rgba(8, 13, 31, 0.8) 55%,
+    rgba(7, 12, 26, 0.83) 100%
+  );
+}
+
+.app-root.dark-mode .app-content-layer {
+  position: relative;
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-root.dark-mode .global-video-bg video {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-root.dark-mode .global-video-bg video {
+    opacity: 0.28;
+  }
 }

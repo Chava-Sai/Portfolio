@@ -1,77 +1,200 @@
 @import "../../_globalColor";
 
-.card-image {
-  max-width: 100%;
-  height: auto;
-  width: 250px;
-}
-.card-title {
-  color: $titleColor;
-  font-size: 1.375rem;
-  line-height: 24px;
-  font-weight: 700;
-  margin: 15px 0 0 0;
-}
-.card-subtitle {
-  color: $cardSubtitle;
-  font-size: 1.063rem;
-  line-height: 1.5rem;
-}
+/* ── Card shell ──────────────────────────────────────────────────────── */
 .certificate-card {
-  background-color: $lightBackground2;
-  box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
-  padding: 1.5rem;
-  border-radius: 10px;
-  border: 1px solid $lightBorder1;
-  -webkit-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 100%;
+  min-height: 420px;
+  position: relative;
+  background: rgba(10, 15, 36, 0.82);
+  border: 1px solid rgba(140, 161, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  transition: transform 0.28s ease, box-shadow 0.28s ease,
+    border-color 0.28s ease;
+  /* Gradient left accent line */
+  border-left: 3px solid transparent;
+  background-clip: padding-box;
 }
-.certificate-detail-div {
-  text-align: center;
+
+.dark-mode.certificate-card {
+  background: linear-gradient(
+    160deg,
+    rgba(11, 17, 40, 0.92) 0%,
+    rgba(8, 13, 31, 0.95) 100%
+  );
+  border: 1px solid rgba(140, 161, 255, 0.18);
+  border-left: 3px solid #8b5cf6;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 0 0 0 transparent;
 }
+
+/* Hover — lift + border glow */
 .certificate-card:hover {
-  box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(139, 92, 246, 0.35);
+  border-left-color: #e879f9;
 }
+
 .dark-mode.certificate-card:hover {
-  box-shadow: $achievementCertificateCardHoverDark 0px 20px 30px -10px;
+  border-color: rgba(160, 182, 255, 0.35);
+  border-left-color: #e879f9;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.55), 0 0 24px rgba(139, 92, 246, 0.2);
 }
+
+/* ── Image box — uniform dark bg, object-fit: contain ───────────────── */
 .certificate-image-div {
   position: relative;
-  height: 250px;
-  overflow: hidden;
+  width: 100%;
+  height: 190px;
+  background: #080d1e;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  flex-shrink: 0;
 }
-.achievement-cards-div {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1rem 1rem;
+
+/* Fade bottom of image into card bg */
+.certificate-image-fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, rgba(8, 13, 31, 0.92));
+  pointer-events: none;
 }
+
+.certificate-card-image {
+  max-width: 80%;
+  max-height: 80%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ── Content area ────────────────────────────────────────────────────── */
+.certificate-detail-div {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 1.1rem 1.2rem 0.5rem;
+}
+
+.certificate-card-title {
+  color: #f0f4ff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0 0 0.55rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.dark-mode.certificate-card .certificate-card-title {
+  color: #f4f6ff;
+}
+
+.certificate-card-subtitle {
+  color: #8e9ec2;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  flex: 1;
+}
+
+.dark-mode.certificate-card .certificate-card-subtitle {
+  color: #94a3c4;
+}
+
+/* ── Footer tags ─────────────────────────────────────────────────────── */
 .certificate-card-footer {
   display: flex;
-  align-items: center;
   flex-wrap: wrap;
-  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.85rem 1.2rem 1.1rem;
+  margin-top: auto;
 }
+
 .certificate-card-footer span.certificate-tag {
-  background: $buttonColor;
-  color: $lightBackground3;
-  vertical-align: middle;
-  align-items: center;
-  border-radius: 4px;
   display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.32rem 0.85rem;
+  border-radius: 999px;
   font-size: 0.75rem;
-  height: 2em;
-  justify-content: center;
+  font-weight: 600;
   white-space: nowrap;
-  line-height: 1.5;
-  margin: 0 0.5rem 0.5rem 0;
-  padding: 0 0.75em;
   cursor: pointer;
-  transition: 0.2s ease-in;
+  transition: all 0.2s ease;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  color: #c4b5fd;
 }
+
 span.certificate-tag:hover {
-  background: $buttonHover;
+  background: rgba(139, 92, 246, 0.3);
+  border-color: rgba(232, 121, 249, 0.6);
+  color: #f0e6ff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+span.certificate-tag i {
+  font-size: 0.62rem;
+  opacity: 0.8;
+}
+
+/* ── Scroll container ────────────────────────────────────────────────── */
+.achievement-cards-div {
+  display: flex;
+  align-items: stretch;
+  gap: 1.1rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.5rem 0.25rem 1.5rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  position: relative;
+}
+
+.achievement-cards-div::-webkit-scrollbar {
+  display: none;
+}
+
+.achievement-scroll-item {
+  flex: 0 0 calc((100% - 3.3rem) / 4);
+  min-width: 270px;
+  height: auto;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .achievement-scroll-item {
+    flex: 0 0 calc((100% - 2.2rem) / 3);
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 900px) {
+  .achievement-scroll-item {
+    flex: 0 0 calc((100% - 1.1rem) / 2);
+    min-width: 230px;
+  }
+}
+
+@media (max-width: 640px) {
+  .achievement-scroll-item {
+    flex: 0 0 min(86vw, 340px);
+    min-width: min(86vw, 340px);
+  }
 }

@@ -1,0 +1,50 @@
+.nn-wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 460px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nn-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+/* Signal dot — cyan glow */
+.nn-dot {
+  fill: #7affda;
+  filter: drop-shadow(0 0 3px rgba(122, 255, 218, 1))
+    drop-shadow(0 0 7px rgba(122, 255, 218, 0.6));
+}
+
+/* Layer labels */
+.nn-label {
+  fill: rgba(200, 212, 255, 0.65);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+}
+
+@media (max-width: 1380px) {
+  .nn-wrapper {
+    min-height: 420px;
+  }
+}
+@media (max-width: 992px) {
+  .nn-wrapper {
+    min-height: 360px;
+  }
+}
+@media (max-width: 768px) {
+  .nn-wrapper {
+    min-height: 300px;
+    width: min(94vw, 480px);
+  }
+  .nn-label {
+    font-size: 11px;
+  }
+}

@@ -8,40 +8,53 @@ export default function AchievementCard({cardInfo, isDark}) {
       return;
     }
     var win = window.open(url, "_blank");
-    win.focus();
+    if (win) win.focus();
   }
 
   return (
     <div className={isDark ? "dark-mode certificate-card" : "certificate-card"}>
+      {/* Uniform image box — dark bg handles both circular logos & square images */}
       <div className="certificate-image-div">
         <img
           src={cardInfo.image}
           alt={cardInfo.imageAlt || "Card Thumbnail"}
-          className="card-image"
-        ></img>
+          className="certificate-card-image"
+        />
+        <div className="certificate-image-fade"></div>
       </div>
+
       <div className="certificate-detail-div">
-        <h5 className={isDark ? "dark-mode card-title" : "card-title"}>
+        <h5
+          className={
+            isDark
+              ? "dark-mode certificate-card-title"
+              : "certificate-card-title"
+          }
+        >
           {cardInfo.title}
         </h5>
-        <p className={isDark ? "dark-mode card-subtitle" : "card-subtitle"}>
+        <p
+          className={
+            isDark
+              ? "dark-mode certificate-card-subtitle"
+              : "certificate-card-subtitle"
+          }
+        >
           {cardInfo.description}
         </p>
       </div>
+
       <div className="certificate-card-footer">
-        {cardInfo.footer.map((v, i) => {
-          return (
-            <span
-              key={i}
-              className={
-                isDark ? "dark-mode certificate-tag" : "certificate-tag"
-              }
-              onClick={() => openUrlInNewTab(v.url, v.name)}
-            >
-              {v.name}
-            </span>
-          );
-        })}
+        {cardInfo.footer.map((v, i) => (
+          <span
+            key={i}
+            className={isDark ? "dark-mode certificate-tag" : "certificate-tag"}
+            onClick={() => openUrlInNewTab(v.url, v.name)}
+          >
+            <i className="fas fa-arrow-up-right-from-square"></i>
+            {v.name}
+          </span>
+        ))}
       </div>
     </div>
   );

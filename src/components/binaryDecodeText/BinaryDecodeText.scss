@@ -1,0 +1,74 @@
+/* Binary → Text decode animation */
+
+/* Gradient always applied to root — "Sai" lands in the pink/purple end */
+.bdt-root {
+  display: inline;
+  font-family: "JetBrains Mono", "Courier New", monospace;
+  font-weight: 400;
+  letter-spacing: 2px;
+  background: linear-gradient(90deg, #6ea8ff 0%, #8b5cf6 55%, #e879f9 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Python REPL prompt >>> — always green, never gets gradient */
+.bdt-prompt {
+  font-family: "JetBrains Mono", "Courier New", monospace;
+  color: #52f2ae;
+  font-weight: 600;
+  letter-spacing: 1px;
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+/* Binary digits — matrix green overrides gradient */
+.bdt-char.binary {
+  font-family: "SFMono-Regular", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.62em;
+  color: #1db954;
+  opacity: 0.72;
+  vertical-align: middle;
+  transition: none;
+  text-shadow: 0 0 8px rgba(29, 185, 84, 0.55);
+}
+
+/* Locked chars — transparent so parent gradient shows through */
+.bdt-char.locked {
+  font-family: "JetBrains Mono", "Courier New", monospace;
+  font-size: 1em;
+  color: transparent;
+  vertical-align: baseline;
+  transition: color 0.12s ease;
+}
+
+/* When fully decoded — same gradient, no text-shadow clutter */
+.bdt-root.bdt-done .bdt-char {
+  color: transparent;
+  text-shadow: none;
+  font-size: 1em;
+  font-family: inherit;
+  vertical-align: baseline;
+}
+
+/* Blinking terminal cursor — green block, not affected by gradient */
+.bdt-cursor {
+  display: inline-block;
+  width: 5px;
+  height: 0.85em;
+  background: #52f2ae;
+  color: initial;
+  vertical-align: middle;
+  margin-left: 10px;
+  border-radius: 1px;
+  animation: bdt-blink 1s steps(1, end) infinite;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+}
+
+@keyframes bdt-blink {
+  50% {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,237 @@
+@import "../../_globalColor";
+
+.pub-heading {
+  font-size: 56px;
+  font-weight: 400;
+  line-height: normal;
+  margin: 0;
+}
+
+.pub-subtitle {
+  text-transform: uppercase;
+  margin: 0 0 2.5rem 0;
+  color: $subTitle;
+}
+
+.pub-section {
+  padding-bottom: 2rem;
+}
+
+/* ── Card — horizontal layout like CVPR card ─────────────────────────── */
+.pub-card {
+  display: flex;
+  flex-direction: row;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 1.6rem;
+  border: 1px solid rgba(140, 161, 255, 0.18);
+  background: rgba(10, 15, 36, 0.6);
+  transition: transform 0.28s ease, box-shadow 0.28s ease,
+    border-color 0.28s ease;
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.32);
+}
+
+.pub-card.dark-mode {
+  background: linear-gradient(
+    140deg,
+    rgba(11, 17, 42, 0.92) 0%,
+    rgba(8, 13, 32, 0.95) 100%
+  );
+  border-color: rgba(140, 161, 255, 0.2);
+}
+
+.pub-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(139, 92, 246, 0.3);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+/* ── Left image panel ────────────────────────────────────────────────── */
+.pub-image-col {
+  flex: 0 0 280px;
+  width: 280px;
+  background: #060c1e;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 0;
+  border-right: 1px solid rgba(140, 161, 255, 0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle gradient overlay on image panel */
+.pub-image-col::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(110, 168, 255, 0.04) 0%,
+    rgba(139, 92, 246, 0.06) 100%
+  );
+  pointer-events: none;
+}
+
+.pub-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Right content panel ─────────────────────────────────────────────── */
+.pub-content-col {
+  flex: 1;
+  padding: 1.8rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* Venue row — badge + type tag */
+.pub-venue-row {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.pub-venue-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.pub-type-tag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 0.22rem 0.7rem;
+  border-radius: 4px;
+  opacity: 0.75;
+}
+
+.pub-type-tag.conference {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+}
+
+.pub-type-tag.journal {
+  background: rgba(217, 119, 6, 0.15);
+  color: #fcd34d;
+}
+
+.pub-type-tag.preprint {
+  background: rgba(52, 211, 153, 0.15);
+  color: #6ee7b7;
+}
+
+/* Title */
+.pub-title {
+  font-size: 1.22rem;
+  font-weight: 700;
+  color: #f0f4ff;
+  line-height: 1.45;
+  margin: 0;
+}
+
+/* Bullet contributions */
+.pub-bullets {
+  margin: 0;
+  padding: 0 0 0 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.38rem;
+  list-style: disc;
+}
+
+.pub-bullets li {
+  font-size: 0.9rem;
+  color: #94a3c4;
+  line-height: 1.55;
+}
+
+/* Links */
+.pub-links {
+  display: flex;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
+.pub-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.42rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(139, 92, 246, 0.45);
+  background: rgba(139, 92, 246, 0.12);
+  color: #c4b5fd;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
+}
+
+.pub-link-btn:hover {
+  background: rgba(139, 92, 246, 0.28);
+  border-color: rgba(232, 121, 249, 0.6);
+  color: #f0e6ff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.3);
+}
+
+.pub-link-btn i {
+  font-size: 0.72rem;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+@media (max-width: 1380px) {
+  .pub-heading {
+    font-size: 40px;
+  }
+  .pub-image-col {
+    flex: 0 0 220px;
+    width: 220px;
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pub-card {
+    flex-direction: column;
+  }
+  .pub-image-col {
+    width: 100%;
+    flex: none;
+    height: 180px;
+    border-right: none;
+    border-bottom: 1px solid rgba(140, 161, 255, 0.12);
+  }
+  .pub-heading {
+    font-size: 30px;
+    text-align: center;
+  }
+  .pub-subtitle {
+    text-align: center;
+    font-size: 14px;
+  }
+  .pub-content-col {
+    padding: 1.2rem;
+  }
+  .pub-title {
+    font-size: 1.05rem;
+  }
+}

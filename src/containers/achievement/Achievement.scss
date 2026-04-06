@@ -11,6 +11,39 @@
   margin: 0px;
   margin-bottom: 50px;
 }
+
+.achievement-main-div {
+  padding-bottom: 24px;
+}
+
+.achievement-cards-div::before,
+.achievement-cards-div::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0.9rem;
+  width: 24px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.achievement-cards-div::before {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    rgba(8, 12, 28, 0.95) 0%,
+    rgba(8, 12, 28, 0) 100%
+  );
+}
+
+.achievement-cards-div::after {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    rgba(8, 12, 28, 0.95) 0%,
+    rgba(8, 12, 28, 0) 100%
+  );
+}
 .subTitle {
   color: $subTitle;
 }

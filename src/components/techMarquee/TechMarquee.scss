@@ -1,0 +1,124 @@
+.tm-outer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 3rem;
+  position: relative; /* needed for tooltip absolute positioning */
+}
+
+/* Instant tooltip — appears above the icon with no delay */
+.tm-tooltip {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 10px));
+  background: rgba(10, 16, 38, 0.95);
+  color: #c4b5fd;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  white-space: nowrap;
+  border: 1px solid rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.25);
+  pointer-events: none;
+  z-index: 100;
+  letter-spacing: 0.3px;
+}
+
+/* Pill container — shows ~5 icons at a time */
+.tm-wrapper {
+  width: 400px;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(14, 18, 42, 0.72);
+  border: 1px solid rgba(148, 163, 255, 0.15);
+  padding: 0.65rem 1.2rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.28);
+
+  /* Fade left and right edges */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 14%,
+    black 86%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 14%,
+    black 86%,
+    transparent 100%
+  );
+}
+
+.tm-track {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: max-content;
+  animation: tm-scroll 20s linear infinite;
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes tm-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.tm-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  opacity: 0.85;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+
+  i {
+    font-size: 2.3rem;
+    line-height: 1;
+    transition: filter 0.2s ease;
+  }
+
+  &:hover {
+    opacity: 1;
+    transform: translateY(-3px) scale(1.2);
+
+    i {
+      animation: icon-glow-sweep 1.4s linear infinite;
+    }
+  }
+}
+
+/* Gradient shimmer glow — sweeps blue → purple → pink → blue */
+@keyframes icon-glow-sweep {
+  0% {
+    filter: drop-shadow(0 0 6px #6ea8ff) drop-shadow(0 0 10px #6ea8ff);
+  }
+  33% {
+    filter: drop-shadow(0 0 8px #8b5cf6) drop-shadow(0 0 14px #8b5cf6);
+  }
+  66% {
+    filter: drop-shadow(0 0 8px #e879f9) drop-shadow(0 0 14px #e879f9);
+  }
+  100% {
+    filter: drop-shadow(0 0 6px #6ea8ff) drop-shadow(0 0 10px #6ea8ff);
+  }
+}
+
+@media (max-width: 768px) {
+  .tm-wrapper {
+    width: min(100%, 320px);
+  }
+  .tm-item i {
+    font-size: 1.9rem;
+  }
+}

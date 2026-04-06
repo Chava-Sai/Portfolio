@@ -12,7 +12,7 @@
   width: 90%;
   padding: 20px 10px;
   margin: 0px auto;
-  margin-top: 2rem;
+  margin-top: 0.4rem;
 }
 
 .greeting-main {
@@ -23,39 +23,184 @@
   color: $subTitle !important;
 }
 
-.greeting-main > * {
-  flex: 1;
+.greeting-text-div {
+  flex: 1.45;
   margin-bottom: 30px;
 }
 
 .greeting-image-div {
+  flex: 1;
+  margin-bottom: 30px;
+}
+
+/* ── Badges row (MS AI + tagline side by side) ───────────────────────── */
+.greeting-badges-row {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ── Tagline — no container, free text with blinking dots ────────────── */
+.greeting-tagline-text {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  margin-bottom: 1.6rem;
+  font-size: 2.35rem;
+  font-weight: 700;
+  color: #c4b5fd;
+  letter-spacing: 0.3px;
+}
+
+/* Leading pulse dot */
+.tl-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #a78bfa;
+  box-shadow: 0 0 10px #a78bfa, 0 0 20px rgba(167, 139, 250, 0.4);
+  animation: badge-blink 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+/* Words */
+.tl-word {
+  color: #c4b5fd;
+}
+
+/* Separator dots — same circular style as the leading dot */
+.tl-sep {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #a78bfa;
+  box-shadow: 0 0 10px #a78bfa, 0 0 20px rgba(167, 139, 250, 0.4);
+  font-size: 0;
+  flex-shrink: 0;
+  margin: 0 0.6rem;
+  animation: badge-blink 2s ease-in-out infinite;
+}
+
+.tl-sep:nth-of-type(2) {
+  animation-delay: 0.4s;
+}
+.tl-sep:nth-of-type(3) {
+  animation-delay: 0.8s;
+}
+
+.badge-pulse {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #52f2ae;
+  box-shadow: 0 0 6px #52f2ae;
+  animation: badge-blink 2s ease-in-out infinite;
+}
+
+@keyframes badge-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* ── Social icons + resume pill on same row ──────────────────────────── */
+.social-resume-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.4rem;
+}
+
+.resume-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 2rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #6ea8ff 0%, #8b5cf6 100%);
+  color: #fff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(139, 92, 246, 0.38);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.resume-pill-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.55);
+  color: #fff;
+  text-decoration: none;
+}
+
+.greeting-image-div {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
+/* ── Rotating gradient border frame ─────────────────────────────────── */
+@property --pa {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.profile-frame {
+  --pa: 0deg;
+  display: inline-block;
+  width: fit-content; /* shrink to exactly the image size */
+  line-height: 0; /* remove phantom gap below image   */
+  padding: 4px;
+  border-radius: 30px;
+  margin-top: 40px;
+  background: conic-gradient(
+    from var(--pa),
+    #6ea8ff 0%,
+    #8b5cf6 28%,
+    #a78bfa 48%,
+    #34d399 68%,
+    #64d8ff 84%,
+    #6ea8ff 100%
+  );
+  animation: profile-border-spin 6s linear infinite;
+  box-shadow: 0 0 14px rgba(139, 92, 246, 0.45),
+    0 0 28px rgba(110, 168, 255, 0.18);
+}
+
+@keyframes profile-border-spin {
+  to {
+    --pa: 360deg;
+  }
+}
+
 .greeting-profile-image {
-  width: min(82%, 550px);
+  width: 460px;
   max-width: 100%;
-  aspect-ratio: 3.8 / 4;
-  object-fit: cover;
-  object-position: center 18%;
-  margin-top: -100px;
-  border-radius: 24px;
-  box-shadow: 0 18px 42px rgba(14, 12, 38, 0.2);
+  height: auto;
+  object-fit: contain;
+  border-radius: 26px;
+  display: block;
+  background: #0d1224;
 }
 
 .empty-div {
-  margin-bottom: 40px;
-}
-
-.button-greeting-div {
-  display: flex;
-  margin-top: 40px;
-}
-
-.download-link-button {
-  text-decoration: none;
+  margin-bottom: 16px;
 }
 
 .greeting-text {
@@ -67,6 +212,26 @@
   text-shadow: 0 0 22px rgba(120, 100, 255, 0.15);
 }
 
+/* ── Python syntax colours ───────────────────────────────────────────── */
+/* print  → cyan-blue  (VSCode function colour)  */
+.code-fn {
+  color: #4ec9b0;
+  font-weight: 900;
+}
+
+/* ( )  → golden yellow  (VSCode bracket colour) */
+.code-paren {
+  color: #ffd700;
+  font-weight: 700;
+}
+
+/* "…"  → warm orange  (VSCode string colour) */
+.code-str {
+  color: #ce9178;
+  font-weight: 700;
+}
+
+/* ── "Sai" inside the string — gradient purple-blue ─────────────────── */
 /* ✅ Purple gradient + glow like the screenshot (applies to the "name" part) */
 .highlight-name {
   font-weight: 900;
@@ -148,8 +313,15 @@
 }
 
 @media (max-width: 768px) {
-  .button-greeting-div {
-    justify-content: space-around;
+  .social-resume-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .greeting-badge {
+    font-size: 0.82rem;
+    text-align: center;
   }
 
   .greeting-text {

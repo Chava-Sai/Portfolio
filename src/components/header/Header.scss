@@ -8,16 +8,57 @@
 /* header */
 
 .dark-menu {
-  background-color: $darkBackground !important;
   color: $textColorDark;
+}
+
+.header.dark-menu {
+  background: rgba(8, 14, 34, 0.62) !important;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(129, 154, 255, 0.22);
+}
+
+.header.dark-menu .menu {
+  background: transparent !important;
 }
 
 .dark-menu li a {
   color: $textColorDark !important;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.25s ease;
 }
 
+/* Shimmer sweep — slides from left to right on hover */
+.dark-menu li a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(110, 168, 255, 0) 0%,
+    rgba(110, 168, 255, 0.38) 30%,
+    rgba(139, 92, 246, 0.45) 55%,
+    rgba(232, 121, 249, 0.32) 75%,
+    rgba(232, 121, 249, 0) 100%
+  );
+  transform: translateX(-110%);
+  transition: transform 0.55s ease;
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.dark-menu li a:hover::before {
+  transform: translateX(110%);
+}
+
+/* Persistent background + bottom gradient underline */
 .dark-menu li a:hover {
-  background-color: $buttonColor !important;
+  background: rgba(110, 100, 255, 0.18) !important;
+  color: #e0e8ff !important;
+  text-shadow: 0 0 14px rgba(139, 92, 246, 0.55);
+  box-shadow: inset 0 -2px 0 0 rgba(139, 92, 246, 0.7);
 }
 
 .header {
@@ -208,6 +249,12 @@
 }
 
 @media (max-width: 768px) {
+  .header.dark-menu .menu {
+    background: rgba(8, 14, 34, 0.82) !important;
+    border-radius: 12px;
+    margin-top: 8px;
+    border: 1px solid rgba(129, 154, 255, 0.2);
+  }
   .header .logo {
     margin-top: 6px;
     padding: 4px 6px 6px;

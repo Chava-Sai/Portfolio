@@ -1,13 +1,14 @@
 import React, {useContext} from "react";
 import {Fade} from "react-reveal";
-import emoji from "react-easy-emoji";
 import "./Greeting.scss";
 import landingPerson from "../../assets/lottie/landingPerson";
 import codingPerson from "../../assets/lottie/codingPerson";
 import Build from "../../assets/lottie/build";
 import DisplayLottie from "../../components/displayLottie/DisplayLottie";
 import SocialMedia from "../../components/socialMedia/SocialMedia";
-import Button from "../../components/button/Button";
+import FocusTerminal from "../../components/focusTerminal/FocusTerminal";
+import TechMarquee from "../../components/techMarquee/TechMarquee";
+import BinaryDecodeText from "../../components/binaryDecodeText/BinaryDecodeText";
 import {illustration, greeting} from "../../portfolio";
 import StyleContext from "../../contexts/StyleContext";
 
@@ -21,13 +22,6 @@ export default function Greeting() {
   const {isDark} = useContext(StyleContext);
 
   if (!greeting.displayGreeting) return null;
-
-  // "Hi, I'm Sai" -> left: "Hi" , right: "I'm Sai"
-  const titleParts = (greeting.title || "").split(",");
-  const titleLeft = titleParts[0] || greeting.title || "";
-  const titleRight = titleParts.slice(1).join(",").trim();
-
-  const fullTitle = titleRight ? `${titleLeft}, ${titleRight}` : greeting.title;
   const selectedGreetingAnimation =
     greetingAnimations[greeting.greetingAnimation] || landingPerson;
 
@@ -40,32 +34,50 @@ export default function Greeting() {
               <h1
                 className={isDark ? "dark-mode greeting-text" : "greeting-text"}
               >
-                <span className="highlight-name">{fullTitle}</span>
-                <span className="wave-emoji">{emoji("👋")}</span>
+                <BinaryDecodeText />
               </h1>
 
-              <p
-                className={
-                  isDark
-                    ? "dark-mode greeting-text-p"
-                    : "greeting-text-p subTitle"
-                }
-              >
-                {greeting.subTitle}
-              </p>
+              {greeting.tagline && (
+                <p className="greeting-tagline-text">
+                  <span className="tl-dot"></span>
+                  {greeting.tagline.split("·").map((part, i, arr) => (
+                    <React.Fragment key={i}>
+                      <span className="tl-word">{part.trim()}</span>
+                      {i < arr.length - 1 && <span className="tl-sep">·</span>}
+                    </React.Fragment>
+                  ))}
+                </p>
+              )}
+
+              {greeting.terminal ? (
+                <FocusTerminal
+                  terminalData={greeting.terminal}
+                  isDark={isDark}
+                />
+              ) : (
+                <p
+                  className={
+                    isDark
+                      ? "dark-mode greeting-text-p"
+                      : "greeting-text-p subTitle"
+                  }
+                >
+                  {greeting.subTitle}
+                </p>
+              )}
 
               <div id="resume" className="empty-div"></div>
-              <SocialMedia />
 
-              <div className="button-greeting-div">
-                <Button text="Contact me" href="#contact" />
+              <div className="social-resume-row">
+                <SocialMedia />
                 {greeting.resumeLink && (
-                  <Button
-                    text="Download my resume"
-                    className="download-link-button"
+                  <a
+                    className="resume-pill-btn"
                     href={require("./resume.pdf")}
                     download="Resume.pdf"
-                  />
+                  >
+                    <i className="fas fa-file-download"></i> Resume
+                  </a>
                 )}
               </div>
             </div>
@@ -73,11 +85,13 @@ export default function Greeting() {
 
           <div className="greeting-image-div">
             {greeting.profileImage ? (
-              <img
-                alt={`${greeting.username} profile`}
-                className="greeting-profile-image"
-                src={greeting.profileImage}
-              />
+              <div className="profile-frame">
+                <img
+                  alt={`${greeting.username} profile`}
+                  className="greeting-profile-image"
+                  src={greeting.profileImage}
+                />
+              </div>
             ) : illustration.animated ? (
               <DisplayLottie animationData={selectedGreetingAnimation} />
             ) : (
@@ -86,6 +100,7 @@ export default function Greeting() {
                 src={require("../../assets/images/manOnTable.svg")}
               />
             )}
+            <TechMarquee />
           </div>
         </div>
       </div>

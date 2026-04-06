@@ -11,7 +11,8 @@ import {
   openSource,
   blogSection,
   talkSection,
-  achievementSection
+  achievementSection,
+  publicationsSection
 } from "../../portfolio";
 
 function Header() {
@@ -23,6 +24,7 @@ function Header() {
   const viewProficiency = techStack.viewSkillBars;
   const viewProjects = bigProjects.display;
   const viewAchievement = achievementSection.display;
+  const viewPublications = publicationsSection && publicationsSection.display;
   const viewBlog = blogSection.display;
   const viewTalks = talkSection.display;
 
@@ -54,6 +56,11 @@ function Header() {
           {viewProficiency && (
             <li>
               <a href="#proficiency">Proficiency & Updates</a>
+            </li>
+          )}
+          {viewPublications && (
+            <li>
+              <a href="#publications">Publications</a>
             </li>
           )}
           {viewProjects && (

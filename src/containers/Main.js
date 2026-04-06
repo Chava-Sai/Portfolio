@@ -6,6 +6,7 @@ import StackProgress from "./skillProgress/skillProgress";
 import WorkExperience from "./workExperience/WorkExperience";
 import Projects from "./projects/Projects";
 import StartupProject from "./StartupProjects/StartupProject";
+import Publications from "./publications/Publications";
 import Achievement from "./achievement/Achievement";
 import Blogs from "./blogs/Blogs";
 import Footer from "../components/footer/Footer";
@@ -18,6 +19,7 @@ import Profile from "./profile/Profile";
 import SplashScreen from "./splashScreen/SplashScreen";
 import {splashScreen} from "../portfolio";
 import {StyleProvider} from "../contexts/StyleContext";
+import motionBackgroundVideo from "../assets/videos/motion-background.mp4";
 import "./Main.scss";
 
 const Main = () => {
@@ -40,30 +42,39 @@ const Main = () => {
   const changeTheme = () => {};
 
   return (
-    <div className="dark-mode">
+    <div className="app-root dark-mode">
+      <div className="global-video-bg" aria-hidden="true">
+        <video autoPlay muted loop playsInline preload="metadata">
+          <source src={motionBackgroundVideo} type="video/mp4" />
+        </video>
+        <div className="global-video-overlay"></div>
+      </div>
       <StyleProvider value={{isDark: isDark, changeTheme: changeTheme}}>
-        {isShowingSplashAnimation && splashScreen.enabled ? (
-          <SplashScreen />
-        ) : (
-          <>
-            <Header />
-            <Greeting />
-            <Skills />
-            <StackProgress />
-            <Education />
-            <WorkExperience />
-            <Projects />
-            <StartupProject />
-            <Achievement />
-            <Blogs />
-            <Talks />
-            <Twitter />
-            <Podcast />
-            <Profile />
-            <Footer />
-            <ScrollToTopButton />
-          </>
-        )}
+        <div className="app-content-layer">
+          {isShowingSplashAnimation && splashScreen.enabled ? (
+            <SplashScreen />
+          ) : (
+            <>
+              <Header />
+              <Greeting />
+              <Skills />
+              <StackProgress />
+              <Education />
+              <WorkExperience />
+              <Publications />
+              <Projects />
+              <StartupProject />
+              <Achievement />
+              <Blogs />
+              <Talks />
+              <Twitter />
+              <Podcast />
+              <Profile />
+              <Footer />
+              <ScrollToTopButton />
+            </>
+          )}
+        </div>
       </StyleProvider>
     </div>
   );

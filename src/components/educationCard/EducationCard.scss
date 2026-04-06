@@ -62,11 +62,19 @@
   line-height: normal;
 }
 
+.dark-mode.education-text-subHeader {
+  color: #f3f6ff;
+}
+
 .education-text-duration {
   color: $titleColor;
   font-size: 19px;
   margin: 0px;
   padding-top: 0.5rem;
+}
+
+.dark-mode.education-text-duration {
+  color: #f3f6ff;
 }
 
 .education-text-desc {
