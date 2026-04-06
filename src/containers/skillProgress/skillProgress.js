@@ -1,26 +1,13 @@
 import React, {useState} from "react";
 import "./Progress.scss";
-import {illustration, techStack} from "../../portfolio";
+import {techStack} from "../../portfolio";
 import {Fade} from "react-reveal";
-import Build from "../../assets/lottie/build";
-import codingPerson from "../../assets/lottie/codingPerson";
-import landingPerson from "../../assets/lottie/landingPerson";
-import DisplayLottie from "../../components/displayLottie/DisplayLottie";
-
-const proficiencyAnimations = {
-  build: Build,
-  codingPerson,
-  landingPerson
-};
 
 export default function StackProgress() {
   const [hoveredNewsIndex, setHoveredNewsIndex] = useState(null);
 
   if (techStack.viewSkillBars) {
-    const selectedProficiencyAnimation =
-      proficiencyAnimations[techStack.proficiencyAnimation] || Build;
     const skillSnapshot = techStack.skillSnapshot || {};
-    const snapshotHighlights = skillSnapshot.highlights || [];
     const snapshotUpdates = skillSnapshot.latestUpdates || [];
 
     return (
@@ -44,35 +31,9 @@ export default function StackProgress() {
           </div>
 
           <div className="skills-image">
-            <div className="skill-snapshot-card">
-              <div className="skill-snapshot-lottie">
-                {illustration.animated ? (
-                  <DisplayLottie animationData={selectedProficiencyAnimation} />
-                ) : (
-                  <img
-                    alt="Skills"
-                    src={require("../../assets/images/skill.svg")}
-                  />
-                )}
-              </div>
-              <h3 className="skill-snapshot-title">
-                {skillSnapshot.title || "Skill Snapshot"}
-              </h3>
-              <p className="skill-snapshot-subtitle">
-                {skillSnapshot.subTitle || "Core technical strengths"}
-              </p>
-              {snapshotHighlights.length > 0 && (
-                <div className="skill-snapshot-chips">
-                  {snapshotHighlights.map((item, i) => (
-                    <span key={i} className="skill-snapshot-chip">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              )}
-
+            <div className="skill-snapshot-card updates-only-card">
               {snapshotUpdates.length > 0 && (
-                <div className="skill-snapshot-news">
+                <div className="skill-snapshot-news skill-snapshot-news-only">
                   <h4 className="skill-snapshot-news-title">Latest Updates</h4>
                   <div className="skill-snapshot-news-list">
                     {snapshotUpdates.map((item, i) => (
