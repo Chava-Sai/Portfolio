@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import Header from "../components/header/Header";
 import Greeting from "./greeting/Greeting";
 import Skills from "./skills/Skills";
@@ -26,6 +26,7 @@ const Main = () => {
   const isDark = true;
   const [isShowingSplashAnimation, setIsShowingSplashAnimation] =
     useState(true);
+  const backgroundVideoRef = useRef(null);
 
   useEffect(() => {
     if (splashScreen.enabled) {
@@ -39,12 +40,39 @@ const Main = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const videoEl = backgroundVideoRef.current;
+    if (!videoEl) return;
+
+    const tryPlay = () => {
+      const playPromise = videoEl.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => {});
+      }
+    };
+
+    tryPlay();
+    videoEl.addEventListener("canplay", tryPlay);
+
+    return () => {
+      videoEl.removeEventListener("canplay", tryPlay);
+    };
+  }, []);
+
   const changeTheme = () => {};
 
   return (
     <div className="app-root dark-mode">
       <div className="global-video-bg" aria-hidden="true">
-        <video autoPlay muted loop playsInline preload="metadata">
+        <video
+          ref={backgroundVideoRef}
+          autoPlay
+          muted
+          defaultMuted
+          loop
+          playsInline
+          preload="metadata"
+        >
           <source src={motionBackgroundVideo} type="video/mp4" />
         </video>
         <div className="global-video-overlay"></div>

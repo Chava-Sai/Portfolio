@@ -35,7 +35,10 @@ export default function FocusTerminal({terminalData, isDark}) {
             key={`${line}-${index}`}
             className="focus-terminal-line output output-point"
           >
-            • {line}
+            <span className="point-bullet" aria-hidden="true">
+              •
+            </span>
+            <span className="point-text">{line}</span>
           </p>
         ))}
 

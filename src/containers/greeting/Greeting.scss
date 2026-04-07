@@ -12,11 +12,13 @@
   width: 90%;
   padding: 20px 10px;
   margin: 0px auto;
-  margin-top: 0.4rem;
+  margin-top: 0;
 }
 
 .greeting-main {
   display: flex;
+  align-items: flex-start;
+  gap: clamp(16px, 1.8vw, 30px);
 }
 
 .subTitle {
@@ -24,13 +26,18 @@
 }
 
 .greeting-text-div {
-  flex: 1.45;
+  flex: 1.35;
   margin-bottom: 30px;
+  min-width: 0;
 }
 
 .greeting-image-div {
   flex: 1;
   margin-bottom: 30px;
+}
+
+.greeting-text-div .focus-terminal {
+  max-width: 92%;
 }
 
 /* ── Badges row (MS AI + tagline side by side) ───────────────────────── */
@@ -49,9 +56,9 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 0.4rem;
-  margin-bottom: 1.6rem;
-  font-size: 2.35rem;
+  margin-top: 0;
+  margin-bottom: 1.55rem;
+  font-size: 1.95rem;
   font-weight: 700;
   color: #c4b5fd;
   letter-spacing: 0.3px;
@@ -168,7 +175,7 @@
   line-height: 0; /* remove phantom gap below image   */
   padding: 4px;
   border-radius: 30px;
-  margin-top: 40px;
+  margin-top: 18px;
   background: conic-gradient(
     from var(--pa),
     #6ea8ff 0%,
@@ -204,8 +211,9 @@
 }
 
 .greeting-text {
-  font-size: 70px;
+  font-size: 62px;
   line-height: 1.1;
+  margin: 0 0 0.95rem;
   color: $textColor !important;
 
   /* subtle overall glow like the screenshot */
@@ -304,8 +312,11 @@
 
 /* Media Query */
 @media (max-width: 1380px) {
+  .greeting-tagline-text {
+    font-size: 1.7rem;
+  }
   .greeting-text {
-    font-size: 50px;
+    font-size: 46px;
   }
   .greeting-text-p {
     font-size: 20px;
@@ -313,6 +324,12 @@
 }
 
 @media (max-width: 768px) {
+  .greeting-tagline-text {
+    font-size: 1.35rem;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+  }
+
   .social-resume-row {
     flex-direction: column;
     align-items: center;
@@ -337,6 +354,10 @@
 
   .greeting-main {
     display: block;
+  }
+
+  .greeting-text-div .focus-terminal {
+    max-width: 100%;
   }
 
   .greeting-image-div {
