@@ -42,7 +42,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .app-root.dark-mode .global-video-bg video {
-    display: none;
+    opacity: 0.16;
+    filter: saturate(1.02) contrast(1.01);
   }
 }
 

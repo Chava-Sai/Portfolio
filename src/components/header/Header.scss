@@ -110,7 +110,7 @@
 .header .logo-name {
   font-family: "Nasalization", "Montserrat", sans-serif;
   font-weight: 400;
-  font-size: clamp(1.65rem, 2.4vw, 2.45rem);
+  font-size: clamp(1.55rem, 2.15vw, 2.2rem);
   letter-spacing: 0.03em;
   line-height: 1.12;
   white-space: nowrap;
@@ -220,19 +220,58 @@
 /* 48em = 768px */
 
 @media (min-width: 48em) {
-  .header li {
-    float: left;
-  }
   .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 0.25rem;
+  }
+  .header .logo {
+    margin-right: clamp(10px, 1.2vw, 22px);
+    flex: 0 0 auto;
   }
   .header .menu {
     max-height: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 0 1 auto;
+    flex-wrap: nowrap !important;
+    gap: 0;
+    clear: none;
+    margin: 0 0 0 auto;
+    padding: 0;
+    white-space: nowrap;
+    width: max-content;
+    min-width: 0;
+    overflow: visible;
+  }
+  .header li {
+    float: none;
+    display: block;
+    flex: 0 0 auto;
+  }
+  .header li a {
+    white-space: nowrap;
+    padding: 12px clamp(8px, 0.7vw, 12px);
+    font-size: clamp(0.95rem, 0.92vw, 1.04rem);
+    line-height: 1.1;
   }
   .header .menu-icon {
     display: none;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  @media (min-width: 48em) {
+    .header .menu {
+      flex-wrap: nowrap !important;
+    }
+    .header li a {
+      padding: 11px 9px;
+      letter-spacing: 0;
+    }
   }
 }
 @media (max-width: 960px) and (min-width: 768px) {
