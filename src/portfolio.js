@@ -468,6 +468,14 @@ const achievementSection = {
   subtitle: "Awards and certifications reflecting hands-on technical depth",
   achievementsCards: [
     {
+      title: "Winner - BU MedAI Hackathon (Team MedMax)",
+      subtitle:
+        "Built a non-invasive ATI prediction pipeline using 6,592 SomaScan proteomic features + clinical covariates from the Boston Kidney Biopsy Cohort. Implemented a stacking ensemble with Platt calibration and delivered winning log loss 0.427; additionally built a MedNeXt + ResNet 3D ensemble for robust Alzheimer's imaging prediction under cross-site protocol shift.",
+      image: require("./assets/images/logos/boston-university.png"),
+      imageAlt: "BU MedAI Hackathon Winner",
+      footerLink: []
+    },
+    {
       title: "Prize Winner - BU Civics Hack 2026",
       subtitle:
         "Won for the Sidewalk Accessibility Validator project developed for Cyvl's civic accessibility problem statement.",
