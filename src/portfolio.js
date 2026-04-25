@@ -180,6 +180,13 @@ const techStack = {
       {
         date: "Apr 2026",
         title:
+          "Paper Accepted: ByteBreaker@DravidianLangTech 2026 (Writing Style Classification)",
+        highlight:
+          "Accepted paper: 'ByteBreaker@DravidianLangTech 2026: XLM-RoBERTa Large with Sliding-Window Chunking and Top-K Mean Pooling for Writing Style Classification.'"
+      },
+      {
+        date: "Apr 2026",
+        title:
           "Weakly-Supervised Violence Event Detection and Temporal Localization",
         highlight:
           "Built a full UCF-Crime pipeline with TRN/boundary refinement and achieved zero-shot XD-Violence transfer (AUC 0.8357, AP 0.8847)."
@@ -414,6 +421,21 @@ const publicationsSection = {
     "Research contributions in NLP, multimodal AI, and applied machine learning",
   display: true,
   publications: [
+    {
+      venue: "DravidianLangTech 2026",
+      venueType: "conference",
+      venueColor: "#2563eb",
+      title:
+        "ByteBreaker@DravidianLangTech 2026: XLM-RoBERTa Large with Sliding-Window Chunking and Top-K Mean Pooling for Writing Style Classification",
+      image: require("./assets/images/logos/acl.png"),
+      imageAlt: "DravidianLangTech 2026",
+      bullets: [
+        "Accepted paper on writing style classification for DravidianLangTech 2026",
+        "Built a pipeline using XLM-RoBERTa Large with sliding-window chunking for long-form text handling",
+        "Applied top-k mean pooling to capture the most informative chunks for final document-level prediction"
+      ],
+      links: []
+    },
     {
       venue: "EACL 2024",
       venueType: "conference",
