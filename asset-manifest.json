@@ -1,12 +1,12 @@
 {
   "files": {
     "main.css": "/Portfolio/static/css/main.78f427ce.css",
-    "main.js": "/Portfolio/static/js/main.42d7db24.js",
+    "main.js": "/Portfolio/static/js/main.e357c4f2.js",
     "static/css/64.bba8fa55.chunk.css": "/Portfolio/static/css/64.bba8fa55.chunk.css",
     "static/js/64.56dc6704.chunk.js": "/Portfolio/static/js/64.56dc6704.chunk.js",
     "static/css/769.b3cbb36b.chunk.css": "/Portfolio/static/css/769.b3cbb36b.chunk.css",
     "static/js/769.bda0d7b7.chunk.js": "/Portfolio/static/js/769.bda0d7b7.chunk.js",
-    "static/media/motion-background.mp4": "/Portfolio/static/media/motion-background.54c11df173fa7b6ef2d5.mp4",
+    "static/media/motion-background.mp4": "/Portfolio/static/media/motion-background.afc97e321f8842505e8e.mp4",
     "static/media/sidewalk.png": "/Portfolio/static/media/sidewalk.d3f382386eb48bc833b2.png",
     "static/media/Profile.png": "/Portfolio/static/media/Profile.fd701d92b69bbe9d7163.png",
     "static/media/Journal.png": "/Portfolio/static/media/Journal.a82f21382ced2eb6f25f.png",
@@ -31,7 +31,7 @@
     "static/media/sample-project-cover.svg": "/Portfolio/static/media/sample-project-cover.4950c00d81fab603c4ee54a17c1175cc.svg",
     "static/media/talksCardBack.svg": "/Portfolio/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
     "main.78f427ce.css.map": "/Portfolio/static/css/main.78f427ce.css.map",
-    "main.42d7db24.js.map": "/Portfolio/static/js/main.42d7db24.js.map",
+    "main.e357c4f2.js.map": "/Portfolio/static/js/main.e357c4f2.js.map",
     "64.bba8fa55.chunk.css.map": "/Portfolio/static/css/64.bba8fa55.chunk.css.map",
     "64.56dc6704.chunk.js.map": "/Portfolio/static/js/64.56dc6704.chunk.js.map",
     "769.b3cbb36b.chunk.css.map": "/Portfolio/static/css/769.b3cbb36b.chunk.css.map",
@@ -39,6 +39,6 @@
   },
   "entrypoints": [
     "static/css/main.78f427ce.css",
-    "static/js/main.42d7db24.js"
+    "static/js/main.e357c4f2.js"
   ]
 }
