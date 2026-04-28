@@ -1,0 +1,38 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="120" y1="80" x2="1460" y2="840" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A2352"/>
+      <stop offset="1" stop-color="#0A112F"/>
+    </linearGradient>
+    <linearGradient id="line" x1="320" y1="246" x2="1160" y2="654" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#65D8FF"/>
+      <stop offset="1" stop-color="#9A85FF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <g opacity="0.2" stroke="#9BB2FF" stroke-width="1">
+    <path d="M100 190H1500"/>
+    <path d="M100 320H1500"/>
+    <path d="M100 450H1500"/>
+    <path d="M100 580H1500"/>
+    <path d="M100 710H1500"/>
+    <path d="M250 90V810"/>
+    <path d="M500 90V810"/>
+    <path d="M750 90V810"/>
+    <path d="M1000 90V810"/>
+    <path d="M1250 90V810"/>
+  </g>
+  <rect x="130" y="120" width="410" height="230" rx="24" fill="#111C46" stroke="#667FC9" stroke-width="3"/>
+  <rect x="600" y="120" width="410" height="230" rx="24" fill="#111C46" stroke="#667FC9" stroke-width="3"/>
+  <rect x="1070" y="120" width="410" height="230" rx="24" fill="#111C46" stroke="#667FC9" stroke-width="3"/>
+  <circle cx="775" cy="500" r="114" fill="#2A2D74" fill-opacity="0.85" stroke="#93A4FF" stroke-width="3"/>
+  <path d="M320 236C454 236 566 300 660 428" stroke="url(#line)" stroke-width="6"/>
+  <path d="M820 428C908 306 1010 236 1140 236" stroke="url(#line)" stroke-width="6"/>
+  <path d="M775 614C775 680 838 726 930 726H1212" stroke="url(#line)" stroke-width="6"/>
+  <circle cx="660" cy="428" r="9" fill="#9DFFE4"/>
+  <circle cx="1140" cy="236" r="9" fill="#9DFFE4"/>
+  <circle cx="930" cy="726" r="9" fill="#9DFFE4"/>
+  <text x="800" y="486" fill="#F6F9FF" font-family="Arial, sans-serif" font-size="44" font-weight="700" text-anchor="middle">PROJECT PREVIEW</text>
+  <text x="800" y="535" fill="#D1DEFF" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">Replace with your final project image</text>
+  <text x="800" y="858" fill="#B9CCFF" font-family="Arial, sans-serif" font-size="24" text-anchor="middle">AI Workflow | Architecture | Results</text>
+</svg>
