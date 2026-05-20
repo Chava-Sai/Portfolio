@@ -357,7 +357,6 @@ const bigProjects = {
           url: "https://github.com/Chava-Sai/frozen-videomae-weakly-supervised.git"
         }
       ]
-      
     },
     {
       image: require("./assets/images/project-covers/AI_Auto_Grader.png"),
