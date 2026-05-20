@@ -90,6 +90,7 @@
   white-space: nowrap;
 }
 
+/* Default wrapper — invisible pass-through for all cards */
 .experience-roundedimg-wrap {
   position: absolute;
   left: 0;
@@ -100,22 +101,31 @@
   width: 8rem;
   height: 8rem;
   border-radius: 50%;
-  background: #ffffff;
   box-shadow: 0 0.5rem 1rem $lightBoxShadowDarker;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
-  padding: 0.6rem;
-  box-sizing: border-box;
 }
 
 .experience-roundedimg {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center center;
   display: block;
+}
+
+/* AGS-specific logo circle — tweak padding/bg here only */
+.experience-roundedimg-wrap.logo-ags {
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.experience-roundedimg-wrap.logo-ags .experience-roundedimg {
+  object-fit: contain;
+  object-position: center center;
 }
 
 .experience-text-role {

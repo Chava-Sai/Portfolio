@@ -286,6 +286,7 @@ const workExperiences = {
       role: "AI Engineer Intern",
       company: "American Green Solutions",
       companylogo: require("./assets/images/logos/ags-logo.png"),
+      logoClass: "logo-ags",
       date: "May 2026 – Present",
       desc: "Working within the AGS Astra platform team to design and develop internal AI-powered tools for solar operations and O&M teams.",
       descBullets: [

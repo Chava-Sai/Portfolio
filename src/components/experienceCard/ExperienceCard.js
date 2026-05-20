@@ -50,7 +50,12 @@ export default function ExperienceCard({cardInfo, isDark}) {
           <h5 className="experience-text-company">{cardInfo.company}</h5>
         </div>
 
-        <div className="experience-roundedimg-wrap">
+        <div
+          className={
+            "experience-roundedimg-wrap" +
+            (cardInfo.logoClass ? " " + cardInfo.logoClass : "")
+          }
+        >
           <img
             crossOrigin={"anonymous"}
             ref={imgRef}
