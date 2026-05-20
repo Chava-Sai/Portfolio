@@ -90,10 +90,8 @@
   white-space: nowrap;
 }
 
-.experience-roundedimg {
+.experience-roundedimg-wrap {
   position: absolute;
-  object-fit: contain;
-  object-position: center center;
   left: 0;
   right: 0;
   top: 7rem;
@@ -101,9 +99,23 @@
   margin-right: auto;
   width: 8rem;
   height: 8rem;
-  box-shadow: 0 0.5rem 1rem $lightBoxShadowDarker;
   border-radius: 50%;
   background: #ffffff;
+  box-shadow: 0 0.5rem 1rem $lightBoxShadowDarker;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0.6rem;
+  box-sizing: border-box;
+}
+
+.experience-roundedimg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
 }
 
 .experience-text-role {
@@ -149,7 +161,7 @@
   .experience-text-date {
     font-size: 18px;
   }
-  .experience-roundedimg {
+  .experience-roundedimg-wrap {
     width: 6.5rem;
     height: 6.5rem;
   }
