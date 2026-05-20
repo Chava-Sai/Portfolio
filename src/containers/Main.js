@@ -19,8 +19,9 @@ import Profile from "./profile/Profile";
 import SplashScreen from "./splashScreen/SplashScreen";
 import {splashScreen} from "../portfolio";
 import {StyleProvider} from "../contexts/StyleContext";
-import motionBackgroundVideo from "../assets/videos/motion-background.mp4";
 import "./Main.scss";
+
+const motionBackgroundVideo = process.env.PUBLIC_URL + "/videos/motion-background.mp4";
 
 const Main = () => {
   const isDark = true;
