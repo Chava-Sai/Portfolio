@@ -128,11 +128,14 @@
 .skill-snapshot-news-list {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
-  max-height: none;
-  overflow: visible;
-  padding: 2px 2px 2px 2px;
+  gap: 10px;
+  max-height: 478px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 2px 6px 2px 2px;
   scroll-snap-type: y proximity;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(110, 94, 255, 0.5) rgba(122, 107, 255, 0.14);
 }
 
 .skill-snapshot-news-item {
