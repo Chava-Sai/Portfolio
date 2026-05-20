@@ -291,8 +291,7 @@ const workExperiences = {
       descBullets: [
         "Designing and implementing RAG pipelines for enterprise knowledge retrieval using LangChain, vector databases, and OpenAI LLMs.",
         "Building REST API backends with FastAPI including authentication, role-based access control, and async task processing.",
-        "Developing React + Next.js frontends integrated with AI backends and semantic search pipelines.",
-        "Architecting end-to-end systems from document ingestion and embedding to user interface."
+        "Developing React + Next.js frontends integrated with AI backends and semantic search pipelines."
       ]
     },
     {
