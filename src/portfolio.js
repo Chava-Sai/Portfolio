@@ -178,11 +178,28 @@ const techStack = {
     ],
     latestUpdates: [
       {
+        date: "May 2026",
+        title: "Started AI Engineer Internship at American Green Solutions",
+        highlight:
+          "Joined the AGS Astra platform team as AI Engineer Intern — building RAG pipelines, FastAPI backends, and React/Next.js frontends for solar operations and O&M teams."
+      },
+      {
+        date: "May 2026",
+        title:
+          "🥈 2nd place (Tamil), 🥉 3rd place (Chinese), 🥈 2nd place (English) — CC-MMD 2026 Grand Challenge @ ICMI 2026",
+        highlight:
+          "ByteBreaker ranked top-3 in 3 of 4 languages for Cross-Cultural Misogynistic Meme Detection. Fine-tuned Qwen2.5-VL-7B-Instruct with LoRA + multi-head MLP classifier and cultural context prompting — achieving up to 2.3× above zero-shot baseline.",
+        cta: "View on LinkedIn",
+        url: "https://lnkd.in/eEWNtWPQ"
+      },
+      {
         date: "Apr 2026",
         title:
           "Paper Accepted: ByteBreaker@DravidianLangTech 2026 (Writing Style Classification)",
         highlight:
-          "Accepted paper: 'ByteBreaker@DravidianLangTech 2026: XLM-RoBERTa Large with Sliding-Window Chunking and Top-K Mean Pooling for Writing Style Classification.'"
+          "Accepted paper: 'ByteBreaker@DravidianLangTech 2026: XLM-RoBERTa Large with Sliding-Window Chunking and Top-K Mean Pooling for Writing Style Classification.'",
+        cta: "View Draft PDF",
+        url: `${process.env.PUBLIC_URL}/papers/bytebreaker_dravidian2026_draft.pdf`
       },
       {
         date: "Apr 2026",
@@ -198,14 +215,6 @@ const techStack = {
           "Developing a modular multimodal grading pipeline with extract/describe/compare modes across PDF, Excel, HTML, OCR, and vision workflows.",
         cta: "GitHub Repo",
         url: "https://github.com/Chava-Sai/Final-AI-Auto_Grader"
-      },
-      {
-        date: "Mar 2026",
-        title: "In Progress: Telugu LLM Research Publication",
-        highlight:
-          "Working on a new publication focused on Telugu LLM evaluation and research insights.",
-        cta: "View Draft PDF",
-        url: `${process.env.PUBLIC_URL}/papers/Final_LLM_telugu.pdf`
       },
       {
         date: "Feb 2026",
@@ -274,6 +283,19 @@ const workExperiences = {
   display: true,
   experience: [
     {
+      role: "AI Engineer Intern",
+      company: "American Green Solutions",
+      companylogo: require("./assets/images/logos/ags-logo.png"),
+      date: "May 2026 – Present",
+      desc: "Working within the AGS Astra platform team to design and develop internal AI-powered tools for solar operations and O&M teams.",
+      descBullets: [
+        "Designing and implementing RAG pipelines for enterprise knowledge retrieval using LangChain, vector databases, and OpenAI LLMs.",
+        "Building REST API backends with FastAPI including authentication, role-based access control, and async task processing.",
+        "Developing React + Next.js frontends integrated with AI backends and semantic search pipelines.",
+        "Architecting end-to-end systems from document ingestion and embedding to user interface."
+      ]
+    },
+    {
       role: "Machine Learning and Flutter Trainer (Contract)",
       company: "Datavalley.ai",
       companylogo: require("./assets/images/logos/Datavalley Logo.png"),
@@ -323,11 +345,19 @@ const bigProjects = {
     "Selected projects across AI engineering, accessibility, multilingual NLP, and public-interest data science",
   projects: [
     {
+      image: require("./assets/images/project-covers/ivc.png"),
       projectName:
         "Weakly-Supervised Violence Event Detection and Temporal Localization",
       projectDesc:
         "Built a weakly supervised surveillance-video pipeline with frozen I3D features, RTFM-style MIL, top-k pseudo-label classification, temporal refinement, and boundary-aware localization. Completed UCF-Crime ablations and achieved zero-shot XD-Violence transfer with AUC 0.8357 and AP 0.8847 (90.1% UCF AUC retention).",
-      techStack: ["Python", "PyTorch", "OpenCV", "NumPy", "Pandas"]
+      techStack: ["Python", "PyTorch", "OpenCV", "NumPy", "Pandas"],
+      footerLink: [
+        {
+          name: "GitHub",
+          url: "https://github.com/Chava-Sai/frozen-videomae-weakly-supervised.git"
+        }
+      ]
+      
     },
     {
       image: require("./assets/images/project-covers/AI_Auto_Grader.png"),
@@ -338,7 +368,7 @@ const bigProjects = {
       footerLink: [
         {
           name: "GitHub",
-          url: "https://github.com/Chava-Sai/Final-AI-Auto_Grader"
+          url: "https://github.com/BU-Spark/ml-bu-autograder"
         }
       ]
     },
