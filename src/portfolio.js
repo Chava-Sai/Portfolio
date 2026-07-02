@@ -195,11 +195,11 @@ const techStack = {
       {
         date: "Apr 2026",
         title:
-          "Paper Accepted: ByteBreaker@DravidianLangTech 2026 (Writing Style Classification)",
+          "Paper Published: ByteBreaker@DravidianLangTech 2026 (Writing Style Classification)",
         highlight:
           "Accepted paper: 'ByteBreaker@DravidianLangTech 2026: XLM-RoBERTa Large with Sliding-Window Chunking and Top-K Mean Pooling for Writing Style Classification.'",
-        cta: "View Draft PDF",
-        url: `${process.env.PUBLIC_URL}/papers/bytebreaker_dravidian2026_draft.pdf`
+        cta: "View Paper",
+        url: "https://aclanthology.org/2026.dravidianlangtech-1.19/"
       },
       {
         date: "Apr 2026",
@@ -463,7 +463,13 @@ const publicationsSection = {
         "Built a pipeline using XLM-RoBERTa Large with sliding-window chunking for long-form text handling",
         "Applied top-k mean pooling to capture the most informative chunks for final document-level prediction"
       ],
-      links: []
+      links: [
+        {
+          label: "ACL Anthology",
+          url: "https://aclanthology.org/2026.dravidianlangtech-1.19/",
+          icon: "fas fa-book-open"
+        }
+      ]
     },
     {
       venue: "EACL 2024",
