@@ -17,7 +17,11 @@ function PublicationCard({pub, isDark}) {
         <img
           src={pub.image}
           alt={pub.imageAlt || "Publication"}
-          className="pub-image"
+          className={
+            pub.imageFit === "contain"
+              ? "pub-image pub-image-contain"
+              : "pub-image"
+          }
         />
       </div>
 

@@ -469,6 +469,28 @@ const publicationsSection = {
   display: true,
   publications: [
     {
+      venue: "DravidianCodeMix @ FIRE 2026",
+      venueType: "conference",
+      venueColor: "#16a34a",
+      title:
+        "HateLens@DravidianCodeMix 2026: Hate and Hope Speech Detection in Dravidian Languages",
+      image: require("./assets/images/logos/dravidian-codemix-fire2026.png"),
+      imageAlt: "DravidianCodeMix 2026 Shared Task at FIRE 2026",
+      imageFit: "contain",
+      bullets: [
+        "Ranked 1st of 10 teams as Team HateLens on the Subtask 1 all-languages leaderboard",
+        "Overall Macro F1 0.4603 across Levels 1–5 — L1 0.5428, L2 0.5309, L3 0.7110, L4 0.1521, L5 0.3648",
+        "Working notes submitted to DravidianCodeMix @ FIRE 2026 (under review)"
+      ],
+      links: [
+        {
+          name: "Competition",
+          url: "https://www.codabench.org/competitions/15232/#/phases-tab",
+          icon: "fas fa-trophy"
+        }
+      ]
+    },
+    {
       venue: "DravidianLangTech 2026",
       venueType: "conference",
       venueColor: "#2563eb",
@@ -483,7 +505,7 @@ const publicationsSection = {
       ],
       links: [
         {
-          label: "ACL Anthology",
+          name: "ACL Anthology",
           url: "https://aclanthology.org/2026.dravidianlangtech-1.19/",
           icon: "fas fa-book-open"
         }

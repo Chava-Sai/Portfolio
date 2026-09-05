@@ -17,6 +17,40 @@
   padding-bottom: 2rem;
 }
 
+/* Vertical scroll list — keeps the section a fixed height as papers are added */
+.pub-list {
+  max-height: 640px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* room so the card hover lift and glow are not clipped */
+  padding: 0.5rem 0.85rem 0.5rem 0.35rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(139, 92, 246, 0.5) rgba(139, 92, 246, 0.14);
+  overscroll-behavior-y: contain;
+}
+
+.pub-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.pub-list::-webkit-scrollbar-track {
+  background: rgba(139, 92, 246, 0.14);
+  border-radius: 10px;
+}
+
+.pub-list::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.5);
+  border-radius: 10px;
+}
+
+.pub-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(167, 139, 250, 0.7);
+}
+
+.pub-list > .pub-card:last-child {
+  margin-bottom: 0;
+}
+
 /* ── Card — horizontal layout like CVPR card ─────────────────────────── */
 .pub-card {
   display: flex;
@@ -81,6 +115,15 @@
   display: block;
   position: relative;
   z-index: 1;
+}
+
+/* Logos with transparency: show the whole mark on a light panel instead of
+   cropping it to fill a dark one. */
+.pub-image-contain {
+  object-fit: contain;
+  background: #eef2fb;
+  padding: 1.6rem;
+  box-sizing: border-box;
 }
 
 /* ── Right content panel ─────────────────────────────────────────────── */
@@ -230,6 +273,9 @@
   }
   .pub-content-col {
     padding: 1.2rem;
+  }
+  .pub-list {
+    max-height: 70vh;
   }
   .pub-title {
     font-size: 1.05rem;
