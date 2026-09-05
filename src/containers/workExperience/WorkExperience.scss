@@ -5,6 +5,7 @@
   gap: 1.25rem;
   overflow-x: auto;
   overflow-y: hidden;
+  scroll-snap-type: none;
   /* room so the hover lift/shadow is not clipped by the scroll container */
   padding: 0.75rem 0.25rem 1.25rem;
   scrollbar-width: none;
@@ -19,10 +20,17 @@
   height: 0;
 }
 
-.experience-card-item {
+.experience-card-slot {
   flex: 0 0 calc((100% - 2.5rem) / 3);
   min-width: 355px;
   max-width: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-card-slot .experience-card-item {
+  width: 100%;
+  flex: 1 1 auto;
   display: flex;
   flex-direction: column;
 }
@@ -38,9 +46,10 @@
     filter: saturate(0.78);
   }
 
-  .experience-cards-div:hover .experience-card-item:hover,
-  .experience-cards-div:hover .experience-card-item:focus-visible,
-  .experience-cards-div:hover .experience-card-item:focus-within {
+  .experience-cards-div:hover .experience-card-slot:hover .experience-card-item,
+  .experience-cards-div:hover
+    .experience-card-slot:focus-within
+    .experience-card-item {
     opacity: 1;
     transform: translateY(-4px) scale(1.02);
     filter: saturate(1.06);
@@ -74,7 +83,7 @@
     font-size: 40px;
   }
 
-  .experience-card-item {
+  .experience-card-slot {
     flex: 0 0 calc((100% - 1.25rem) / 2);
     min-width: 330px;
   }
@@ -86,7 +95,7 @@
     text-align: center;
   }
 
-  .experience-card-item {
+  .experience-card-slot {
     flex: 0 0 min(86vw, 380px);
     min-width: min(86vw, 380px);
     max-width: min(86vw, 380px);
