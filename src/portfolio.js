@@ -178,6 +178,12 @@ const techStack = {
     ],
     latestUpdates: [
       {
+        date: "Sep 2026",
+        title: "Selected as Technical Project Manager at BU Spark!",
+        highlight:
+          "Leading technical delivery for client-sponsored student ML teams in DS 549 (Machine Learning Practicum) — owning repo structure, code quality, PR reviews, and sprint scoping."
+      },
+      {
         date: "May 2026",
         title: "Started AI Engineer Internship at American Green Solutions",
         highlight:
