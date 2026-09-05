@@ -283,16 +283,28 @@ const workExperiences = {
   display: true,
   experience: [
     {
+      role: "Technical Project Manager",
+      company: "BU Spark!",
+      companylogo: require("./assets/images/logos/BU-spark.png"),
+      date: "Sep 2026 – Present",
+      desc: "Technical Project Manager for DS 549 (Machine Learning Practicum), leading technical delivery for client-sponsored student ML teams.",
+      descBullets: [
+        "Own repo structure, code quality, and pull request reviews under the bu-spark GitHub organization.",
+        "Scope client technical needs into prioritized sprints and keep milestones on schedule and on spec.",
+        "Coach student teams on architecture and debugging as first line of technical support."
+      ]
+    },
+    {
       role: "AI Engineer Intern",
       company: "American Green Solutions",
       companylogo: require("./assets/images/logos/ags-logo.png"),
       logoClass: "logo-ags",
-      date: "May 2026 – Present",
-      desc: "Working within the AGS Astra platform team to design and develop internal AI-powered tools for solar operations and O&M teams.",
+      date: "May 2026 – Aug 2026",
+      desc: "Worked within the AGS Astra platform team to design and develop internal AI-powered tools for solar operations and O&M teams.",
       descBullets: [
-        "Designing and implementing RAG pipelines for enterprise knowledge retrieval using LangChain, vector databases, and OpenAI LLMs.",
-        "Building REST API backends with FastAPI including authentication, role-based access control, and async task processing.",
-        "Developing React + Next.js frontends integrated with AI backends and semantic search pipelines."
+        "Designed and implemented RAG pipelines for enterprise knowledge retrieval using LangChain, vector databases, and OpenAI LLMs.",
+        "Built REST API backends with FastAPI including authentication, role-based access control, and async task processing.",
+        "Developed React + Next.js frontends integrated with AI backends and semantic search pipelines."
       ]
     },
     {
