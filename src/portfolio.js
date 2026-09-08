@@ -159,7 +159,7 @@ const educationInfo = {
       subHeader: "Bachelor of Technology in Data Science and AI",
       duration: "November 2021 - May 2025",
       desc: "Focused on multilingual NLP, computer vision, and applied machine learning.",
-      descBullets: ["Graduated with CGPA 7.82/10"]
+      descBullets: ["Graduated with CGPA 7.93/10"]
     }
   ]
 };
@@ -181,7 +181,7 @@ const techStack = {
         date: "Sep 2026",
         title: "Selected as Technical Project Manager at BU Spark!",
         highlight:
-          "Leading technical delivery for client-sponsored student ML teams in DS 549 (Machine Learning Practicum) — owning repo structure, code quality, PR reviews, and sprint scoping."
+          "Selected to support client-sponsored ML teams in DS 549 (Machine Learning Practicum). Project assignments begin September 2026."
       },
       {
         date: "May 2026",
@@ -199,11 +199,11 @@ const techStack = {
         url: "https://lnkd.in/eEWNtWPQ"
       },
       {
-        date: "Apr 2026",
+        date: "Jul 2026",
         title:
           "Paper Published: ByteBreaker@DravidianLangTech 2026 (Writing Style Classification)",
         highlight:
-          "Accepted paper: 'ByteBreaker@DravidianLangTech 2026: XLM-RoBERTa Large with Sliding-Window Chunking and Top-K Mean Pooling for Writing Style Classification.'",
+          "Published paper: 'ByteBreaker@DravidianLangTech 2026: XLM-RoBERTa Large with Sliding-Window Chunking and Top-K Mean Pooling for Writing Style Classification.'",
         cta: "View Paper",
         url: "https://aclanthology.org/2026.dravidianlangtech-1.19/"
       },
@@ -220,7 +220,7 @@ const techStack = {
         highlight:
           "Developing a modular multimodal grading pipeline with extract/describe/compare modes across PDF, Excel, HTML, OCR, and vision workflows.",
         cta: "GitHub Repo",
-        url: "https://github.com/Chava-Sai/Final-AI-Auto_Grader"
+        url: "https://github.com/BU-Spark/ml-bu-autograder"
       },
       {
         date: "Feb 2026",
@@ -293,11 +293,9 @@ const workExperiences = {
       company: "BU Spark!",
       companylogo: require("./assets/images/logos/BU-spark.png"),
       date: "Sep 2026 – Present",
-      desc: "Technical Project Manager for DS 549 (Machine Learning Practicum), leading technical delivery for client-sponsored student ML teams.",
+      desc: "Selected as Technical Project Manager for DS 549 (Machine Learning Practicum) at BU Spark!; project assignments begin September 2026.",
       descBullets: [
-        "Own repo structure, code quality, and pull request reviews under the bu-spark GitHub organization.",
-        "Scope client technical needs into prioritized sprints and keep milestones on schedule and on spec.",
-        "Coach student teams on architecture and debugging as first line of technical support."
+        "Upcoming responsibilities include technical scoping, code review, and student-team support for client-sponsored ML projects."
       ]
     },
     {
@@ -326,15 +324,15 @@ const workExperiences = {
       ]
     },
     {
-      role: "Team Lead, AI-Driven Text Analytics",
+      role: "Machine Learning Research Assistant",
       company: "IIIT Dharwad",
       companylogo: require("./assets/images/logos/iiit-dharwad.png"),
       date: "Aug 2023 - Jul 2024",
-      desc: "Led AI-driven text analytics research on Indian-language machine translation quality and semantic reliability.",
+      desc: "Served as Machine Learning Research Assistant and led a team evaluating Hindi-English machine translation quality.",
       descBullets: [
-        "Built evaluation pipelines comparing Google Translate and IndicTrans2 on IIT Bombay multilingual datasets.",
-        "Implemented Semantic Textual Similarity (STS) workflows to quantify semantic preservation across languages.",
-        "Reported stronger nuance retention and semantic fidelity for IndicTrans2 in low-resource settings."
+        "Built evaluation pipelines comparing Google Translate and IndicTrans2 on IIT Bombay Hindi-English parallel text.",
+        "Used Semantic Textual Similarity (STS) and BLEU to assess translation quality.",
+        "Coordinated team implementation and analysis of translation errors and evaluation results."
       ]
     },
     {
@@ -367,7 +365,7 @@ const bigProjects = {
       projectName:
         "Weakly-Supervised Violence Event Detection and Temporal Localization",
       projectDesc:
-        "Built a weakly supervised surveillance-video pipeline with frozen I3D features, RTFM-style MIL, top-k pseudo-label classification, temporal refinement, and boundary-aware localization. Completed UCF-Crime ablations and achieved zero-shot XD-Violence transfer with AUC 0.8357 and AP 0.8847 (90.1% UCF AUC retention).",
+        "Built a weakly supervised video pipeline using frozen VideoMAE-B features and RTFM-style learning. On the UCF-Crime violence subset, achieved mean AUC 0.922 across three seeds (standard deviation 0.010). A single-checkpoint transfer evaluation reached AUC 0.836 on XD-Violence and 0.862 on RWF-2000, while ShanghaiTech exposed a domain-shift failure (AUC 0.371).",
       techStack: ["Python", "PyTorch", "OpenCV", "NumPy", "Pandas"],
       footerLink: [
         {
@@ -380,8 +378,8 @@ const bigProjects = {
       image: require("./assets/images/project-covers/AI_Auto_Grader.png"),
       projectName: "AI Auto Grader — Automated Assignment Grading with LLMs",
       projectDesc:
-        "Built a full-stack grading system for BU MET CS581 that evaluates PDF/DOCX/PPTX/XLSX submissions using GPT-4o-mini, Claude, and Gemini with OCR/vision extraction and ChromaDB-based lecture RAG. Added rubric-fallback parsing, grade calibration, and batch Excel grading, reducing the AI-professor gap from -14 to -2 at about $0.03 per student.",
-      techStack: ["Python", "FastAPI", "LangChain", "RAG", "OpenAI", "Gemini"],
+        "Built a full-stack grading system for BU MET CS581 using OCR/vision extraction, ChromaDB lecture retrieval, and OpenAI, Claude, and Gemini models. Real PDF, PPTX, and XLSX submissions take about 3 minutes of automated processing at $0.03 per submission, excluding instructor review time. Calibration reduced the observed AI-instructor grading gap from 14 to 2 points.",
+      techStack: ["Python", "Flask", "ChromaDB", "RAG", "OpenAI", "Gemini"],
       footerLink: [
         {
           name: "GitHub",
@@ -463,9 +461,9 @@ const bigProjects = {
 };
 
 const publicationsSection = {
-  title: "Publications",
+  title: "Publications & Research",
   subtitle:
-    "Research contributions in NLP, multimodal AI, and applied machine learning",
+    "Published papers and research submissions, with status stated for each entry",
   display: true,
   publications: [
     {
@@ -478,8 +476,8 @@ const publicationsSection = {
       imageAlt: "DravidianCodeMix 2026 Shared Task at FIRE 2026",
       imageFit: "contain",
       bullets: [
-        "Ranked 1st of 10 teams as Team HateLens on the Subtask 1 all-languages leaderboard",
-        "Overall Macro F1 0.4603 across Levels 1–5 — L1 0.5428, L2 0.5309, L3 0.7110, L4 0.1521, L5 0.3648",
+        "Ranked 1st of 9 ranked teams as HateLens in DravidianCodeMix 2026 Subtask 1 (Tamil)",
+        "Official-test mean macro-F1 0.4603 across five hierarchy levels; combined fine-tuned encoders with QLoRA-adapted language models",
         "Working notes submitted to DravidianCodeMix @ FIRE 2026 (under review)"
       ],
       links: [
@@ -499,7 +497,7 @@ const publicationsSection = {
       image: require("./assets/images/logos/acl.png"),
       imageAlt: "DravidianLangTech 2026",
       bullets: [
-        "Accepted paper on writing style classification for DravidianLangTech 2026",
+        "Published in the DravidianLangTech workshop proceedings at ACL 2026 (July 2026)",
         "Built a pipeline using XLM-RoBERTa Large with sliding-window chunking for long-form text handling",
         "Applied top-k mean pooling to capture the most informative chunks for final document-level prediction"
       ],
@@ -521,7 +519,7 @@ const publicationsSection = {
       bullets: [
         "Developed a transformer-based hate speech detection system for Telugu-English code-mixed social media text",
         "Submitted as Team IIITDWD_SVC to the DravidianLangTech shared task at EACL 2024",
-        "Published in the ACL Anthology proceedings — one of the top NLP venues globally"
+        "Published in the DravidianLangTech workshop proceedings at EACL 2024 (March 2024)"
       ],
       links: [
         {
