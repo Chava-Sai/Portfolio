@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Portfolio/static/css/main.5aaf7a84.css",
-    "main.js": "/Portfolio/static/js/main.af70c75a.js",
+    "main.js": "/Portfolio/static/js/main.3349b185.js",
     "static/css/64.bba8fa55.chunk.css": "/Portfolio/static/css/64.bba8fa55.chunk.css",
     "static/js/64.56dc6704.chunk.js": "/Portfolio/static/js/64.56dc6704.chunk.js",
     "static/css/769.b3cbb36b.chunk.css": "/Portfolio/static/css/769.b3cbb36b.chunk.css",
@@ -26,14 +26,12 @@
     "static/media/dravidian-codemix-fire2026.png": "/Portfolio/static/media/dravidian-codemix-fire2026.67a6bb3ca7621fad28c5.png",
     "static/media/contactMailDark.svg": "/Portfolio/static/media/contactMailDark.1db650d351729a0f17b4e3104e6a7b7a.svg",
     "static/media/Datavalley Logo.png": "/Portfolio/static/media/Datavalley Logo.3013316c26eaa13ec186.png",
-    "static/media/BU-spark.png": "/Portfolio/static/media/BU-spark.d861fdfe106c09be54f7.png",
-    "static/media/boston-university.png": "/Portfolio/static/media/boston-university.75931f61344279242dcd.png",
     "static/media/courseera.png": "/Portfolio/static/media/courseera.431ae41c410504a56b7e.png",
     "index.html": "/Portfolio/index.html",
     "static/media/sample-project-cover.svg": "/Portfolio/static/media/sample-project-cover.4950c00d81fab603c4ee54a17c1175cc.svg",
     "static/media/talksCardBack.svg": "/Portfolio/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
     "main.5aaf7a84.css.map": "/Portfolio/static/css/main.5aaf7a84.css.map",
-    "main.af70c75a.js.map": "/Portfolio/static/js/main.af70c75a.js.map",
+    "main.3349b185.js.map": "/Portfolio/static/js/main.3349b185.js.map",
     "64.bba8fa55.chunk.css.map": "/Portfolio/static/css/64.bba8fa55.chunk.css.map",
     "64.56dc6704.chunk.js.map": "/Portfolio/static/js/64.56dc6704.chunk.js.map",
     "769.b3cbb36b.chunk.css.map": "/Portfolio/static/css/769.b3cbb36b.chunk.css.map",
@@ -41,6 +39,6 @@
   },
   "entrypoints": [
     "static/css/main.5aaf7a84.css",
-    "static/js/main.af70c75a.js"
+    "static/js/main.3349b185.js"
   ]
 }
