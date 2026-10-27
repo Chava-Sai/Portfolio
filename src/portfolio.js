@@ -17,14 +17,14 @@ const greeting = {
   username: "SRINIVASA SAI CHAVA",
   title: "Hi, I'm Sai",
   subTitle: emoji(
-    "M.S. Artificial Intelligence student with hands-on experience building production-focused AI systems across ML/DL, NLP, Computer Vision, RAG, and full-stack deployment. I enjoy translating research into practical products that solve real-world problems in accessibility, trust, and social impact."
+    "AI/ML engineer with hands-on experience building production-focused AI systems across ML/DL, NLP, Computer Vision, RAG, and full-stack deployment. I enjoy translating research into practical products that solve real-world problems in accessibility, trust, and social impact."
   ),
   terminal: {
     display: true,
     title: "profile.txt — bash",
     command: "cat profile.txt",
     lines: [
-      "M.S. Artificial Intelligence student",
+      "AI/ML engineer specializing in multimodal and multilingual systems",
       "Building production-focused AI systems across ML/DL, NLP, Computer Vision, and RAG",
       "Delivering end-to-end full-stack AI deployment from research to production",
       "Focused on practical impact in accessibility, trust, and social good"
