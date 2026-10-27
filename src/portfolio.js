@@ -17,14 +17,14 @@ const greeting = {
   username: "SRINIVASA SAI CHAVA",
   title: "Hi, I'm Sai",
   subTitle: emoji(
-    "M.S. Artificial Intelligence student at Boston University with hands-on experience building production-focused AI systems across ML/DL, NLP, Computer Vision, RAG, and full-stack deployment. I enjoy translating research into practical products that solve real-world problems in accessibility, trust, and social impact."
+    "AI/ML developer and researcher; B.Tech. in Data Science and AI from IIIT Dharwad with hands-on experience building production-focused AI systems across ML/DL, NLP, Computer Vision, RAG, and full-stack deployment. I enjoy translating research into practical products that solve real-world problems in accessibility, trust, and social impact."
   ),
   terminal: {
     display: true,
     title: "profile.txt — bash",
     command: "cat profile.txt",
     lines: [
-      "M.S. Artificial Intelligence student at Boston University",
+      "AI/ML developer and researcher; B.Tech. in Data Science and AI from IIIT Dharwad",
       "Building production-focused AI systems across ML/DL, NLP, Computer Vision, and RAG",
       "Delivering end-to-end full-stack AI deployment from research to production",
       "Focused on practical impact in accessibility, trust, and social good"
@@ -144,22 +144,12 @@ const educationInfo = {
   display: true,
   schools: [
     {
-      schoolName: "Boston University",
-      logo: require("./assets/images/logos/boston-university.png"),
-      subHeader: "Master of Science in Artificial Intelligence",
-      duration: "September 2025 - Expected December 2026",
-      desc: "Graduate program focused on applied machine learning, reinforcement learning, and AI systems engineering.",
-      descBullets: [
-        "Coursework: Machine Learning, Reinforcement Learning, Data Science Tools, AI Systems"
-      ]
-    },
-    {
       schoolName: "IIIT Dharwad",
       logo: require("./assets/images/logos/iiit-dharwad.png"),
       subHeader: "Bachelor of Technology in Data Science and AI",
       duration: "November 2021 - May 2025",
       desc: "Focused on multilingual NLP, computer vision, and applied machine learning.",
-      descBullets: ["Graduated with CGPA 7.82/10"]
+      descBullets: ["Graduated with CGPA 7.93/10"]
     }
   ]
 };
@@ -186,11 +176,11 @@ const techStack = {
       {
         date: "May 2026",
         title:
-          "🥈 2nd place (Tamil), 🥉 3rd place (Chinese), 🥈 2nd place (English) — CC-MMD 2026 Grand Challenge @ ICMI 2026",
+          "Joint 1st (Tamil), 1st (English), 2nd (Chinese) — CC-MMD 2026 Grand Challenge @ ICMI 2026",
         highlight:
-          "ByteBreaker ranked top-3 in 3 of 4 languages for Cross-Cultural Misogynistic Meme Detection. Fine-tuned Qwen2.5-VL-7B-Instruct with LoRA + multi-head MLP classifier and cultural context prompting — achieving up to 2.3× above zero-shot baseline.",
+          "ByteBreaker achieved joint 1st in Tamil, 1st in English, and 2nd in Chinese on Task B for Cross-Cultural Misogynistic Meme Detection. Fine-tuned Qwen2.5-VL-7B-Instruct with LoRA + multi-head MLP classifier and cultural context prompting — achieving up to 2.3× above zero-shot baseline.",
         cta: "View on LinkedIn",
-        url: "https://lnkd.in/eEWNtWPQ"
+        url: "https://drive.google.com/file/d/1-1u3UgpwVu1nD-YuLzXBU_oO4O4LHxdJ/view"
       },
       {
         date: "Apr 2026",
@@ -215,12 +205,6 @@ const techStack = {
           "Developing a modular multimodal grading pipeline with extract/describe/compare modes across PDF, Excel, HTML, OCR, and vision workflows.",
         cta: "GitHub Repo",
         url: "https://github.com/Chava-Sai/Final-AI-Auto_Grader"
-      },
-      {
-        date: "Feb 2026",
-        title: "Prize Winner, BU Civics Hack 2026",
-        highlight:
-          "Built Sidewalk Accessibility Validator for civic ADA compliance with AI guidance."
       },
       {
         date: "Jan 2026",
@@ -287,7 +271,7 @@ const workExperiences = {
       company: "American Green Solutions",
       companylogo: require("./assets/images/logos/ags-logo.png"),
       logoClass: "logo-ags",
-      date: "May 2026 – Present",
+      date: "May 2026 – Aug 2026",
       desc: "Working within the AGS Astra platform team to design and develop internal AI-powered tools for solar operations and O&M teams.",
       descBullets: [
         "Designing and implementing RAG pipelines for enterprise knowledge retrieval using LangChain, vector databases, and OpenAI LLMs.",
@@ -296,11 +280,11 @@ const workExperiences = {
       ]
     },
     {
-      role: "Machine Learning and Flutter Trainer (Contract)",
+      role: "AI Developer and Trainer (Full-time)",
       company: "Datavalley.ai",
       companylogo: require("./assets/images/logos/Datavalley Logo.png"),
-      date: "Jan 2025 - Jul 2025",
-      desc: "Led contract ML and Flutter training programs for partner colleges, focused on deployable, industry-style project delivery.",
+      date: "Jan 2025 – Present (break: May–Aug 2026)",
+      desc: "Taught deep learning, NLP, agentic AI tools, and Flutter/Firebase app development through hands-on student projects. Took a break for the American Green Solutions internship.",
       descBullets: [
         "Designed hands-on workshop tracks and lab modules aligned to real production workflows.",
         "Built and demonstrated a Flutter app with role-based auth, ZegoCloud video, and UPI payments.",
@@ -349,7 +333,7 @@ const bigProjects = {
       projectName:
         "Weakly-Supervised Violence Event Detection and Temporal Localization",
       projectDesc:
-        "Built a weakly supervised surveillance-video pipeline with frozen I3D features, RTFM-style MIL, top-k pseudo-label classification, temporal refinement, and boundary-aware localization. Completed UCF-Crime ablations and achieved zero-shot XD-Violence transfer with AUC 0.8357 and AP 0.8847 (90.1% UCF AUC retention).",
+        "Built a weakly supervised video pipeline with frozen VideoMAE-B features and RTFM-style learning. Mean video-level AUC on the UCF-Crime violence subset was 0.922 across three seeds (s.d. 0.010). A single checkpoint transferred without retraining to XD-Violence (AUC 0.836) and RWF-2000 (0.862); ShanghaiTech exposed a domain-shift failure (0.371).",
       techStack: ["Python", "PyTorch", "OpenCV", "NumPy", "Pandas"],
       footerLink: [
         {
@@ -362,7 +346,7 @@ const bigProjects = {
       image: require("./assets/images/project-covers/AI_Auto_Grader.png"),
       projectName: "AI Auto Grader — Automated Assignment Grading with LLMs",
       projectDesc:
-        "Built a full-stack grading system for BU MET CS581 that evaluates PDF/DOCX/PPTX/XLSX submissions using GPT-4o-mini, Claude, and Gemini with OCR/vision extraction and ChromaDB-based lecture RAG. Added rubric-fallback parsing, grade calibration, and batch Excel grading, reducing the AI-professor gap from -14 to -2 at about $0.03 per student.",
+        "Worked on a full-stack assignment-grading system with OCR/vision extraction, ChromaDB retrieval, rubric-based LLM grading, calibration, and batch processing. Instructor review remains part of the workflow.",
       techStack: ["Python", "FastAPI", "LangChain", "RAG", "OpenAI", "Gemini"],
       footerLink: [
         {
@@ -375,7 +359,7 @@ const bigProjects = {
       image: require("./assets/images/project-covers/sidewalk.png"),
       projectName: "Sidewalk Accessibility Validator",
       projectDesc:
-        "Built a prize-winning ADA compliance platform (BU Civics Hack 2026) combining rule-based GeoJSON sidewalk audits with a PyTorch + Llama vision advisor. The system detects accessibility issues and generates actionable, location-aware recommendations for civic teams.",
+        "Built a sidewalk-accessibility audit prototype combining rule-based GeoJSON sidewalk audits with a PyTorch + Llama vision advisor. The system detects accessibility issues and generates actionable, location-aware recommendations for civic teams.",
       techStack: ["FastAPI", "React", "Vite", "PyTorch", "Llama"],
       footerLink: [
         {
@@ -405,7 +389,7 @@ const bigProjects = {
       image: require("./assets/images/project-covers/explainable_hate_speech.png"),
       projectName: "Explainable Hate Speech Detection with RAG",
       projectDesc:
-        "Engineered a multilingual QLoRA + RAG pipeline for hate-speech and fake-news detection with grounded, explainable outputs. Combined transliteration, transformer embeddings, and retrieval to improve context relevance, reduce hallucinations, and strengthen macro-F1 performance.",
+        "Explored multilingual hate-speech and fake-news classification using transliteration, translation, QLoRA fine-tuning, and retrieval. Explanation generation and its evaluation are directions for further work.",
       techStack: ["Python", "PyTorch", "NLP", "LangChain", "RAG"],
       footerLink: [
         {
@@ -418,7 +402,7 @@ const bigProjects = {
       image: require("./assets/images/project-covers/fake_hate_multitask.png"),
       projectName: "FakeHate Multitask Detection",
       projectDesc:
-        "Developed a multitask deep learning system for multilingual fake-news and hate-speech detection using transliteration, translation, and transformer embeddings. Added cluster-based feature engineering to improve class-wise robustness and deliver strong F1 gains across tasks.",
+        "Developed a multitask deep learning system for multilingual fake-news and hate-speech detection using transliteration, translation, and transformer embeddings. Explored cluster-distance features; evaluation methodology and held-out generalization require further validation.",
       techStack: ["Python", "PyTorch", "TensorFlow", "NLP", "Scikit-learn"],
       footerLink: [
         {
@@ -451,6 +435,27 @@ const publicationsSection = {
   display: true,
   publications: [
     {
+      venue: "DravidianCodeMix @ FIRE 2026",
+      venueType: "conference",
+      venueColor: "#2563eb",
+      title:
+        "HateLens: Hierarchical Hate-Speech Detection for Tamil Code-Mixed Text",
+      image: require("./assets/images/dravidian.png"),
+      imageAlt: "DravidianCodeMix 2026",
+      bullets: [
+        "Accepted working-notes paper, DravidianCodeMix shared task at FIRE 2026",
+        "Ranked 1st of 9 ranked teams in Subtask 1 (Tamil); official mean macro-F1 0.4603",
+        "Designed, implemented, trained, and evaluated the model ensemble"
+      ],
+      links: [
+        {
+          label: "Code",
+          url: "https://github.com/Chava-Sai/HateLens-DravidianCodeMix-2026",
+          icon: "fab fa-github"
+        }
+      ]
+    },
+    {
       venue: "DravidianLangTech 2026",
       venueType: "conference",
       venueColor: "#2563eb",
@@ -459,7 +464,7 @@ const publicationsSection = {
       image: require("./assets/images/logos/acl.png"),
       imageAlt: "DravidianLangTech 2026",
       bullets: [
-        "Accepted paper on writing style classification for DravidianLangTech 2026",
+        "Published in the Sixth DravidianLangTech Workshop proceedings at ACL 2026 (July 2026)",
         "Built a pipeline using XLM-RoBERTa Large with sliding-window chunking for long-form text handling",
         "Applied top-k mean pooling to capture the most informative chunks for final document-level prediction"
       ],
@@ -481,7 +486,7 @@ const publicationsSection = {
       bullets: [
         "Developed a transformer-based hate speech detection system for Telugu-English code-mixed social media text",
         "Submitted as Team IIITDWD_SVC to the DravidianLangTech shared task at EACL 2024",
-        "Published in the ACL Anthology proceedings — one of the top NLP venues globally"
+        "Published in the Fourth DravidianLangTech Workshop proceedings at EACL 2024 (March 2024)"
       ],
       links: [
         {
@@ -501,13 +506,13 @@ const publicationsSection = {
       venueType: "journal",
       venueColor: "#d97706",
       title:
-        "Impact of IDIOT Syndrome: ML-Based Risk Scoring for Health Anxiety",
+        "Impact of Internet Derived Information Obstruction Treatment (IDIOT) Syndrome-a student cohort study",
       image: require("./assets/images/logos/Journal.png"),
       imageAlt: "Journal of Propulsion Technology",
       bullets: [
-        "Designed an ML-based clinical risk scoring pipeline to assess health anxiety severity (IDIOT Syndrome)",
-        "Applied classification and regression techniques for patient-level risk stratification",
-        "Published in Tuijin Jishu / Journal of Propulsion Technology (peer-reviewed)"
+        "Studied health-related internet searching in a survey of 450 technical students",
+        "Implemented classification and regression models for exploratory risk-score prediction",
+        "Published in Tuijin Jishu / Journal of Propulsion Technology, 47(01), January 2026"
       ],
       links: [
         {
@@ -524,32 +529,6 @@ const achievementSection = {
   title: emoji("Achievements And Certifications 🏆"),
   subtitle: "Awards and certifications reflecting hands-on technical depth",
   achievementsCards: [
-    {
-      title: "Winner - BU MedAI Hackathon (Team MedMax)",
-      subtitle:
-        "Built a non-invasive ATI risk model using 6,592 SomaScan proteins + clinical covariates from the Boston Kidney Biopsy Cohort. Trained a stacking ensemble with Platt calibration and achieved winning log loss 0.427 at BU MedAI Hackathon.",
-      image: require("./assets/images/logos/boston-university.png"),
-      imageAlt: "BU MedAI Hackathon Winner",
-      footerLink: [
-        {
-          name: "Hackathon Repo",
-          url: "https://github.com/vkola-lab/medaihack/tree/main"
-        }
-      ]
-    },
-    {
-      title: "Prize Winner - BU Civics Hack 2026",
-      subtitle:
-        "Won for the Sidewalk Accessibility Validator project developed for Cyvl's civic accessibility problem statement.",
-      image: require("./assets/images/logos/BU-spark.png"),
-      imageAlt: "BU Civics Hack Prize",
-      footerLink: [
-        {
-          name: "Project Repo",
-          url: "https://github.com/Chava-Sai/Sidewalk-Acessibility-Validator-Cyvl"
-        }
-      ]
-    },
     {
       title: "Supervised Machine Learning: Regression and Classification",
       subtitle:
@@ -625,7 +604,7 @@ const resumeSection = {
 const contactInfo = {
   title: emoji("Contact Me ☎️"),
   subtitle: "Discuss a project or say hello.",
-  number: "+1 (857) 498-5012",
+  number: "+91 74164 13438",
   email_address: "srinivassaichava@gmail.com"
 };
 
