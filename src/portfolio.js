@@ -211,12 +211,6 @@ const techStack = {
           "Published ML-based risk scoring research in the Journal of Propulsion Technology."
       },
       {
-        date: "Dec 2025",
-        title: "Boston Transit Equity Intelligence",
-        highlight:
-          "Completed MBTA service-equity modeling with predictive analysis and explainable insights."
-      },
-      {
         date: "Nov 2024",
         title: "Explainable Hate Speech Detection",
         highlight:
@@ -358,19 +352,6 @@ const bigProjects = {
         {
           name: "GitHub",
           url: "https://github.com/Chava-Sai/Sidewalk-Acessibility-Validator-Cyvl"
-        }
-      ]
-    },
-    {
-      image: require("./assets/images/project-covers/boston_bus.png"),
-      projectName: "Boston Transit Equity Intelligence",
-      projectDesc:
-        "Built an MBTA transit equity analytics pipeline combining ridership, reliability, and demographic signals to identify service gaps. Developed clustering and predictive modeling workflows to surface route-level risks and explain key delay drivers for planning.",
-      techStack: ["Python", "Pandas", "NumPy", "Scikit-learn", "TensorFlow"],
-      footerLink: [
-        {
-          name: "Presentation",
-          url: "https://youtu.be/rE_8_-GRwgw"
         }
       ]
     },
