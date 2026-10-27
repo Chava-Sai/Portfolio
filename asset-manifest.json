@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Portfolio/static/css/main.5aaf7a84.css",
-    "main.js": "/Portfolio/static/js/main.279c2cfd.js",
+    "main.js": "/Portfolio/static/js/main.db283d41.js",
     "static/css/64.bba8fa55.chunk.css": "/Portfolio/static/css/64.bba8fa55.chunk.css",
     "static/js/64.56dc6704.chunk.js": "/Portfolio/static/js/64.56dc6704.chunk.js",
     "static/css/769.b3cbb36b.chunk.css": "/Portfolio/static/css/769.b3cbb36b.chunk.css",
@@ -11,7 +11,6 @@
     "static/media/Journal.png": "/Portfolio/static/media/Journal.a82f21382ced2eb6f25f.png",
     "static/media/dravidian2024.png": "/Portfolio/static/media/dravidian2024.d9b59f6339ad4a581b45.png",
     "static/media/ivc.png": "/Portfolio/static/media/ivc.227997052b8037946a32.png",
-    "static/media/boston_bus.png": "/Portfolio/static/media/boston_bus.66ade6bae0d726b02fe7.png",
     "static/media/AI_Auto_Grader.png": "/Portfolio/static/media/AI_Auto_Grader.55a01d43d6842e3f3b8a.png",
     "static/media/Montserrat-Regular.ttf": "/Portfolio/static/media/Montserrat-Regular.3cd786652b8a2e9d41f2.ttf",
     "static/media/chat_buddy.png": "/Portfolio/static/media/chat_buddy.6bcaf6765da73104d66a.png",
@@ -31,7 +30,7 @@
     "static/media/sample-project-cover.svg": "/Portfolio/static/media/sample-project-cover.4950c00d81fab603c4ee54a17c1175cc.svg",
     "static/media/talksCardBack.svg": "/Portfolio/static/media/talksCardBack.73ed1545d58273ba64b0.svg",
     "main.5aaf7a84.css.map": "/Portfolio/static/css/main.5aaf7a84.css.map",
-    "main.279c2cfd.js.map": "/Portfolio/static/js/main.279c2cfd.js.map",
+    "main.db283d41.js.map": "/Portfolio/static/js/main.db283d41.js.map",
     "64.bba8fa55.chunk.css.map": "/Portfolio/static/css/64.bba8fa55.chunk.css.map",
     "64.56dc6704.chunk.js.map": "/Portfolio/static/js/64.56dc6704.chunk.js.map",
     "769.b3cbb36b.chunk.css.map": "/Portfolio/static/css/769.b3cbb36b.chunk.css.map",
@@ -39,6 +38,6 @@
   },
   "entrypoints": [
     "static/css/main.5aaf7a84.css",
-    "static/js/main.279c2cfd.js"
+    "static/js/main.db283d41.js"
   ]
 }
