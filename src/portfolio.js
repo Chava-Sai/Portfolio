@@ -17,14 +17,14 @@ const greeting = {
   username: "SRINIVASA SAI CHAVA",
   title: "Hi, I'm Sai",
   subTitle: emoji(
-    "AI/ML engineer with hands-on experience building production-focused AI systems across ML/DL, NLP, Computer Vision, RAG, and full-stack deployment. I enjoy translating research into practical products that solve real-world problems in accessibility, trust, and social impact."
+    "M.S. Artificial Intelligence student at Boston University with hands-on experience building production-focused AI systems across ML/DL, NLP, Computer Vision, RAG, and full-stack deployment. I enjoy translating research into practical products that solve real-world problems in accessibility, trust, and social impact."
   ),
   terminal: {
     display: true,
     title: "profile.txt — bash",
     command: "cat profile.txt",
     lines: [
-      "AI/ML engineer specializing in multimodal and multilingual systems",
+      "M.S. Artificial Intelligence student at Boston University",
       "Building production-focused AI systems across ML/DL, NLP, Computer Vision, and RAG",
       "Delivering end-to-end full-stack AI deployment from research to production",
       "Focused on practical impact in accessibility, trust, and social good"
@@ -144,6 +144,16 @@ const educationInfo = {
   display: true,
   schools: [
     {
+      schoolName: "Boston University",
+      logo: require("./assets/images/logos/boston-university.png"),
+      subHeader: "Master of Science in Artificial Intelligence",
+      duration: "September 2025 - Expected December 2026",
+      desc: "Graduate program focused on applied machine learning, reinforcement learning, and AI systems engineering.",
+      descBullets: [
+        "Coursework: Machine Learning, Reinforcement Learning, Data Science Tools, AI Systems"
+      ]
+    },
+    {
       schoolName: "IIIT Dharwad",
       logo: require("./assets/images/logos/iiit-dharwad.png"),
       subHeader: "Bachelor of Technology in Data Science and AI",
@@ -167,6 +177,12 @@ const techStack = {
       "RAG + LLM Systems"
     ],
     latestUpdates: [
+      {
+        date: "Sep 2026",
+        title: "Selected as Technical Project Manager at BU Spark!",
+        highlight:
+          "Selected to support client-sponsored ML teams in DS 549 (Machine Learning Practicum). Project assignments begin September 2026."
+      },
       {
         date: "May 2026",
         title: "Started AI Engineer Internship at American Green Solutions",
@@ -200,15 +216,29 @@ const techStack = {
       },
       {
         date: "Mar 2026",
-        title: "Building AI Auto Grader",
+        title: "Building AI Auto Grader (CS581 x Spark Collaboration)",
         highlight:
-          "Developing a modular multimodal grading pipeline with extract/describe/compare modes across PDF, Excel, HTML, OCR, and vision workflows."
+          "Developing a modular multimodal grading pipeline with extract/describe/compare modes across PDF, Excel, HTML, OCR, and vision workflows.",
+        cta: "GitHub Repo",
+        url: "https://github.com/BU-Spark/ml-bu-autograder"
+      },
+      {
+        date: "Feb 2026",
+        title: "Prize Winner, BU Civics Hack 2026",
+        highlight:
+          "Built Sidewalk Accessibility Validator for civic ADA compliance with AI guidance."
       },
       {
         date: "Jan 2026",
         title: "Journal Publication",
         highlight:
           "Published ML-based risk scoring research in the Journal of Propulsion Technology."
+      },
+      {
+        date: "Dec 2025",
+        title: "Boston Transit Equity Intelligence",
+        highlight:
+          "Completed MBTA service-equity modeling with predictive analysis and explainable insights."
       },
       {
         date: "Nov 2024",
@@ -258,6 +288,16 @@ const techStack = {
 const workExperiences = {
   display: true,
   experience: [
+    {
+      role: "Technical Project Manager",
+      company: "BU Spark!",
+      companylogo: require("./assets/images/logos/BU-spark.png"),
+      date: "Sep 2026 – Present",
+      desc: "Selected as Technical Project Manager for DS 549 (Machine Learning Practicum) at BU Spark!; project assignments begin September 2026.",
+      descBullets: [
+        "Upcoming responsibilities include technical scoping, code review, and student-team support for client-sponsored ML projects."
+      ]
+    },
     {
       role: "AI Engineer Intern",
       company: "American Green Solutions",
@@ -338,20 +378,42 @@ const bigProjects = {
       image: require("./assets/images/project-covers/AI_Auto_Grader.png"),
       projectName: "AI Auto Grader — Automated Assignment Grading with LLMs",
       projectDesc:
-        "Built a full-stack grading system using OCR/vision extraction, ChromaDB lecture retrieval, and OpenAI, Claude, and Gemini models. Real PDF, PPTX, and XLSX submissions take about 3 minutes of automated processing at $0.03 per submission, excluding instructor review time. Calibration reduced the observed AI-instructor grading gap from 14 to 2 points.",
+        "Built a full-stack grading system for BU MET CS581 using OCR/vision extraction, ChromaDB lecture retrieval, and OpenAI, Claude, and Gemini models. Real PDF, PPTX, and XLSX submissions take about 3 minutes of automated processing at $0.03 per submission, excluding instructor review time. Calibration reduced the observed AI-instructor grading gap from 14 to 2 points.",
       techStack: ["Python", "Flask", "ChromaDB", "RAG", "OpenAI", "Gemini"],
-      footerLink: []
+      footerLink: [
+        {
+          name: "GitHub",
+          url: "https://github.com/BU-Spark/ml-bu-autograder"
+        }
+      ]
     },
     {
       image: require("./assets/images/project-covers/sidewalk.png"),
       projectName: "Sidewalk Accessibility Validator",
       projectDesc:
-        "Built an ADA compliance platform combining rule-based GeoJSON sidewalk audits with a PyTorch + Llama vision advisor. The system detects accessibility issues and generates actionable, location-aware recommendations for civic teams.",
+        "Built a prize-winning ADA compliance platform (BU Civics Hack 2026) combining rule-based GeoJSON sidewalk audits with a PyTorch + Llama vision advisor. The system detects accessibility issues and generates actionable, location-aware recommendations for civic teams.",
       techStack: ["FastAPI", "React", "Vite", "PyTorch", "Llama"],
       footerLink: [
         {
           name: "GitHub",
           url: "https://github.com/Chava-Sai/Sidewalk-Acessibility-Validator-Cyvl"
+        }
+      ]
+    },
+    {
+      image: require("./assets/images/project-covers/boston_bus.png"),
+      projectName: "Boston Transit Equity Intelligence",
+      projectDesc:
+        "Built an MBTA transit equity analytics pipeline combining ridership, reliability, and demographic signals to identify service gaps. Developed clustering and predictive modeling workflows to surface route-level risks and explain key delay drivers for planning.",
+      techStack: ["Python", "Pandas", "NumPy", "Scikit-learn", "TensorFlow"],
+      footerLink: [
+        {
+          name: "GitHub",
+          url: "https://github.com/Chava-Sai/Boston-Bus-Equity-CS506-Final-Project"
+        },
+        {
+          name: "Presentation",
+          url: "https://youtu.be/rE_8_-GRwgw"
         }
       ]
     },
@@ -498,8 +560,34 @@ const publicationsSection = {
 
 const achievementSection = {
   title: emoji("Achievements And Certifications 🏆"),
-  subtitle: "Certifications reflecting hands-on technical depth",
+  subtitle: "Awards and certifications reflecting hands-on technical depth",
   achievementsCards: [
+    {
+      title: "Winner - BU MedAI Hackathon (Team MedMax)",
+      subtitle:
+        "Built a non-invasive ATI risk model using 6,592 SomaScan proteins + clinical covariates from the Boston Kidney Biopsy Cohort. Trained a stacking ensemble with Platt calibration and achieved winning log loss 0.427 at BU MedAI Hackathon.",
+      image: require("./assets/images/logos/boston-university.png"),
+      imageAlt: "BU MedAI Hackathon Winner",
+      footerLink: [
+        {
+          name: "Hackathon Repo",
+          url: "https://github.com/vkola-lab/medaihack/tree/main"
+        }
+      ]
+    },
+    {
+      title: "Prize Winner - BU Civics Hack 2026",
+      subtitle:
+        "Won for the Sidewalk Accessibility Validator project developed for Cyvl's civic accessibility problem statement.",
+      image: require("./assets/images/logos/BU-spark.png"),
+      imageAlt: "BU Civics Hack Prize",
+      footerLink: [
+        {
+          name: "Project Repo",
+          url: "https://github.com/Chava-Sai/Sidewalk-Acessibility-Validator-Cyvl"
+        }
+      ]
+    },
     {
       title: "Supervised Machine Learning: Regression and Classification",
       subtitle:
