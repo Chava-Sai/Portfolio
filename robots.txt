@@ -1,2 +1,4 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
+User-Agent: *
+Allow: /
+
+Sitemap: https://chava-sai.github.io/Portfolio/sitemap.xml
