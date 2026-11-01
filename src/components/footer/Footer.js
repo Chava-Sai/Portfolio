@@ -1,23 +1,20 @@
-import React, {useContext} from "react";
+import React from "react";
 import "./Footer.scss";
-import {Fade} from "react-reveal";
-import emoji from "react-easy-emoji";
-import StyleContext from "../../contexts/StyleContext";
+import {greeting} from "../../portfolio";
 
 export default function Footer() {
-  const {isDark} = useContext(StyleContext);
   return (
-    <Fade bottom duration={1000} distance="5px">
-      <div className="footer-div">
-        <p className={isDark ? "dark-mode footer-text" : "footer-text"}>
-          {emoji(
-            "© 2026 Srinivasa Sai Chava | AI & ML Professional | Boston, MA"
-          )}
+    <footer className="site-footer">
+      <div className="footer-inner">
+        <p className="footer-mark">
+          <span className="footer-dot" aria-hidden="true"></span>
+          {greeting.username}
         </p>
-        <p className={isDark ? "dark-mode footer-tagline" : "footer-tagline"}>
-          Building intelligent solutions for tomorrow's challenges
+        <p className="footer-note">
+          Built with React · Designed and maintained by Sai ·{" "}
+          {new Date().getFullYear()}
         </p>
       </div>
-    </Fade>
+    </footer>
   );
 }

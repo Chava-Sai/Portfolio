@@ -1,7 +1,8 @@
-import React, {useContext, useEffect, useRef, useState} from "react";
+import React, {useContext, useMemo, useState} from "react";
 import "./StartupProjects.scss";
 import {bigProjects} from "../../portfolio";
 import {Fade} from "react-reveal";
+import SectionHeader from "../../components/sectionHeader/SectionHeader";
 import StyleContext from "../../contexts/StyleContext";
 import sampleProjectCover from "../../assets/images/project-covers/sample-project-cover.svg";
 
@@ -51,219 +52,148 @@ const techLogoMap = {
 };
 
 export default function StartupProject() {
-  const projectsContainerRef = useRef(null);
-  const animationFrameRef = useRef(null);
-  const pauseAutoScrollRef = useRef(false);
-  const [pauseAutoScroll, setPauseAutoScroll] = useState(false);
-  const projectCount = bigProjects.projects.length;
-
-  useEffect(() => {
-    pauseAutoScrollRef.current = pauseAutoScroll;
-  }, [pauseAutoScroll]);
-
-  useEffect(() => {
-    const container = projectsContainerRef.current;
-    if (!container) {
-      return undefined;
-    }
-
-    if (projectCount === 0) {
-      return undefined;
-    }
-
-    let previousTimestamp = 0;
-    const speedPxPerSecond = 72;
-
-    const run = timestamp => {
-      if (!previousTimestamp) {
-        previousTimestamp = timestamp;
-      }
-
-      const deltaSeconds = (timestamp - previousTimestamp) / 1000;
-      previousTimestamp = timestamp;
-
-      if (!pauseAutoScrollRef.current) {
-        const singleCycleWidth = container.scrollWidth / 2;
-        if (singleCycleWidth <= container.clientWidth) {
-          animationFrameRef.current = window.requestAnimationFrame(run);
-          return;
-        }
-
-        container.scrollLeft += speedPxPerSecond * deltaSeconds;
-
-        if (container.scrollLeft >= singleCycleWidth) {
-          container.scrollLeft -= singleCycleWidth;
-        }
-      }
-
-      animationFrameRef.current = window.requestAnimationFrame(run);
-    };
-
-    animationFrameRef.current = window.requestAnimationFrame(run);
-
-    return () => {
-      if (animationFrameRef.current) {
-        window.cancelAnimationFrame(animationFrameRef.current);
-      }
-    };
-  }, [projectCount]);
-
-  function openUrlInNewTab(url) {
-    if (!url) {
-      return;
-    }
-    var win = window.open(url, "_blank");
-    if (win) {
-      win.focus();
-    }
-  }
-
   const {isDark} = useContext(StyleContext);
-  if (!bigProjects.display) {
-    return null;
+  const [activeTag, setActiveTag] = useState("All");
+
+  const projects = bigProjects.projects || [];
+
+  // derive filters from the tech stacks already on each project
+  const tags = useMemo(() => {
+    const priority = ["PyTorch", "RAG", "FastAPI", "React", "Flutter"];
+    const present = priority.filter(tag =>
+      projects.some(p => (p.techStack || []).includes(tag))
+    );
+    return ["All", ...present];
+  }, [projects]);
+
+  const shown =
+    activeTag === "All"
+      ? projects
+      : projects.filter(p => (p.techStack || []).includes(activeTag));
+
+  function openUrl(url) {
+    if (!url) return;
+    const win = window.open(url, "_blank");
+    if (win) win.focus();
   }
-  const displayProjects = [...bigProjects.projects, ...bigProjects.projects];
+
+  if (!bigProjects.display) return null;
 
   return (
-    <Fade bottom duration={1000} distance="20px">
-      <div className="main" id="projects">
-        <div>
-          <h1 className="skills-heading">{bigProjects.title}</h1>
-          <p
-            className={
-              isDark
-                ? "dark-mode project-subtitle"
-                : "subTitle project-subtitle"
-            }
+    <section className="sec sec-projects" id="projects">
+      <Fade bottom duration={900} distance="26px">
+        <SectionHeader
+          index="05"
+          label="Projects"
+          title="Research prototypes and"
+          accent="systems that shipped."
+          subtitle={bigProjects.subtitle}
+        />
+
+        {tags.length > 1 && (
+          <div
+            className="pj-filters"
+            role="tablist"
+            aria-label="Filter projects"
           >
-            {bigProjects.subtitle}
-          </p>
+            {tags.map(tag => (
+              <button
+                key={tag}
+                role="tab"
+                aria-selected={activeTag === tag}
+                className={
+                  activeTag === tag ? "pj-filter pj-filter-on" : "pj-filter"
+                }
+                onClick={() => setActiveTag(tag)}
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+        )}
 
-          <div className="projects-container" ref={projectsContainerRef}>
-            {displayProjects.map((project, i) => {
-              const projectImage = project.image || sampleProjectCover;
-              const techItems = project.techStack || [];
-              const projectLinks = project.footerLink || [];
-              const isLoopCopy = i >= projectCount;
+        <div className="pj-grid">
+          {shown.map((project, i) => {
+            const cover = project.image || sampleProjectCover;
+            const tech = project.techStack || [];
+            const links = project.footerLink || [];
 
-              return (
-                <div
-                  key={`${project.projectName}-${i}`}
-                  className={
-                    isDark
-                      ? "dark-mode project-card project-card-dark"
-                      : "project-card project-card-light"
-                  }
-                  aria-hidden={isLoopCopy}
-                  onMouseEnter={() => setPauseAutoScroll(true)}
-                  onMouseLeave={() => setPauseAutoScroll(false)}
-                  onFocusCapture={() => setPauseAutoScroll(true)}
-                  onBlurCapture={event => {
-                    if (!event.currentTarget.contains(event.relatedTarget)) {
-                      setPauseAutoScroll(false);
-                    }
-                  }}
-                >
-                  <div className="project-image">
-                    <img
-                      src={projectImage}
-                      alt={project.projectName}
-                      className="card-image"
-                      onError={event => {
-                        event.currentTarget.src = sampleProjectCover;
-                      }}
-                    ></img>
-                    <div className="project-image-overlay"></div>
-                  </div>
-                  <div className="project-detail">
-                    <h5
-                      className={isDark ? "dark-mode card-title" : "card-title"}
-                    >
-                      {project.projectName}
-                    </h5>
-                    <p
-                      className={
-                        isDark ? "dark-mode card-subtitle" : "card-subtitle"
-                      }
-                    >
-                      {project.projectDesc}
-                    </p>
-                    <div
-                      className={
-                        techItems.length
-                          ? "project-tech-row"
-                          : "project-tech-row project-tech-row-empty"
-                      }
-                    >
-                      {techItems.map((tech, techIndex) => {
-                        const normalizedName = normalizeTechName(tech);
-                        const logoMeta = techLogoMap[normalizedName];
+            return (
+              <article
+                className={isDark ? "pj-card dark-mode" : "pj-card"}
+                key={`${project.projectName}-${i}`}
+              >
+                <div className="pj-cover">
+                  <img
+                    src={cover}
+                    alt={project.projectName}
+                    loading="lazy"
+                    onError={e => {
+                      e.currentTarget.src = sampleProjectCover;
+                    }}
+                  />
+                  <span className="pj-cover-fade" aria-hidden="true"></span>
+                  <span className="pj-index" aria-hidden="true">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                </div>
 
+                <div className="pj-body">
+                  <h3 className="pj-title">{project.projectName}</h3>
+                  <p className="pj-desc">{project.projectDesc}</p>
+
+                  {tech.length > 0 && (
+                    <div className="pj-tech">
+                      {tech.map(t => {
+                        const meta = techLogoMap[normalizeTechName(t)];
                         return (
-                          <span
-                            key={`${tech}-${techIndex}`}
-                            className="project-tech-logo"
-                            title={tech}
-                            aria-label={tech}
-                          >
-                            {logoMeta && logoMeta.type === "devicon" ? (
+                          <span className="pj-tech-pill" key={t} title={t}>
+                            {meta && meta.type === "devicon" && (
                               <i
-                                className={`${logoMeta.className} project-tech-devicon`}
+                                className={meta.className}
                                 aria-hidden="true"
                               ></i>
-                            ) : null}
-                            {logoMeta && logoMeta.type === "simple" ? (
+                            )}
+                            {meta && meta.type === "simple" && (
                               <img
-                                src={`https://cdn.simpleicons.org/${logoMeta.slug}/${logoMeta.color}`}
-                                alt={`${tech} logo`}
-                                className="project-tech-simple"
+                                src={`https://cdn.simpleicons.org/${meta.slug}/${meta.color}`}
+                                alt=""
+                                className="pj-tech-icon"
                                 loading="lazy"
                               />
-                            ) : null}
-                            {logoMeta && logoMeta.type === "fa" ? (
+                            )}
+                            {meta && meta.type === "fa" && (
                               <i
-                                className={`${logoMeta.className} project-tech-fa`}
+                                className={meta.className}
                                 aria-hidden="true"
                               ></i>
-                            ) : null}
-                            {!logoMeta ? (
-                              <i
-                                className="fas fa-circle project-tech-fa"
-                                aria-hidden="true"
-                              ></i>
-                            ) : null}
+                            )}
+                            {t}
                           </span>
                         );
                       })}
                     </div>
-                    <div
-                      className={
-                        projectLinks.length
-                          ? "project-card-footer"
-                          : "project-card-footer project-card-footer-empty"
-                      }
-                    >
-                      {projectLinks.map((link, i) => {
-                        return (
-                          <span
-                            key={i}
-                            className={
-                              isDark ? "dark-mode project-tag" : "project-tag"
-                            }
-                            onClick={() => openUrlInNewTab(link.url)}
-                          >
-                            {link.name}
-                          </span>
-                        );
-                      })}
+                  )}
+
+                  {links.length > 0 && (
+                    <div className="pj-links">
+                      {links.map(link => (
+                        <button
+                          className="pj-link"
+                          key={link.name}
+                          onClick={() => openUrl(link.url)}
+                        >
+                          {link.name} <span aria-hidden="true">↗</span>
+                        </button>
+                      ))}
                     </div>
-                  </div>
+                  )}
                 </div>
-              );
-            })}
-          </div>
+              </article>
+            );
+          })}
         </div>
-      </div>
-    </Fade>
+      </Fade>
+    </section>
   );
 }

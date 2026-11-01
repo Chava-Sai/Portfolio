@@ -21,7 +21,8 @@ import {splashScreen} from "../portfolio";
 import {StyleProvider} from "../contexts/StyleContext";
 import "./Main.scss";
 
-const motionBackgroundVideo = process.env.PUBLIC_URL + "/videos/motion-background.mp4";
+const motionBackgroundVideo =
+  process.env.PUBLIC_URL + "/videos/motion-background.mp4";
 
 const Main = () => {
   const isDark = true;
@@ -86,14 +87,15 @@ const Main = () => {
             <>
               <Header />
               <Greeting />
+              {/* order must match the 01..08 numbering in each section */}
               <Skills />
-              <StackProgress />
               <Education />
               <WorkExperience />
-              <Publications />
-              <Projects />
+              <StackProgress />
               <StartupProject />
+              <Publications />
               <Achievement />
+              <Projects />
               <Blogs />
               <Talks />
               <Twitter />

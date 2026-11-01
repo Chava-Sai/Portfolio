@@ -58,25 +58,29 @@ const socialMediaLinks = {
 };
 
 const skillsSection = {
-  title: "What I do",
+  title: "Engineering AI systems from",
+  titleAccent: "research to production.",
   subTitle:
-    "ML/DL | NLP | COMPUTER VISION | RAG | PYTHON | AWS | FLUTTER/FIREBASE",
+    "I build end-to-end AI products — data, modelling, evaluation, deployment — across ML/DL, NLP, computer vision and retrieval-augmented systems, and I care about the numbers that come out the other side.",
+  // headline figures, each one traceable to something on this page
+  stats: [
+    {value: "1st", label: "DravidianCodeMix 2026"},
+    {value: "4", label: "Papers & submissions"},
+    {value: "0.922", label: "UCF-Crime AUC"},
+    {value: "7", label: "Shipped projects"}
+  ],
+  exploring: [
+    "Multilingual and code-mixed hate-speech detection",
+    "Faithfulness and attribution evaluation for RAG",
+    "Weakly supervised video understanding",
+    "QLoRA-adapted LLMs for low-resource languages"
+  ],
   skills: [
-    emoji(
-      "⚡ Build end-to-end AI products from data preparation and modeling to deployment, evaluation, and iteration"
-    ),
-    emoji(
-      "⚡ Design and train ML/DL systems for NLP and computer vision using PyTorch, TensorFlow, Hugging Face, and modern transformer workflows"
-    ),
-    emoji(
-      "⚡ Develop explainable AI pipelines with QLoRA + RAG for multilingual hate-speech and fake-news analysis"
-    ),
-    emoji(
-      "⚡ Build full-stack AI applications with FastAPI, React/Vite, Flutter, Firebase, and cloud-ready architecture"
-    ),
-    emoji(
-      "⚡ Apply data science to public-interest problems like mobility equity, accessibility, and responsible AI decision support"
-    )
+    "Build end-to-end AI products from data preparation and modeling to deployment, evaluation, and iteration",
+    "Design and train ML/DL systems for NLP and computer vision using PyTorch, TensorFlow, Hugging Face, and modern transformer workflows",
+    "Develop explainable AI pipelines with QLoRA + RAG for multilingual hate-speech and fake-news analysis",
+    "Build full-stack AI applications with FastAPI, React/Vite, Flutter, Firebase, and cloud-ready architecture",
+    "Apply data science to public-interest problems like mobility equity, accessibility, and responsible AI decision support"
   ],
   softwareSkills: [
     {

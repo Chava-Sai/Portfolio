@@ -50,17 +50,20 @@ function Header() {
         <ul className={isDark ? "dark-menu menu" : "menu"}>
           {viewSkills && (
             <li>
-              <a href="#skills">Skills</a>
+              <a href="#skills">About</a>
+            </li>
+          )}
+          <li>
+            <a href="#education">Education</a>
+          </li>
+          {viewExperience && (
+            <li>
+              <a href="#experience">Experience</a>
             </li>
           )}
           {viewProficiency && (
             <li>
-              <a href="#proficiency">Proficiency & Updates</a>
-            </li>
-          )}
-          {viewPublications && (
-            <li>
-              <a href="#publications">Publications</a>
+              <a href="#proficiency">Stack</a>
             </li>
           )}
           {viewProjects && (
@@ -68,33 +71,18 @@ function Header() {
               <a href="#projects">Projects</a>
             </li>
           )}
-          {viewExperience && (
+          {viewPublications && (
             <li>
-              <a href="#experience">Work Experiences</a>
-            </li>
-          )}
-          {viewOpenSource && (
-            <li>
-              <a href="#opensource">Open Source</a>
+              <a href="#publications">Research</a>
             </li>
           )}
           {viewAchievement && (
             <li>
-              <a href="#achievements">Achievements</a>
-            </li>
-          )}
-          {viewBlog && (
-            <li>
-              <a href="#blogs">Blogs</a>
-            </li>
-          )}
-          {viewTalks && (
-            <li>
-              <a href="#talks">Talks</a>
+              <a href="#achievements">Honors</a>
             </li>
           )}
           <li>
-            <a href="#contact">Contact Me</a>
+            <a href="#contact">Contact</a>
           </li>
         </ul>
       </header>

@@ -1,69 +1,75 @@
-import React, {useContext} from "react";
+import React from "react";
 import "./Contact.scss";
-import SocialMedia from "../../components/socialMedia/SocialMedia";
-import {illustration, contactInfo} from "../../portfolio";
 import {Fade} from "react-reveal";
-import email from "../../assets/lottie/email";
-import DisplayLottie from "../../components/displayLottie/DisplayLottie";
-import StyleContext from "../../contexts/StyleContext";
+import SectionHeader from "../../components/sectionHeader/SectionHeader";
+import {contactInfo, socialMediaLinks} from "../../portfolio";
 
 export default function Contact() {
-  const {isDark} = useContext(StyleContext);
+  const channels = [
+    contactInfo.email_address && {
+      key: "email",
+      label: "Email",
+      value: contactInfo.email_address,
+      href: `mailto:${contactInfo.email_address}`,
+      icon: "fas fa-envelope"
+    },
+    contactInfo.number && {
+      key: "phone",
+      label: "Phone",
+      value: contactInfo.number,
+      href: `tel:${contactInfo.number}`,
+      icon: "fas fa-phone"
+    },
+    socialMediaLinks.linkedin && {
+      key: "linkedin",
+      label: "LinkedIn",
+      value: "in/chava-srinivasa-sai",
+      href: socialMediaLinks.linkedin,
+      icon: "fab fa-linkedin"
+    },
+    socialMediaLinks.github && {
+      key: "github",
+      label: "GitHub",
+      value: "github.com/Chava-Sai",
+      href: socialMediaLinks.github,
+      icon: "fab fa-github"
+    }
+  ].filter(Boolean);
+
   return (
-    <Fade bottom duration={1000} distance="20px">
-      <div className="main contact-margin-top" id="contact">
-        <div className="contact-div-main">
-          <div className="contact-header">
-            <h1 className="heading contact-title">{contactInfo.title}</h1>
-            <p
-              className={
-                isDark
-                  ? "dark-mode contact-subtitle"
-                  : "subTitle contact-subtitle"
+    <section className="sec sec-contact" id="contact">
+      <Fade bottom duration={900} distance="26px">
+        <SectionHeader
+          index="08"
+          label="Contact"
+          title="Open to research roles,"
+          accent="internships, and collaboration."
+          subtitle={contactInfo.subtitle}
+        />
+
+        <div className="ct-grid">
+          {channels.map(c => (
+            <a
+              className="ct-card"
+              key={c.key}
+              href={c.href}
+              target={c.href.startsWith("http") ? "_blank" : undefined}
+              rel={
+                c.href.startsWith("http") ? "noopener noreferrer" : undefined
               }
             >
-              {contactInfo.subtitle}
-            </p>
-            <div
-              className={
-                isDark ? "dark-mode contact-text-div" : "contact-text-div"
-              }
-            >
-              {contactInfo.number && (
-                <>
-                  <a
-                    className="contact-detail"
-                    href={"tel:" + contactInfo.number}
-                  >
-                    {contactInfo.number}
-                  </a>
-                  <br />
-                  <br />
-                </>
-              )}
-              <a
-                className="contact-detail-email"
-                href={"mailto:" + contactInfo.email_address}
-              >
-                {contactInfo.email_address}
-              </a>
-              <br />
-              <br />
-              <SocialMedia />
-            </div>
-          </div>
-          <div className="contact-image-div">
-            {illustration.animated ? (
-              <DisplayLottie animationData={email} />
-            ) : (
-              <img
-                alt="Man working"
-                src={require("../../assets/images/contactMailDark.svg")}
-              ></img>
-            )}
-          </div>
+              <span className="ct-icon">
+                <i className={c.icon} aria-hidden="true"></i>
+              </span>
+              <span className="ct-label">{c.label}</span>
+              <span className="ct-value">{c.value}</span>
+              <span className="ct-arrow" aria-hidden="true">
+                ↗
+              </span>
+            </a>
+          ))}
         </div>
-      </div>
-    </Fade>
+      </Fade>
+    </section>
   );
 }

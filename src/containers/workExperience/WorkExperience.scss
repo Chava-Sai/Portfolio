@@ -1,103 +1,159 @@
-.experience-cards-div {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: stretch;
-  gap: 1.25rem;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-snap-type: none;
-  /* room so the hover lift/shadow is not clipped by the scroll container */
-  padding: 0.75rem 0.25rem 1.25rem;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-x: contain;
+@import "../../_tech";
+
+/* Vertical timeline: a hairline rail down the left with a logo node per
+   role, and the detail card to its right. */
+
+.xp-rail {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
-.experience-cards-div::-webkit-scrollbar {
+.xp-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr);
+  gap: 1.35rem;
+  padding-bottom: 1.1rem;
+}
+
+/* the rail itself, drawn behind the nodes and stopped at the last one */
+.xp-item::before {
+  content: "";
+  position: absolute;
+  left: 1.6rem;
+  top: 3.4rem;
+  bottom: -0.3rem;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    $techBorderStrong 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+}
+
+.xp-item:last-child::before {
   display: none;
-  width: 0;
-  height: 0;
 }
 
-.experience-card-slot {
-  flex: 0 0 calc((100% - 2.5rem) / 3);
-  min-width: 355px;
-  max-width: 420px;
+.xp-node {
+  position: relative;
+  z-index: 1;
+  width: 3.25rem;
+  height: 3.25rem;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid $techBorder;
+  display: grid;
+  place-items: center;
+  padding: 0.45rem;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow: 0 0 0 5px $techBg;
+}
+
+.xp-node img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.xp-node-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: $techAccent;
+}
+
+.xp-card {
+  @include tech-card(18px);
+  padding: 1.35rem 1.5rem 1.5rem;
+  margin-top: 0.15rem;
+}
+
+.xp-card:hover {
+  @include tech-card-hover;
+}
+
+.xp-role {
+  margin: 0 0 0.6rem;
+  @include tech-label(0.67rem, $techAccent);
+}
+
+.xp-headline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 1rem;
+}
+
+.xp-company {
+  margin: 0;
+  font-size: 1.18rem;
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  color: $techText;
+}
+
+.xp-date {
+  @include tech-label(0.66rem, $techTextFaint);
+}
+
+.xp-desc {
+  margin: 0.8rem 0 0;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: $techTextDim;
+}
+
+.xp-bullets {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
+  gap: 0.55rem;
 }
 
-.experience-card-slot .experience-card-item {
-  width: 100%;
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
+.xp-bullets li {
+  position: relative;
+  padding-left: 1.05rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: $techTextDim;
 }
 
-.experience-card-item .experience-text-details {
-  flex: 1 1 auto;
+.xp-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(167, 139, 250, 0.75);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .experience-cards-div:hover .experience-card-item {
-    opacity: 0.5;
-    transform: scale(0.97);
-    filter: saturate(0.78);
+@media (max-width: 700px) {
+  .xp-item {
+    grid-template-columns: 2.5rem minmax(0, 1fr);
+    gap: 0.9rem;
   }
 
-  .experience-cards-div:hover .experience-card-slot:hover .experience-card-item,
-  .experience-cards-div:hover
-    .experience-card-slot:focus-within
-    .experience-card-item {
-    opacity: 1;
-    transform: translateY(-4px) scale(1.02);
-    filter: saturate(1.06);
-    z-index: 2;
-  }
-}
-
-.experience-heading {
-  font-size: 56px;
-  font-weight: 400;
-}
-
-.experience-container {
-  display: flex;
-  width: 90%;
-  padding: 20px 10px;
-  margin: 0px auto;
-  margin-top: 2rem;
-}
-
-.experience-container > * {
-  flex: 1;
-  /* required so the scroll row can overflow instead of stretching the flex item */
-  min-width: 0;
-}
-
-/* Media Query */
-
-@media (max-width: 1380px) {
-  .experience-heading {
-    font-size: 40px;
+  .xp-item::before {
+    left: 1.25rem;
+    top: 2.8rem;
   }
 
-  .experience-card-slot {
-    flex: 0 0 calc((100% - 1.25rem) / 2);
-    min-width: 330px;
-  }
-}
-
-@media (max-width: 768px) {
-  .experience-heading {
-    font-size: 30px;
-    text-align: center;
+  .xp-node {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0.35rem;
   }
 
-  .experience-card-slot {
-    flex: 0 0 min(86vw, 380px);
-    min-width: min(86vw, 380px);
-    max-width: min(86vw, 380px);
+  .xp-card {
+    padding: 1.15rem 1.15rem 1.25rem;
   }
 }

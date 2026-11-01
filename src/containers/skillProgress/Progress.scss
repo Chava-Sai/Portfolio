@@ -1,298 +1,172 @@
-@import "../../_globalColor";
+@import "../../_tech";
 
-.meter {
-  height: 20px;
-  position: relative;
-  background: $progressBarBackground;
-  -moz-border-radius: 25px;
-  -webkit-border-radius: 25px;
-  border-radius: 25px;
+.stack-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 3.5vw, 3rem);
+  align-items: start;
 }
-.meter > span {
-  display: block;
-  height: 100%;
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  background-color: $progressBarSpanBG;
-  position: relative;
+
+.stack-col {
+  min-width: 0;
+}
+
+.stack-col-title {
+  margin: 0 0 1.2rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid $techBorder;
+  @include tech-label(0.68rem, $techTextFaint);
+}
+
+.stack-col-title-spaced {
+  margin-top: 2.4rem;
+}
+
+/* ── meters ─────────────────────────────────────────────────────────── */
+.meter-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.05rem;
+}
+
+.meter-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.45rem;
+}
+
+.meter-name {
+  font-size: 0.87rem;
+  font-weight: 500;
+  color: $techTextDim;
+}
+
+.meter-pct {
+  @include tech-label(0.64rem, $techAccent);
+}
+
+.meter-track {
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
   overflow: hidden;
 }
-.skill {
-  line-height: 3.5vw;
-}
-.skill-bars {
-  font-size: 28px;
-  width: 40%;
-}
-.skills-container {
-  display: flex;
-  align-items: center;
-  width: 90%;
-  padding: 20px 10px;
-  margin: 0px auto;
-  margin-top: 2rem;
-}
-.skills-container > * {
-  flex: 1;
-  margin-bottom: 30px;
-}
-.skills-image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.skill-snapshot-card {
-  width: min(100%, 520px);
-  margin: 0 auto;
-  padding: 24px;
-  min-height: 780px;
-  border-radius: 22px;
-  border: 1px solid rgba(119, 107, 255, 0.35);
-  background: linear-gradient(
-    145deg,
-    rgba(170, 165, 255, 0.2) 0%,
-    rgba(140, 110, 255, 0.09) 100%
-  );
-  box-shadow: 0 16px 36px rgba(50, 46, 94, 0.15);
+
+.meter-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, $techAccent2 0%, $techAccent 100%);
 }
 
-.dark-mode .skill-snapshot-card {
-  border-color: rgba(170, 165, 255, 0.4);
-  background: linear-gradient(
-    145deg,
-    rgba(100, 92, 235, 0.23) 0%,
-    rgba(45, 35, 109, 0.35) 100%
-  );
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.25);
-}
-
-.skill-snapshot-lottie {
-  width: min(100%, 360px);
-  margin: 0 auto 12px;
-}
-
-.skill-snapshot-title {
-  margin: 0 0 6px;
-  font-size: 24px;
-  line-height: 1.2;
-}
-
-.skill-snapshot-subtitle {
-  margin: 0 0 14px;
-  font-size: 15px;
-  opacity: 0.82;
-}
-
-.skill-snapshot-chips {
+/* ── tooling pills ──────────────────────────────────────────────────── */
+.tool-cloud {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 0.45rem;
 }
 
-.skill-snapshot-chip {
-  display: inline-flex;
-  align-items: center;
-  padding: 8px 12px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
-  border: 1px solid rgba(110, 94, 255, 0.35);
-  background: rgba(170, 165, 255, 0.24);
+.tool-pill {
+  @include tech-pill;
+  transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
 }
 
-.dark-mode .skill-snapshot-chip {
-  border-color: rgba(172, 165, 255, 0.45);
-  background: rgba(122, 107, 255, 0.32);
-}
-
-.skill-snapshot-news {
-  margin-top: 16px;
-}
-
-.updates-only-card {
-  min-height: auto;
-}
-
-.skill-snapshot-news-only {
-  margin-top: 0;
-}
-
-.skill-snapshot-news-title {
-  margin: 0 0 10px;
-  font-size: 16px;
-  font-weight: 700;
-}
-
-.skill-snapshot-news-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  max-height: 820px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 2px 6px 2px 2px;
-  scroll-snap-type: y proximity;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(110, 94, 255, 0.5) rgba(122, 107, 255, 0.14);
-}
-
-.skill-snapshot-news-item {
-  position: relative;
-  padding: 10px 10px 10px 14px;
-  border-radius: 12px;
-  border-left: 3px solid rgba(107, 92, 235, 0.65);
-  background: rgba(170, 165, 255, 0.16);
-  transition: transform 200ms ease, opacity 200ms ease, box-shadow 200ms ease,
-    border-color 200ms ease, background-color 200ms ease;
-  transform-origin: center center;
-  scroll-snap-align: start;
-}
-
-.skill-snapshot-news-item.inactive {
-  opacity: 0.74;
-  transform: translateX(0);
-}
-
-.skill-snapshot-news-item.active {
-  opacity: 1;
-  transform: translateX(4px);
-  background: rgba(170, 165, 255, 0.24);
-  border-left-color: rgba(110, 94, 255, 0.95);
-  box-shadow: 0 8px 20px rgba(67, 57, 160, 0.2);
-}
-
-.skill-snapshot-news-item:hover {
-  cursor: pointer;
-}
-
-.skill-snapshot-news-item:focus-visible {
-  outline: 2px solid rgba(110, 94, 255, 0.7);
-  outline-offset: 2px;
-}
-
-.dark-mode .skill-snapshot-news-item {
-  border-left-color: rgba(170, 165, 255, 0.8);
-  background: rgba(120, 104, 255, 0.2);
-}
-
-.dark-mode .skill-snapshot-news-item.active {
-  background: rgba(120, 104, 255, 0.32);
-  border-left-color: rgba(190, 183, 255, 1);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.34);
-}
-
-.skill-snapshot-news-date {
-  margin: 0;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
+.tool-pill i {
+  font-size: 0.85rem;
   opacity: 0.8;
 }
 
-.skill-snapshot-news-headline {
-  margin: 4px 0 2px;
-  font-size: 14px;
-  font-weight: 700;
-  line-height: 1.35;
+.tool-pill:hover {
+  border-color: rgba(167, 139, 250, 0.45);
+  background: rgba(167, 139, 250, 0.08);
+  color: $techText;
 }
 
-.skill-snapshot-news-highlight {
+/* ── changelog ──────────────────────────────────────────────────────── */
+.log-list {
+  list-style: none;
   margin: 0;
-  font-size: 13px;
-  line-height: 1.4;
-  opacity: 0.9;
+  padding: 0;
+  max-height: 34rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(167, 139, 250, 0.4) transparent;
+  padding-right: 0.6rem;
 }
 
-.skill-snapshot-news-link {
+.log-list::-webkit-scrollbar {
+  width: 5px;
+}
+.log-list::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+}
+.log-list::-webkit-scrollbar-thumb {
+  background: rgba(167, 139, 250, 0.4);
+  border-radius: 999px;
+}
+
+.log-item {
+  display: grid;
+  grid-template-columns: 5.3rem minmax(0, 1fr);
+  gap: 0.9rem;
+  padding: 0.95rem 0.3rem;
+  border-bottom: 1px solid $techBorder;
+  transition: background 180ms ease;
+}
+
+.log-item:hover {
+  background: rgba(255, 255, 255, 0.022);
+}
+
+.log-date {
+  @include tech-label(0.63rem, $techTextFaint);
+  padding-top: 0.2em;
+}
+
+.log-body {
+  min-width: 0;
+}
+
+.log-title {
+  margin: 0;
+  font-size: 0.89rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: $techText;
+}
+
+.log-text {
+  margin: 0.4rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: $techTextFaint;
+}
+
+.log-link {
   display: inline-block;
-  margin-top: 8px;
-  font-size: 12px;
-  font-weight: 700;
+  margin-top: 0.55rem;
+  @include tech-label(0.63rem, $techAccent);
   text-decoration: none;
-  color: #4f46e5;
 }
 
-.skill-snapshot-news-link:hover {
-  text-decoration: underline;
+.log-link:hover {
+  color: #c4b5fd;
+  text-decoration: none;
 }
 
-.dark-mode .skill-snapshot-news-link {
-  color: #c7c2ff;
-}
-
-.skill-snapshot-news-list::-webkit-scrollbar {
-  width: 8px;
-}
-
-.skill-snapshot-news-list::-webkit-scrollbar-track {
-  background: rgba(122, 107, 255, 0.14);
-  border-radius: 10px;
-}
-
-.skill-snapshot-news-list::-webkit-scrollbar-thumb {
-  background: rgba(110, 94, 255, 0.5);
-  border-radius: 10px;
-}
-
-.dark-mode .skill-snapshot-news-list::-webkit-scrollbar-track {
-  background: rgba(122, 107, 255, 0.24);
-}
-
-.dark-mode .skill-snapshot-news-list::-webkit-scrollbar-thumb {
-  background: rgba(172, 165, 255, 0.55);
-}
-
-.skills-image > img {
-  margin-left: 0;
-  max-width: 90%;
-  height: auto;
-}
-
-/* Media Query */
-
-@media (max-width: 1456px) {
-  .skills-bar {
-    line-height: 4rem;
+@media (max-width: 950px) {
+  .stack-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
-  .skill-snapshot-card {
-    width: min(100%, 470px);
-    min-height: 720px;
-  }
-  .updates-only-card {
-    min-height: auto;
-  }
-  .skill-snapshot-lottie {
-    width: min(100%, 320px);
-  }
-}
 
-@media (max-width: 868px) {
-  .skills-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
-  .skills-bar {
-    line-height: 3rem;
-    margin: 20px;
-  }
-  .skills-image {
-    display: flex;
-    order: 2;
-    margin: 0 20px 20px;
-  }
-  .skill-snapshot-card {
-    width: min(100%, 420px);
-    min-height: auto;
-  }
-  .skill-snapshot-lottie {
-    width: min(100%, 240px);
-  }
-  .skill-snapshot-news-list {
-    max-height: 360px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding-right: 8px;
+  .log-list {
+    max-height: none;
+    padding-right: 0;
   }
 }
