@@ -1,6 +1,261 @@
-/* Greeting.scss (complete) */
-@import "../../_globalColor";
+@import "../../_tech";
 
+/* ── Hero ──────────────────────────────────────────────────────────────
+   Identity on the left, live terminal on the right. Everything that is
+   not prose is set in mono and letterspaced, which is what gives the
+   section its instrument-panel feel. */
+
+.hero {
+  width: min(1180px, 92%);
+  margin: 0 auto;
+  padding: clamp(4.5rem, 11vh, 8rem) 0 2.5rem;
+  font-family: $techDisplay;
+  text-align: left;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+}
+
+/* availability pill */
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1.6rem;
+  padding: 0.38rem 0.95rem 0.38rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(52, 211, 153, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  @include tech-label(0.7rem, #6ee7b7);
+}
+
+.hero-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: $techGreen;
+  box-shadow: 0 0 8px $techGreen;
+  animation: hero-pulse 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes hero-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* the name, set as large as the column allows */
+.hero-name {
+  margin: 0;
+  font-size: clamp(2.6rem, 6.2vw, 5rem);
+  font-weight: 800;
+  line-height: 0.97;
+  letter-spacing: -0.035em;
+  color: $techText;
+  text-transform: capitalize;
+}
+
+/* mono role line with interpuncts */
+.hero-roles {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.1rem 0.45rem;
+  margin: 1.1rem 0 0;
+  @include tech-label(0.72rem, $techTextFaint);
+  line-height: 1.7;
+}
+
+.hero-roles-sep {
+  color: rgba(167, 139, 250, 0.55);
+}
+
+/* the one gradient line on the page */
+.hero-headline {
+  margin: 1.5rem 0 0;
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: $techText;
+}
+
+.hero-headline-accent {
+  background: linear-gradient(
+    100deg,
+    $techAccent 0%,
+    $techAccent2 55%,
+    $techAccentWarm 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.hero-blurb {
+  max-width: 46ch;
+  margin: 1rem 0 0;
+  font-size: 0.97rem;
+  line-height: 1.7;
+  color: $techTextDim;
+}
+
+.hero-anchor {
+  height: 0;
+}
+
+/* actions */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.9rem;
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.68rem 1.3rem;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform 180ms ease, background 180ms ease,
+    border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.hero-btn:hover {
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+
+.hero-btn:focus-visible {
+  outline: 2px solid $techAccentGlow;
+  outline-offset: 2px;
+}
+
+/* scoped under .hero to outrank the global `a` colour rule */
+.hero .hero-btn-primary,
+.hero .hero-btn-primary:visited {
+  background: $techText;
+  color: #0a0a0d;
+  border: 1px solid $techText;
+}
+
+.hero .hero-btn-primary:hover {
+  background: #fff;
+  color: #0a0a0d;
+  box-shadow: 0 8px 24px rgba(255, 255, 255, 0.14);
+}
+
+.hero .hero-btn-ghost,
+.hero .hero-btn-ghost:visited {
+  color: $techTextDim;
+}
+
+.hero .hero-btn-ghost:hover {
+  color: $techText;
+}
+
+.hero-btn-ghost {
+  background: $techSurface;
+  border: 1px solid $techBorder;
+}
+
+.hero-btn-ghost:hover {
+  background: $techSurfaceHover;
+  border-color: $techBorderStrong;
+}
+
+.hero-btn i {
+  font-size: 0.8rem;
+}
+
+/* location + handles, mono */
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.5rem;
+  margin-top: 1.8rem;
+}
+
+.hero-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: $techMono;
+  font-size: 0.73rem;
+  letter-spacing: 0.01em;
+  color: $techTextFaint;
+  text-decoration: none;
+  transition: color 160ms ease;
+}
+
+.hero-meta-item i {
+  font-size: 0.8rem;
+  opacity: 0.75;
+}
+
+.hero-meta-link:hover {
+  color: $techAccent;
+  text-decoration: none;
+}
+
+/* terminal column */
+.hero-terminal {
+  min-width: 0;
+}
+
+.hero-terminal .focus-terminal {
+  max-width: 100%;
+  width: 100%;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────── */
+
+@media (max-width: 1000px) {
+  .hero-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+
+  .hero-blurb {
+    max-width: 60ch;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-top: 5.5rem;
+  }
+
+  .hero-name {
+    font-size: clamp(2.2rem, 11vw, 3.2rem);
+  }
+
+  .hero-actions .hero-btn {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .hero-meta {
+    gap: 0.55rem 1rem;
+  }
+}
+
+/* keep the shared container class other sections rely on */
 .main {
   width: 90%;
   padding: 20px 10px;
@@ -8,372 +263,6 @@
   margin-top: 4rem;
 }
 
-.greet-main {
-  width: 90%;
-  padding: 20px 10px;
-  margin: 0px auto;
-  margin-top: 0;
-}
-
-.greeting-main {
-  display: flex;
-  align-items: flex-start;
-  gap: clamp(16px, 1.8vw, 30px);
-}
-
 .subTitle {
-  color: $subTitle !important;
-}
-
-.greeting-text-div {
-  flex: 1.35;
-  margin-bottom: 30px;
-  min-width: 0;
-}
-
-.greeting-image-div {
-  flex: 1;
-  margin-bottom: 30px;
-}
-
-.greeting-text-div .focus-terminal {
-  max-width: 92%;
-}
-
-/* ── Badges row (MS AI + tagline side by side) ───────────────────────── */
-.greeting-badges-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.65rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.75rem;
-}
-
-/* ── Tagline — no container, free text with blinking dots ────────────── */
-.greeting-tagline-text {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-top: 0;
-  margin-bottom: 1.55rem;
-  font-size: 1.95rem;
-  font-weight: 700;
-  color: #c4b5fd;
-  letter-spacing: 0.3px;
-}
-
-/* Leading pulse dot */
-.tl-dot {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #a78bfa;
-  box-shadow: 0 0 10px #a78bfa, 0 0 20px rgba(167, 139, 250, 0.4);
-  animation: badge-blink 2s ease-in-out infinite;
-  flex-shrink: 0;
-}
-
-/* Words */
-.tl-word {
-  color: #c4b5fd;
-}
-
-/* Separator dots — same circular style as the leading dot */
-.tl-sep {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: #a78bfa;
-  box-shadow: 0 0 10px #a78bfa, 0 0 20px rgba(167, 139, 250, 0.4);
-  font-size: 0;
-  flex-shrink: 0;
-  margin: 0 0.6rem;
-  animation: badge-blink 2s ease-in-out infinite;
-}
-
-.tl-sep:nth-of-type(2) {
-  animation-delay: 0.4s;
-}
-.tl-sep:nth-of-type(3) {
-  animation-delay: 0.8s;
-}
-
-.badge-pulse {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #52f2ae;
-  box-shadow: 0 0 6px #52f2ae;
-  animation: badge-blink 2s ease-in-out infinite;
-}
-
-@keyframes badge-blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.35;
-  }
-}
-
-/* ── Social icons + resume pill on same row ──────────────────────────── */
-.social-resume-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: 0.4rem;
-  max-width: 92%;
-}
-
-.resume-pill-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.85rem 2rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #6ea8ff 0%, #8b5cf6 100%);
-  color: #fff;
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: 0.4px;
-  text-decoration: none;
-  box-shadow: 0 4px 18px rgba(139, 92, 246, 0.38);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  white-space: nowrap;
-}
-
-.resume-pill-btn:hover {
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.55);
-  color: #fff;
-  text-decoration: none;
-}
-
-.greeting-image-div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ── Rotating gradient border frame ─────────────────────────────────── */
-@property --pa {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-.profile-frame {
-  --pa: 0deg;
-  display: inline-block;
-  width: fit-content; /* shrink to exactly the image size */
-  line-height: 0; /* remove phantom gap below image   */
-  padding: 4px;
-  border-radius: 30px;
-  margin-top: 18px;
-  background: conic-gradient(
-    from var(--pa),
-    #6ea8ff 0%,
-    #8b5cf6 28%,
-    #a78bfa 48%,
-    #34d399 68%,
-    #64d8ff 84%,
-    #6ea8ff 100%
-  );
-  animation: profile-border-spin 6s linear infinite;
-  box-shadow: 0 0 14px rgba(139, 92, 246, 0.45),
-    0 0 28px rgba(110, 168, 255, 0.18);
-}
-
-@keyframes profile-border-spin {
-  to {
-    --pa: 360deg;
-  }
-}
-
-.greeting-profile-image {
-  width: 460px;
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 26px;
-  display: block;
-  background: #0d1224;
-}
-
-.empty-div {
-  margin-bottom: 16px;
-}
-
-.greeting-text {
-  font-size: 62px;
-  line-height: 1.1;
-  margin: 0 0 1.35rem;
-  color: $textColor !important;
-
-  /* subtle overall glow like the screenshot */
-  text-shadow: 0 0 22px rgba(120, 100, 255, 0.15);
-}
-
-/* ── Python syntax colours ───────────────────────────────────────────── */
-/* print  → cyan-blue  (VSCode function colour)  */
-.code-fn {
-  color: #4ec9b0;
-  font-weight: 900;
-}
-
-/* ( )  → golden yellow  (VSCode bracket colour) */
-.code-paren {
-  color: #ffd700;
-  font-weight: 700;
-}
-
-/* "…"  → warm orange  (VSCode string colour) */
-.code-str {
-  color: #ce9178;
-  font-weight: 700;
-}
-
-/* ── "Sai" inside the string — gradient purple-blue ─────────────────── */
-/* ✅ Purple gradient + glow like the screenshot (applies to the "name" part) */
-.highlight-name {
-  font-weight: 900;
-  letter-spacing: 0.5px;
-  display: inline-block;
-
-  background: linear-gradient(90deg, #6ea8ff 0%, #8b5cf6 45%, #a78bfa 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-
-  text-shadow: 0 0 14px rgba(139, 92, 246, 0.45),
-    0 0 30px rgba(110, 168, 255, 0.18);
-}
-
-/* Dark mode: stronger glow */
-.dark-mode.greeting-text .highlight-name {
-  text-shadow: 0 0 18px rgba(139, 92, 246, 0.65),
-    0 0 40px rgba(110, 168, 255, 0.25);
-}
-
-/* Light mode: much softer glow */
-.greeting-text:not(.dark-mode) .highlight-name {
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.08), 0 0 16px rgba(0, 0, 0, 0.06);
-}
-
-.greeting-text-p {
-  font-size: 30px;
-  line-height: 40px;
-}
-
-.greeting-image-div > img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* optional: glow the wave emoji too */
-.wave-emoji {
-  animation-duration: 1.8s;
-  animation-iteration-count: infinite;
-  animation-name: wave;
-  display: inline-block;
-  transform-origin: 70% 70%;
-  filter: drop-shadow(0 0 12px rgba(110, 168, 255, 0.35));
-}
-
-@keyframes wave {
-  0% {
-    transform: rotate(0deg);
-  }
-  10% {
-    transform: rotate(-10deg);
-  }
-  20% {
-    transform: rotate(12deg);
-  }
-  30% {
-    transform: rotate(-10deg);
-  }
-  40% {
-    transform: rotate(9deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
-
-/* Media Query */
-@media (max-width: 1380px) {
-  .greeting-tagline-text {
-    font-size: 1.7rem;
-  }
-  .greeting-text {
-    font-size: 46px;
-  }
-  .greeting-text-p {
-    font-size: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .greeting-tagline-text {
-    font-size: 1.35rem;
-    justify-content: center;
-    margin-bottom: 1.2rem;
-  }
-
-  .social-resume-row {
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .greeting-badge {
-    font-size: 0.82rem;
-    text-align: center;
-  }
-
-  .greeting-text {
-    font-size: 30px;
-    text-align: center;
-  }
-
-  .greeting-text-p {
-    font-size: 16px;
-    line-height: normal;
-    text-align: center;
-  }
-
-  .greeting-main {
-    display: block;
-  }
-
-  .greeting-text-div .focus-terminal {
-    max-width: 100%;
-  }
-
-  .greeting-image-div {
-    height: auto;
-    margin-top: 10px;
-  }
-
-  .greeting-profile-image {
-    width: min(72vw, 320px);
-    margin-top: 0;
-  }
-}
-
-@media (max-width: 320px) {
-  .main {
-    width: auto;
-  }
+  color: $techTextDim;
 }

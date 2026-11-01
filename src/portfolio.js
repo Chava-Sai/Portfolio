@@ -33,6 +33,13 @@ const greeting = {
     followUpOutput: "Translating research into real-world products"
   },
   tagline: "Multimodal ML  ·  NLP  ·  Agentic AI   ·  RAG",
+  // new hero fields
+  statusLine: "Open to Summer 2027 AI/ML and Research Internships",
+  roles:
+    "M.S. Artificial Intelligence · AI/ML Engineer · NLP · Computer Vision",
+  headlinePrefix: "I build",
+  headlineWord: "AI systems",
+  location: "Boston, MA · Open to relocation",
   profileImage: require("./assets/images/profile/Profile.png"),
   greetingAnimation: "landingPerson",
   resumeLink: "resume",

@@ -1,0 +1,44 @@
+/* Technical theme tokens.
+   A dark, instrument-panel palette: near-black ground, barely-lifted
+   surfaces, hairline borders, one violet accent. Imported by the
+   components that have been moved onto the new design language. */
+
+// ground + surfaces
+$techBg: #09090b;
+$techBg2: #0c0c10;
+$techSurface: rgba(255, 255, 255, 0.022);
+$techSurfaceHover: rgba(255, 255, 255, 0.045);
+$techBorder: rgba(255, 255, 255, 0.09);
+$techBorderStrong: rgba(255, 255, 255, 0.16);
+
+// type
+$techText: #ededf2;
+$techTextDim: #a1a1aa;
+$techTextFaint: #6b6b76;
+
+// accents
+$techAccent: #a78bfa;
+$techAccent2: #818cf8;
+$techAccentWarm: #fbbf24;
+$techGreen: #34d399;
+$techAccentGlow: rgba(167, 139, 250, 0.4);
+
+// fonts
+$techDisplay: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$techMono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+// the uppercase letterspaced mono micro-label used across every section
+@mixin tech-label($size: 0.72rem, $color: $techTextFaint) {
+  font-family: $techMono;
+  font-size: $size;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color;
+}
+
+@mixin tech-panel($radius: 16px) {
+  background: $techSurface;
+  border: 1px solid $techBorder;
+  border-radius: $radius;
+}

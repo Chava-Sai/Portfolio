@@ -1,307 +1,196 @@
-@import "../../_globalColor";
+@import "../../_tech";
 
-/*React-headroom*/
+/* Floating pill nav — centred capsule that sits over the page rather
+   than spanning it, so the hero reads as the first thing on screen. */
+
 .headroom-wrapper {
-  max-height: 100px;
-}
-
-/* header */
-
-.dark-menu {
-  color: $textColorDark;
-}
-
-.header.dark-menu {
-  background: rgba(8, 14, 34, 0.62) !important;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(129, 154, 255, 0.22);
-}
-
-.header.dark-menu .menu {
-  background: transparent !important;
-}
-
-.dark-menu li a {
-  color: $textColorDark !important;
-  border-radius: 8px;
-  position: relative;
-  overflow: hidden;
-  transition: color 0.25s ease;
-}
-
-/* Shimmer sweep — slides from left to right on hover */
-.dark-menu li a::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(110, 168, 255, 0) 0%,
-    rgba(110, 168, 255, 0.38) 30%,
-    rgba(139, 92, 246, 0.45) 55%,
-    rgba(232, 121, 249, 0.32) 75%,
-    rgba(232, 121, 249, 0) 100%
-  );
-  transform: translateX(-110%);
-  transition: transform 0.55s ease;
-  border-radius: 8px;
-  pointer-events: none;
-}
-
-.dark-menu li a:hover::before {
-  transform: translateX(110%);
-}
-
-/* Persistent background + bottom gradient underline */
-.dark-menu li a:hover {
-  background: rgba(110, 100, 255, 0.18) !important;
-  color: #e0e8ff !important;
-  text-shadow: 0 0 14px rgba(139, 92, 246, 0.55);
-  box-shadow: inset 0 -2px 0 0 rgba(139, 92, 246, 0.7);
+  height: 0 !important;
 }
 
 .header {
-  background-color: $lightBackground1;
-  max-width: 100%;
-  padding: 15px 20px;
-  margin: 0px auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  width: fit-content;
+  max-width: calc(100% - 2rem);
+  margin: 0.9rem auto 0;
+  padding: 0.45rem 0.5rem 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(14, 14, 18, 0.72);
+  border: 1px solid $techBorder;
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55);
+  font-family: $techDisplay;
 }
 
-.header ul {
+/* monogram + name */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.logo::before {
+  content: "SC";
+  display: grid;
+  place-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  border-radius: 7px;
+  background: linear-gradient(135deg, $techAccent 0%, $techAccent2 100%);
+  color: #0b0b0f;
+  font-family: $techMono;
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.logo-name {
+  font-family: $techMono;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: $techText;
+  white-space: nowrap;
+}
+
+/* links */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  list-style: none;
   margin: 0;
   padding: 0;
-  list-style: none;
-  overflow: hidden;
 }
 
-.header li a {
+.menu li a {
   display: block;
-  padding: 15px 20px;
-  color: $textColor;
+  padding: 0.44rem 0.72rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: $techTextDim;
   text-decoration: none;
-  font-size: 1.14rem;
-}
-
-.header li a:hover,
-.header .menu-btn:hover {
-  background-color: $headerHoverBG;
-}
-
-.header .logo {
-  display: inline-flex;
-  align-items: center;
-  flex: none;
-  float: left;
-  text-decoration: none;
-  margin-top: 4px;
-  padding: 6px 10px 8px;
-  border-radius: 12px;
-  line-height: normal;
-  color: inherit;
-  transition: transform 180ms ease, background-color 180ms ease;
-}
-
-.header .logo:hover {
-  transform: translateY(-1px);
-  background: rgba(124, 102, 255, 0.12);
-}
-
-.header .logo-name {
-  font-family: "Nasalization", "Montserrat", sans-serif;
-  font-weight: 400;
-  font-size: clamp(1.55rem, 2.15vw, 2.2rem);
-  letter-spacing: 0.03em;
-  line-height: 1.12;
   white-space: nowrap;
-  padding: 0;
-  position: relative;
-  display: inline-block;
-  background: linear-gradient(90deg, #c9d7ff 0%, #eef1ff 35%, #9f87ff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: 0 0 18px rgba(134, 116, 255, 0.2);
+  transition: color 160ms ease, background 160ms ease;
 }
 
-.dark-menu .logo-name {
-  text-shadow: 0 0 24px rgba(134, 116, 255, 0.3);
+.menu li a:hover,
+.menu li a:focus-visible {
+  color: $techText;
+  background: $techSurfaceHover;
+  text-decoration: none;
 }
 
-/* menu */
-
-.header .menu {
-  clear: both;
-  max-height: 0;
-  transition: max-height 0.2s ease-out;
+.menu li a:focus-visible {
+  outline: 2px solid $techAccentGlow;
+  outline-offset: 1px;
 }
 
-/* menu icon */
-
-.header .menu-icon {
-  cursor: pointer;
-  display: inline-block;
-  float: right;
-  padding: 28px 20px;
-  position: relative;
-  user-select: none;
-}
-
-.header .menu-icon .navicon {
-  background: $iconBackground;
-  display: block;
-  height: 2px;
-  position: relative;
-  transition: background 0.2s ease-out;
-  width: 18px;
-}
-
-.header .menu-icon .navicon-dark {
-  background: $textColorDark;
-}
-
-.header .menu-icon .navicon:before,
-.header .menu-icon .navicon:after {
-  background: $iconBackground;
-  content: "";
-  display: block;
-  height: 100%;
-  position: absolute;
-  transition: all 0.2s ease-out;
-  width: 100%;
-}
-
-.header .menu-icon .navicon-dark:before,
-.header .menu-icon .navicon-dark:after {
-  background: $textColorDark !important;
-  content: "";
-  display: block;
-  height: 100%;
-  position: absolute;
-  transition: all 0.2s ease-out;
-  width: 100%;
-}
-
-.header .menu-icon .navicon:before {
-  top: 5px;
-}
-
-.header .menu-icon .navicon:after {
-  top: -5px;
-}
-
-/* menu btn */
-
-.header .menu-btn {
+/* burger — hidden until the pill runs out of room */
+.menu-btn,
+.menu-icon {
   display: none;
 }
 
-.header .menu-btn:checked ~ .menu {
-  max-height: 620px;
-}
-
-.header .menu-btn:checked ~ .menu-icon .navicon {
-  background: transparent !important;
-}
-
-.header .menu-btn:checked ~ .menu-icon .navicon:before {
-  transform: rotate(-45deg);
-}
-
-.header .menu-btn:checked ~ .menu-icon .navicon:after {
-  transform: rotate(45deg);
-}
-
-.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
-.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
-  top: 0;
-}
-
-/* 48em = 768px */
-
-@media (min-width: 48em) {
+@media (max-width: 1100px) {
   .header {
+    width: calc(100% - 1.6rem);
+    justify-content: space-between;
+    border-radius: 18px;
+    padding: 0.55rem 0.7rem;
+    flex-wrap: wrap;
+    /* the collapsed menu still forms a wrapped flex line; kill the row gap
+       so it does not pad the pill when closed */
+    row-gap: 0;
+  }
+
+  .menu-icon {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    gap: 0.25rem;
+    justify-content: center;
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 9px;
+    cursor: pointer;
+    transition: background 160ms ease;
   }
-  .header .logo {
-    margin-right: clamp(10px, 1.2vw, 22px);
-    flex: 0 0 auto;
+
+  .menu-icon:hover {
+    background: $techSurfaceHover;
   }
-  .header .menu {
-    max-height: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: flex-end;
-    flex: 0 1 auto;
-    flex-wrap: nowrap !important;
-    gap: 0;
-    clear: none;
-    margin: 0 0 0 auto;
-    padding: 0;
-    white-space: nowrap;
-    width: max-content;
-    min-width: 0;
-    overflow: visible;
-  }
-  .header li {
-    float: none;
+
+  .navicon {
+    position: relative;
     display: block;
-    flex: 0 0 auto;
+    width: 16px;
+    height: 1.5px;
+    background: $techText;
+    border-radius: 2px;
+    transition: background 160ms ease;
   }
-  .header li a {
-    white-space: nowrap;
-    padding: 12px clamp(8px, 0.7vw, 12px);
-    font-size: clamp(0.95rem, 0.92vw, 1.04rem);
-    line-height: 1.1;
-  }
-  .header .menu-icon {
-    display: none;
-  }
-}
 
-@supports (-webkit-touch-callout: none) {
-  @media (min-width: 48em) {
-    .header .menu {
-      flex-wrap: nowrap !important;
-    }
-    .header li a {
-      padding: 11px 9px;
-      letter-spacing: 0;
-    }
+  .navicon::before,
+  .navicon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 16px;
+    height: 1.5px;
+    background: $techText;
+    border-radius: 2px;
+    transition: transform 200ms ease, top 200ms ease;
   }
-}
-@media (max-width: 960px) and (min-width: 768px) {
-  .header {
-    font-size: 12px;
-  }
-  .header li a {
-    font-size: 1.08rem;
-    padding: 14px 14px;
-  }
-  .header .logo-name {
-    font-size: 1.45rem;
-  }
-}
 
-@media (max-width: 768px) {
-  .header.dark-menu .menu {
-    background: rgba(8, 14, 34, 0.82) !important;
-    border-radius: 12px;
-    margin-top: 8px;
-    border: 1px solid rgba(129, 154, 255, 0.2);
+  .navicon::before {
+    top: -5px;
   }
-  .header .logo {
-    margin-top: 6px;
-    padding: 4px 6px 6px;
+  .navicon::after {
+    top: 5px;
   }
-  .header .logo-name {
-    font-size: 1.32rem;
+
+  .menu {
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 260ms ease;
   }
-  .header li a {
-    font-size: 1.08rem;
+
+  .menu-btn:checked ~ .menu {
+    max-height: 32rem;
+    padding-top: 0.5rem;
+  }
+
+  .menu-btn:checked ~ .menu-icon .navicon {
+    background: transparent;
+  }
+
+  .menu-btn:checked ~ .menu-icon .navicon::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  .menu-btn:checked ~ .menu-icon .navicon::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+
+  .menu li a {
+    padding: 0.62rem 0.72rem;
+    border-radius: 10px;
   }
 }

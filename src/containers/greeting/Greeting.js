@@ -1,109 +1,130 @@
 import React, {useContext} from "react";
 import {Fade} from "react-reveal";
 import "./Greeting.scss";
-import landingPerson from "../../assets/lottie/landingPerson";
-import codingPerson from "../../assets/lottie/codingPerson";
-import Build from "../../assets/lottie/build";
-import DisplayLottie from "../../components/displayLottie/DisplayLottie";
-import SocialMedia from "../../components/socialMedia/SocialMedia";
 import FocusTerminal from "../../components/focusTerminal/FocusTerminal";
 import TechMarquee from "../../components/techMarquee/TechMarquee";
-import BinaryDecodeText from "../../components/binaryDecodeText/BinaryDecodeText";
-import {illustration, greeting} from "../../portfolio";
+import {greeting, socialMediaLinks} from "../../portfolio";
 import StyleContext from "../../contexts/StyleContext";
 
-const greetingAnimations = {
-  landingPerson,
-  codingPerson,
-  build: Build
-};
+// "github.com/Chava-Sai" reads more like a terminal than a bare icon does
+const stripScheme = url =>
+  (url || "").replace(/^https?:\/\//, "").replace(/\/$/, "");
+
+// the data stores the name uppercase; CSS capitalize cannot lower that
+const titleCase = str =>
+  (str || "")
+    .toLowerCase()
+    .replace(/(^|[\s-])([a-z])/g, (_, sep, ch) => sep + ch.toUpperCase());
 
 export default function Greeting() {
   const {isDark} = useContext(StyleContext);
-
   if (!greeting.displayGreeting) return null;
-  const selectedGreetingAnimation =
-    greetingAnimations[greeting.greetingAnimation] || landingPerson;
+
+  const roles = (greeting.roles || greeting.tagline || "")
+    .split("·")
+    .map(r => r.trim())
+    .filter(Boolean);
 
   return (
-    <Fade bottom duration={1000} distance="40px">
-      <div className="greet-main" id="greeting">
-        <div className="greeting-main">
-          <div className="greeting-text-div">
-            <div>
-              <h1
-                className={isDark ? "dark-mode greeting-text" : "greeting-text"}
-              >
-                <BinaryDecodeText />
-              </h1>
+    <Fade bottom duration={900} distance="30px">
+      <section className="hero" id="greeting">
+        <div className="hero-grid">
+          {/* ── left: identity ─────────────────────────────────────── */}
+          <div className="hero-identity">
+            {greeting.statusLine && (
+              <p className="hero-status">
+                <span className="hero-status-dot" aria-hidden="true"></span>
+                {greeting.statusLine}
+              </p>
+            )}
 
-              {greeting.tagline && (
-                <p className="greeting-tagline-text">
-                  <span className="tl-dot"></span>
-                  {greeting.tagline.split("·").map((part, i, arr) => (
-                    <React.Fragment key={i}>
-                      <span className="tl-word">{part.trim()}</span>
-                      {i < arr.length - 1 && <span className="tl-sep">·</span>}
-                    </React.Fragment>
-                  ))}
-                </p>
-              )}
+            <h1 className="hero-name">{titleCase(greeting.username)}</h1>
 
-              {greeting.terminal ? (
-                <FocusTerminal
-                  terminalData={greeting.terminal}
-                  isDark={isDark}
-                />
-              ) : (
-                <p
-                  className={
-                    isDark
-                      ? "dark-mode greeting-text-p"
-                      : "greeting-text-p subTitle"
-                  }
+            {roles.length > 0 && (
+              <p className="hero-roles">
+                {roles.map((role, i) => (
+                  <React.Fragment key={role}>
+                    {i > 0 && <span className="hero-roles-sep">·</span>}
+                    <span>{role}</span>
+                  </React.Fragment>
+                ))}
+              </p>
+            )}
+
+            {greeting.headlineWord && (
+              <p className="hero-headline">
+                {greeting.headlinePrefix}{" "}
+                <span className="hero-headline-accent">
+                  {greeting.headlineWord}
+                </span>
+              </p>
+            )}
+
+            <p className="hero-blurb">{greeting.subTitle}</p>
+
+            <div id="resume" className="hero-anchor"></div>
+
+            <div className="hero-actions">
+              <a className="hero-btn hero-btn-primary" href="#projects">
+                View projects <span aria-hidden="true">→</span>
+              </a>
+              {greeting.resumeLink && (
+                <a
+                  className="hero-btn hero-btn-ghost"
+                  href={require("./resume.pdf")}
+                  download="Resume.pdf"
                 >
-                  {greeting.subTitle}
-                </p>
+                  <i className="fas fa-file-download" aria-hidden="true"></i>{" "}
+                  Resume
+                </a>
               )}
+              <a className="hero-btn hero-btn-ghost" href="#contact">
+                Contact <span aria-hidden="true">↗</span>
+              </a>
+            </div>
 
-              <div id="resume" className="empty-div"></div>
-
-              <div className="social-resume-row">
-                <SocialMedia />
-                {greeting.resumeLink && (
-                  <a
-                    className="resume-pill-btn"
-                    href={require("./resume.pdf")}
-                    download="Resume.pdf"
-                  >
-                    <i className="fas fa-file-download"></i> Resume
-                  </a>
-                )}
-              </div>
+            <div className="hero-meta">
+              {greeting.location && (
+                <span className="hero-meta-item">
+                  <i className="fas fa-location-dot" aria-hidden="true"></i>
+                  {greeting.location}
+                </span>
+              )}
+              {socialMediaLinks.github && (
+                <a
+                  className="hero-meta-item hero-meta-link"
+                  href={socialMediaLinks.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-github" aria-hidden="true"></i>
+                  {stripScheme(socialMediaLinks.github)}
+                </a>
+              )}
+              {socialMediaLinks.linkedin && (
+                <a
+                  className="hero-meta-item hero-meta-link"
+                  href={socialMediaLinks.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="fab fa-linkedin" aria-hidden="true"></i>
+                  in/chava-srinivasa-sai
+                </a>
+              )}
             </div>
           </div>
 
-          <div className="greeting-image-div">
-            {greeting.profileImage ? (
-              <div className="profile-frame">
-                <img
-                  alt={`${greeting.username} profile`}
-                  className="greeting-profile-image"
-                  src={greeting.profileImage}
-                />
-              </div>
-            ) : illustration.animated ? (
-              <DisplayLottie animationData={selectedGreetingAnimation} />
-            ) : (
-              <img
-                alt="man sitting on table"
-                src={require("../../assets/images/manOnTable.svg")}
-              />
-            )}
-            <TechMarquee />
-          </div>
+          {/* ── right: live terminal ───────────────────────────────── */}
+          {greeting.terminal && (
+            <div className="hero-terminal">
+              <FocusTerminal terminalData={greeting.terminal} isDark={isDark} />
+            </div>
+          )}
         </div>
-      </div>
+
+        <TechMarquee />
+      </section>
     </Fade>
   );
 }
