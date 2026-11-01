@@ -21,16 +21,44 @@ const greeting = {
   ),
   terminal: {
     display: true,
-    title: "profile.txt — bash",
-    command: "cat profile.txt",
+    title: "~/sai — zsh — 80×24",
     lines: [
-      "M.S. Artificial Intelligence student at Boston University",
-      "Building production-focused AI systems across ML/DL, NLP, Computer Vision, and RAG",
-      "Delivering end-to-end full-stack AI deployment from research to production",
-      "Focused on practical impact in accessibility, trust, and social good"
-    ],
-    followUpCommand: 'echo "Translating research into real-world products"',
-    followUpOutput: "Translating research into real-world products"
+      {kind: "prompt", cmd: "whoami"},
+      {kind: "out", line: "srinivasa_sai_chava"},
+      {kind: "prompt", cmd: "cat /etc/profile.json"},
+      {kind: "out", line: "{"},
+      {
+        kind: "kv",
+        key: "  program",
+        value: '"M.S. Artificial Intelligence @ Boston University"'
+      },
+      {kind: "kv", key: "  graduation", value: '"Dec 2026"'},
+      {
+        kind: "kv",
+        key: "  focus",
+        value: '["AI/ML", "NLP", "computer vision", "RAG"]'
+      },
+      {
+        kind: "kv",
+        key: "  building",
+        value: '"HateLens · VideoMAE · RAG eval · Auto Grader"'
+      },
+      {kind: "kv", key: "  papers", value: "3"},
+      {
+        kind: "kv",
+        key: "  open_to",
+        value: '"AI/ML & Research Internships · 2027"'
+      },
+      {kind: "out", line: "}"},
+      {kind: "prompt", cmd: "ls ~/projects | head"},
+      {kind: "out", line: "frozen-videomae-weakly-supervised/", muted: true},
+      {kind: "out", line: "hatelens-dravidiancodemix/", muted: true},
+      {kind: "out", line: "rag-faithfulness-eval/", muted: true},
+      {kind: "out", line: "ml-bu-autograder/", muted: true},
+      {kind: "out", line: "sidewalk-accessibility-validator/", muted: true},
+      {kind: "prompt", cmd: "status --recruiters"},
+      {kind: "out", line: "✓ available · responding within 24h"}
+    ]
   },
   tagline: "Multimodal ML  ·  NLP  ·  Agentic AI   ·  RAG",
   // new hero fields
@@ -370,24 +398,51 @@ const bigProjects = {
   title: "Featured Projects",
   subtitle:
     "Selected projects across AI engineering, accessibility, multilingual NLP, and public-interest data science",
+  display: true,
   projects: [
     {
+      featured: true,
+      category: "AI / ML",
+      accentHue: 265,
       image: require("./assets/images/project-covers/ivc.png"),
       projectName:
         "Weakly-Supervised Violence Event Detection and Temporal Localization",
+      subtitle: "Weakly supervised video · VideoMAE-B · UCF-Crime",
+      problem:
+        "Frame-level violence annotations are prohibitively expensive, so detectors have to learn from video-level tags alone — and most reported numbers come from a single seed on a single dataset, which hides how brittle they are.",
+      solution:
+        "Built a weakly supervised pipeline on frozen VideoMAE-B features with RTFM-style multiple-instance learning, then measured it across three seeds and transferred one checkpoint to three unseen datasets with no retraining.",
+      highlights: [
+        "0.922 mean AUC on the UCF-Crime violence subset across three seeds (s.d. 0.010).",
+        "Single-checkpoint transfer reached 0.836 AUC on XD-Violence and 0.862 on RWF-2000 without retraining.",
+        "ShanghaiTech exposed a domain-shift failure at 0.371 AUC, which bounds what the model can claim."
+      ],
+      metrics: [
+        {value: "0.922", label: "UCF-Crime AUC"},
+        {value: "± 0.010", label: "3-seed s.d."},
+        {value: "0.862", label: "RWF-2000"}
+      ],
       projectDesc:
         "Built a weakly supervised video pipeline using frozen VideoMAE-B features and RTFM-style learning. On the UCF-Crime violence subset, achieved mean AUC 0.922 across three seeds (standard deviation 0.010). A single-checkpoint transfer evaluation reached AUC 0.836 on XD-Violence and 0.862 on RWF-2000, while ShanghaiTech exposed a domain-shift failure (AUC 0.371).",
       techStack: ["Python", "PyTorch", "OpenCV", "NumPy", "Pandas"],
       footerLink: [
         {
           name: "GitHub",
-          url: "https://github.com/Chava-Sai/frozen-videomae-weakly-supervised.git"
+          url: "https://github.com/Chava-Sai/frozen-videomae-weakly-supervised"
         }
       ]
     },
     {
+      category: "AI / ML",
+      accentHue: 210,
       image: require("./assets/images/project-covers/AI_Auto_Grader.png"),
       projectName: "AI Auto Grader — Automated Assignment Grading with LLMs",
+      subtitle: "Multimodal RAG · OCR + vision · three LLM providers",
+      metrics: [
+        {value: "~3 min", label: "Per submission"},
+        {value: "$0.03", label: "Unit cost"},
+        {value: "14 → 2", label: "Grading gap"}
+      ],
       projectDesc:
         "Built a full-stack grading system for BU MET CS581 using OCR/vision extraction, ChromaDB lecture retrieval, and OpenAI, Claude, and Gemini models. Real PDF, PPTX, and XLSX submissions take about 3 minutes of automated processing at $0.03 per submission, excluding instructor review time. Calibration reduced the observed AI-instructor grading gap from 14 to 2 points.",
       techStack: ["Python", "Flask", "ChromaDB", "RAG", "OpenAI", "Gemini"],
@@ -399,8 +454,16 @@ const bigProjects = {
       ]
     },
     {
+      category: "Full-Stack",
+      accentHue: 160,
       image: require("./assets/images/project-covers/sidewalk.png"),
       projectName: "Sidewalk Accessibility Validator",
+      subtitle: "ADA compliance · GeoJSON audits · PyTorch + Llama advisor",
+      metrics: [
+        {value: "GeoJSON", label: "Rule engine"},
+        {value: "Llama", label: "Vision advisor"},
+        {value: "ADA", label: "Compliance"}
+      ],
       projectDesc:
         "Built a prize-winning ADA compliance platform (BU Civics Hack 2026) combining rule-based GeoJSON sidewalk audits with a PyTorch + Llama vision advisor. The system detects accessibility issues and generates actionable, location-aware recommendations for civic teams.",
       techStack: ["FastAPI", "React", "Vite", "PyTorch", "Llama"],
@@ -412,8 +475,16 @@ const bigProjects = {
       ]
     },
     {
+      category: "Data Science",
+      accentHue: 35,
       image: require("./assets/images/project-covers/boston_bus.png"),
       projectName: "Boston Transit Equity Intelligence",
+      subtitle: "MBTA ridership · reliability · demographic signals",
+      metrics: [
+        {value: "MBTA", label: "Transit data"},
+        {value: "Clustering", label: "Route risk"},
+        {value: "Explainable", label: "Delay drivers"}
+      ],
       projectDesc:
         "Built an MBTA transit equity analytics pipeline combining ridership, reliability, and demographic signals to identify service gaps. Developed clustering and predictive modeling workflows to surface route-level risks and explain key delay drivers for planning.",
       techStack: ["Python", "Pandas", "NumPy", "Scikit-learn", "TensorFlow"],
@@ -429,8 +500,16 @@ const bigProjects = {
       ]
     },
     {
+      category: "Research",
+      accentHue: 300,
       image: require("./assets/images/project-covers/explainable_hate_speech.png"),
       projectName: "Explainable Hate Speech Detection with RAG",
+      subtitle: "Multilingual QLoRA + RAG · grounded explanations",
+      metrics: [
+        {value: "QLoRA", label: "Adaptation"},
+        {value: "RAG", label: "Grounding"},
+        {value: "Macro-F1", label: "Reported"}
+      ],
       projectDesc:
         "Engineered a multilingual QLoRA + RAG pipeline for hate-speech and fake-news detection with grounded, explainable outputs. Combined transliteration, transformer embeddings, and retrieval to improve context relevance, reduce hallucinations, and strengthen macro-F1 performance.",
       techStack: ["Python", "PyTorch", "NLP", "LangChain", "RAG"],
@@ -442,8 +521,16 @@ const bigProjects = {
       ]
     },
     {
+      category: "Research",
+      accentHue: 330,
       image: require("./assets/images/project-covers/fake_hate_multitask.png"),
       projectName: "FakeHate Multitask Detection",
+      subtitle: "Multitask deep learning · multilingual · cluster features",
+      metrics: [
+        {value: "Multitask", label: "Architecture"},
+        {value: "Multilingual", label: "Coverage"},
+        {value: "F1 gains", label: "Class-wise"}
+      ],
       projectDesc:
         "Developed a multitask deep learning system for multilingual fake-news and hate-speech detection using transliteration, translation, and transformer embeddings. Added cluster-based feature engineering to improve class-wise robustness and deliver strong F1 gains across tasks.",
       techStack: ["Python", "PyTorch", "TensorFlow", "NLP", "Scikit-learn"],
@@ -455,10 +542,18 @@ const bigProjects = {
       ]
     },
     {
+      category: "Mobile",
+      accentHue: 190,
       image: require("./assets/images/project-covers/chat_buddy.png"),
       projectName: "Chat Buddy",
+      subtitle: "Flutter · Firebase · ZegoCloud video",
+      metrics: [
+        {value: "Flutter", label: "Cross-platform"},
+        {value: "Firebase", label: "Realtime"},
+        {value: "ZegoCloud", label: "Video calls"}
+      ],
       projectDesc:
-        "Built a production-style Flutter communication app with role-based access, real-time group messaging, and integrated voice/video calling via Firebase and Zego Cloud. Implemented secure authentication flows and session management for reliable low-latency collaboration.",
+        "Built a cross-platform Flutter messaging app with Firebase authentication and realtime sync, plus ZegoCloud video calling. Focused on a responsive chat experience with reliable presence and message delivery.",
       techStack: ["Flutter", "Firebase", "Python", "Zego Cloud"],
       footerLink: [
         {
@@ -467,8 +562,7 @@ const bigProjects = {
         }
       ]
     }
-  ],
-  display: true
+  ]
 };
 
 const publicationsSection = {

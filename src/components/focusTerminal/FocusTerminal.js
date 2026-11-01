@@ -1,58 +1,84 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import "./FocusTerminal.scss";
 
-export default function FocusTerminal({terminalData, isDark}) {
-  if (!terminalData || terminalData.display === false) {
-    return null;
-  }
+/**
+ * Hero terminal. Lines reveal one at a time with a blinking caret, and the
+ * whole thing is shown at once when the viewer prefers reduced motion.
+ */
+export default function FocusTerminal({terminalData}) {
+  const lines = (terminalData && terminalData.lines) || [];
+  const [shown, setShown] = useState(0);
 
-  const {
-    title,
-    command,
-    lines = [],
-    followUpCommand,
-    followUpOutput
-  } = terminalData;
+  useEffect(() => {
+    if (typeof window === "undefined" || lines.length === 0) return undefined;
+
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (reduced) {
+      setShown(lines.length);
+      return undefined;
+    }
+
+    let i = 0;
+    const id = setInterval(() => {
+      i += 1;
+      setShown(i);
+      if (i >= lines.length) clearInterval(id);
+    }, 220);
+    return () => clearInterval(id);
+  }, [lines.length]);
+
+  if (!terminalData || !terminalData.display) return null;
 
   return (
-    <div className={isDark ? "focus-terminal dark-mode" : "focus-terminal"}>
-      <div className="focus-terminal-titlebar">
-        <div className="focus-terminal-lights" aria-hidden="true">
-          <span className="light red"></span>
-          <span className="light yellow"></span>
-          <span className="light green"></span>
-        </div>
-        <span className="focus-terminal-title">{title}</span>
+    <div className="term">
+      <span className="term-sheen" aria-hidden="true"></span>
+
+      <div className="term-bar">
+        <span className="term-dot term-dot-red"></span>
+        <span className="term-dot term-dot-amber"></span>
+        <span className="term-dot term-dot-green"></span>
+        <span className="term-title">{terminalData.title}</span>
+        <span className="term-live">
+          <span className="term-live-dot"></span>
+          live
+        </span>
       </div>
 
-      <div className="focus-terminal-body">
-        <p className="focus-terminal-line command">
-          <span className="prompt">~$</span> {command}
-        </p>
+      <div className="term-body">
+        {lines.slice(0, shown).map((l, i) => {
+          if (l.kind === "prompt") {
+            return (
+              <div className="term-line" key={i}>
+                <span className="term-arrow">➜</span>{" "}
+                <span className="term-path">~/portfolio</span>{" "}
+                <span className="term-sigil">$</span>{" "}
+                <span className="term-cmd">{l.cmd}</span>
+              </div>
+            );
+          }
+          if (l.kind === "kv") {
+            return (
+              <div className="term-line term-kv" key={i}>
+                <span className="term-key">{l.key}</span>
+                <span className="term-colon">: </span>
+                <span className="term-val">{l.value}</span>
+                <span className="term-colon">,</span>
+              </div>
+            );
+          }
+          return (
+            <div
+              className={l.muted ? "term-line term-muted" : "term-line"}
+              key={i}
+            >
+              {l.line}
+            </div>
+          );
+        })}
 
-        {lines.map((line, index) => (
-          <p
-            key={`${line}-${index}`}
-            className="focus-terminal-line output output-point"
-          >
-            <span className="point-bullet" aria-hidden="true">
-              •
-            </span>
-            <span className="point-text">{line}</span>
-          </p>
-        ))}
-
-        <p className="focus-terminal-line command">
-          <span className="prompt">~$</span> {followUpCommand}
-        </p>
-        <p className="focus-terminal-line output output-answer">
-          {followUpOutput}
-        </p>
-
-        <p className="focus-terminal-line command">
-          <span className="prompt">~$</span>
-          <span className="cursor" aria-hidden="true"></span>
-        </p>
+        {shown < lines.length && <span className="term-caret"></span>}
       </div>
     </div>
   );
