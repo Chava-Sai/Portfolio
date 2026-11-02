@@ -43,3 +43,6 @@ jobs:
           branch: gh-pages
           # next.config.mjs sets output: "export", which writes to out/
           folder: out
+          # public/.nojekyll must survive — without it Pages runs Jekyll,
+          # which ignores _next/ and the whole site loads unstyled
+          clean: true
