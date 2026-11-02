@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="FakeHate — multitask detection of fake narratives and hateful reactions">
+  <defs>
+    <linearGradient id="fh-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#160a14"/>
+      <stop offset="55%" stop-color="#1a0b18"/>
+      <stop offset="100%" stop-color="#0f0a14"/>
+    </linearGradient>
+    <linearGradient id="fh-a" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f472b6"/>
+      <stop offset="100%" stop-color="#fb7185"/>
+    </linearGradient>
+    <linearGradient id="fh-b" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#a78bfa"/>
+    </linearGradient>
+    <radialGradient id="fh-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#f472b6" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#f472b6" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="fh-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#fh-bg)"/>
+  <rect width="1200" height="675" fill="url(#fh-grid)"/>
+  <ellipse cx="880" cy="160" rx="420" ry="300" fill="url(#fh-glow)"/>
+
+  <text x="80" y="92" font-family="Inter, system-ui, sans-serif" font-size="46" font-weight="800" fill="#ffeaf6" letter-spacing="-1">FakeHate</text>
+  <text x="80" y="128" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#d98ab8" letter-spacing="3">MULTITASK · MULTILINGUAL · SHARED ENCODER</text>
+
+  <!-- shared trunk -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#f0b6d6">
+    <rect x="80" y="214" width="240" height="46" rx="10" fill="#22101e" stroke="#f472b6" stroke-opacity="0.35"/>
+    <text x="102" y="243">transliteration</text>
+    <rect x="80" y="276" width="240" height="46" rx="10" fill="#22101e" stroke="#f472b6" stroke-opacity="0.35"/>
+    <text x="102" y="305">translation</text>
+    <rect x="80" y="338" width="240" height="46" rx="10" fill="#22101e" stroke="#f472b6" stroke-opacity="0.35"/>
+    <text x="102" y="367">transformer emb.</text>
+  </g>
+
+  <g stroke="#f472b6" stroke-opacity="0.4" stroke-width="2" fill="none">
+    <path d="M320 237 C 380 237, 380 299, 440 299"/>
+    <path d="M320 299 H 440"/>
+    <path d="M320 361 C 380 361, 380 299, 440 299"/>
+  </g>
+
+  <!-- shared representation node -->
+  <rect x="440" y="266" width="186" height="66" rx="14" fill="#2a1226" stroke="url(#fh-a)" stroke-width="2"/>
+  <text x="470" y="298" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="#ffd9ec">shared</text>
+  <text x="470" y="318" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="16" fill="#ffd9ec">encoder</text>
+
+  <!-- split into two heads -->
+  <g stroke-width="2" fill="none">
+    <path d="M626 288 C 700 288, 700 196, 780 196" stroke="url(#fh-a)" stroke-opacity="0.65"/>
+    <path d="M626 310 C 700 310, 700 402, 780 402" stroke="url(#fh-b)" stroke-opacity="0.65"/>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <rect x="780" y="168" width="256" height="58" rx="12" fill="#2a1226" stroke="#fb7185" stroke-opacity="0.5"/>
+    <text x="804" y="196" font-size="18" fill="#ffc6d8">fake-news head</text>
+    <text x="804" y="216" font-size="13" fill="#c2748f" letter-spacing="2">TASK A</text>
+
+    <rect x="780" y="374" width="256" height="58" rx="12" fill="#201130" stroke="#a78bfa" stroke-opacity="0.5"/>
+    <text x="804" y="402" font-size="18" fill="#dcc9ff">hate-speech head</text>
+    <text x="804" y="422" font-size="13" fill="#8e78c4" letter-spacing="2">TASK B</text>
+  </g>
+
+  <!-- cluster features feeding both -->
+  <g stroke="#c084fc" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="5 6" fill="none">
+    <path d="M533 332 V 470 H 908 V 436"/>
+    <path d="M908 470 V 240"/>
+  </g>
+  <rect x="440" y="470" width="300" height="52" rx="12" fill="#1c1226" stroke="#c084fc" stroke-opacity="0.4"/>
+  <text x="464" y="502" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#d4bbff">cluster features</text>
+
+  <!-- chips -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <rect x="80" y="560" width="206" height="62" rx="12" fill="#22101e" stroke="#f472b6" stroke-opacity="0.4"/>
+    <text x="100" y="589" font-size="23" font-weight="700" fill="#ffb3d1">2 tasks</text>
+    <text x="100" y="610" font-size="13" fill="#b5708f" letter-spacing="2">ONE ENCODER</text>
+
+    <rect x="308" y="560" width="252" height="62" rx="12" fill="#201130" stroke="#a78bfa" stroke-opacity="0.4"/>
+    <text x="328" y="589" font-size="23" font-weight="700" fill="#cdb4ff">class-wise F1</text>
+    <text x="328" y="610" font-size="13" fill="#8a76bd" letter-spacing="2">ROBUSTNESS GAIN</text>
+  </g>
+</svg>

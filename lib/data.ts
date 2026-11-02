@@ -60,37 +60,59 @@ export const education = [
 export const stats = [
   { label: "DravidianCodeMix 2026", value: "1st" },
   { label: "Papers & submissions", value: "4" },
-  { label: "UCF-Crime AUC", value: "0.922" },
+  { label: "Hackathons won", value: "5+" },
   { label: "Shipped projects", value: "7" },
 ] as const;
 
 export const techStack = {
-  Languages: ["Python", "C++", "Java", "JavaScript", "SQL", "Dart"],
-  "AI / ML": [
+  Languages: ["Python", "C++", "Java", "JavaScript", "TypeScript", "SQL", "Dart"],
+  "Machine Learning": [
+    "Scikit-Learn",
+    "XGBoost",
+    "Pandas",
+    "NumPy",
+    "SciPy",
+    "Matplotlib",
+    "Feature Engineering",
+  ],
+  "Deep Learning": [
     "PyTorch",
     "TensorFlow",
+    "Keras",
     "Hugging Face",
-    "Scikit-Learn",
     "LoRA / QLoRA",
+    "Transformers",
+    "VideoMAE",
+  ],
+  "NLP & Vision": [
     "XLM-R",
     "MuRIL",
-    "VideoMAE",
+    "IndicTrans2",
     "OpenCV",
-    "Transformers",
+    "spaCy",
+    "NLTK",
+    "Tokenizers",
   ],
-  "LLM Systems": [
-    "RAG",
-    "LangChain",
-    "ChromaDB",
-    "FAISS",
-    "BM25",
-    "OpenAI",
-    "Gemini",
-    "Llama",
+  "LLM Systems": ["RAG", "LangChain", "ChromaDB", "FAISS", "BM25", "OpenAI", "Gemini"],
+  Backend: [
+    "FastAPI",
+    "Flask",
+    "Node.js",
+    "REST APIs",
+    "PostgreSQL",
+    "MySQL",
+    "SQLAlchemy",
   ],
-  Backend: ["FastAPI", "Flask", "Node.js", "REST APIs", "PostgreSQL", "MySQL"],
-  Frontend: ["React", "Next.js", "Vite", "Flutter", "HTML", "CSS"],
-  "Cloud / DevOps": ["AWS", "Google Cloud Run", "Docker", "Git", "Firebase"],
+  Frontend: ["React", "Next.js", "Vite", "Flutter", "Tailwind", "HTML", "CSS"],
+  "Cloud & Tooling": [
+    "AWS",
+    "Google Cloud Run",
+    "Docker",
+    "Git",
+    "Firebase",
+    "Vercel",
+    "Jupyter",
+  ],
 } as const;
 
 export const experience = [
@@ -245,7 +267,7 @@ export const projects: Project[] = [
     ],
     category: "Research",
     accentHue: 150,
-    image: "/projects/explainable_hate_speech.png",
+    image: "/projects/hatelens.svg",
   },
   {
     slug: "auto-grader",
@@ -357,7 +379,7 @@ export const projects: Project[] = [
     ],
     category: "Research",
     accentHue: 330,
-    image: "/projects/fake_hate_multitask.png",
+    image: "/projects/fakehate.svg",
   },
   {
     slug: "chat-buddy",
@@ -421,9 +443,34 @@ export const research = [
   },
 ] as const;
 
+export const inFlight = [
+  {
+    label: "Code-mixed retrieval study",
+    detail: "Romanization penalty + correctness/faithfulness decoupling",
+    status: "Drafting",
+  },
+  {
+    label: "SemEval 2027 · Agent Risk",
+    detail: "Shared task participation",
+    status: "Planned",
+  },
+  {
+    label: "AAAI 2027 workshop",
+    detail: "Submission in preparation",
+    status: "In prep",
+  },
+  {
+    label: "HateLens working notes",
+    detail: "DravidianCodeMix @ FIRE 2026",
+    status: "Under review",
+  },
+] as const;
+
 export const currentlyExploring = [
-  "Multilingual and code-mixed hate-speech detection",
-  "Faithfulness and attribution evaluation for RAG",
+  "Romanization penalty in multilingual retrieval — code-mixed IR",
+  "Correctness vs faithfulness decoupling in RAG evaluation",
+  "Agent risk — SemEval 2027 shared task",
+  "AAAI 2027 workshop submission",
   "Weakly supervised video understanding",
   "QLoRA-adapted LLMs for low-resource languages",
 ] as const;
@@ -449,6 +496,37 @@ export const awards = [
       "Won for the Sidewalk Accessibility Validator built for Cyvl's civic accessibility problem statement.",
     href: "https://github.com/Chava-Sai/Sidewalk-Acessibility-Validator-Cyvl",
     logo: "/logos/BU-spark.png",
+  },
+] as const;
+
+export const pinnedRepos = [
+  {
+    name: "frozen-videomae-weakly-supervised",
+    description: "Weakly supervised violence detection on frozen VideoMAE-B features",
+    language: "Python",
+    hue: 265,
+    href: "https://github.com/Chava-Sai/frozen-videomae-weakly-supervised",
+  },
+  {
+    name: "HateLens-DravidianCodeMix-2026",
+    description: "1st of 9 — hierarchical Tamil hate-speech detection",
+    language: "Python",
+    hue: 150,
+    href: "https://github.com/Chava-Sai/HateLens-DravidianCodeMix-2026",
+  },
+  {
+    name: "Sidewalk-Acessibility-Validator-Cyvl",
+    description: "ADA compliance auditing with a vision advisor",
+    language: "Python",
+    hue: 160,
+    href: "https://github.com/Chava-Sai/Sidewalk-Acessibility-Validator-Cyvl",
+  },
+  {
+    name: "Chat-Buddy",
+    description: "Flutter messaging app with Firebase and ZegoCloud video",
+    language: "Dart",
+    hue: 190,
+    href: "https://github.com/Chava-Sai/Chat-Buddy",
   },
 ] as const;
 

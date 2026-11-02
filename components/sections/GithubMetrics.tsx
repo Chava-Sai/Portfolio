@@ -1,12 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Code, GitCommitVertical, Github, Star } from "lucide-react";
+import {
+  ArrowUpRight,
+  Code,
+  GitBranch,
+  GitCommitVertical,
+  Github,
+  Star,
+} from "lucide-react";
 import { useMemo } from "react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/effects/Reveal";
 import { Sparkle } from "@/components/effects/Sparkle";
-import { githubStats, personal } from "@/lib/data";
+import { githubStats, personal, pinnedRepos } from "@/lib/data";
 import { cn } from "@/lib/utils";
 
 export function GithubMetrics() {
@@ -91,6 +98,46 @@ export function GithubMetrics() {
                   ))}
                 </div>
                 <span>more</span>
+              </div>
+            </div>
+
+            <div className="card-elevated relative mt-4 overflow-hidden rounded-2xl p-5">
+              <Sparkle density={0.25} hue={265} className="opacity-40" />
+              <div className="relative">
+                <div className="mb-3.5 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                  <GitBranch className="h-3.5 w-3.5 text-indigo-300" />
+                  Pinned repositories
+                </div>
+                <ul className="space-y-2">
+                  {pinnedRepos.map((repo) => (
+                    <li key={repo.name}>
+                      <a
+                        href={repo.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="focus-ring group flex items-start justify-between gap-3 rounded-lg border border-transparent px-2 py-1.5 transition-colors hover:border-border hover:bg-foreground/[0.03]"
+                      >
+                        <span className="min-w-0">
+                          <span className="flex items-center gap-1.5">
+                            <span
+                              className="h-1.5 w-1.5 flex-none rounded-full"
+                              style={{ background: `hsl(${repo.hue} 85% 65%)` }}
+                            />
+                            <span className="truncate font-mono text-[12px] text-foreground">
+                              {repo.name}
+                            </span>
+                          </span>
+                          <span className="mt-0.5 block truncate text-[12px] text-muted-foreground">
+                            {repo.description}
+                          </span>
+                        </span>
+                        <span className="mt-0.5 flex-none font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+                          {repo.language}
+                        </span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </Reveal>

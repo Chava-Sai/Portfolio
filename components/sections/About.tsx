@@ -1,6 +1,6 @@
 "use client";
 
-import { GraduationCap, MapPin, Quote, Sparkles } from "lucide-react";
+import { FlaskConical, GraduationCap, MapPin, Quote, Sparkles } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -8,7 +8,7 @@ import { Reveal } from "@/components/effects/Reveal";
 import { Parallax } from "@/components/effects/Parallax";
 import { Sparkle } from "@/components/effects/Sparkle";
 import { SafeImage } from "@/components/ui/SafeImage";
-import { currentlyExploring, education, stats } from "@/lib/data";
+import { currentlyExploring, education, inFlight, stats } from "@/lib/data";
 
 const STAT_HUES = [231, 305, 35, 151];
 
@@ -94,10 +94,11 @@ export function About() {
                 className="absolute -left-px -top-3 h-4 w-4 text-foreground/30"
               />
               <blockquote className="text-[13.5px] italic leading-relaxed text-muted-foreground">
-                &ldquo;All models are wrong, but some are useful.&rdquo;
+                &ldquo;A number that only holds on one seed is a story, not a
+                result.&rdquo;
               </blockquote>
               <figcaption className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground/70">
-                — George E. P. Box
+                — Sai
               </figcaption>
             </figure>
 
@@ -154,6 +155,36 @@ export function About() {
                     <li key={c} className="flex items-start gap-2">
                       <span className="mt-2 inline-block h-1 w-1 flex-none rounded-full bg-foreground/70" />
                       <span>{c}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="card-elevated relative overflow-hidden rounded-2xl p-5">
+              <Sparkle density={0.3} className="opacity-50" />
+              <div className="relative">
+                <div className="mb-3 flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                  <FlaskConical className="h-3.5 w-3.5 text-indigo-300" />
+                  In flight
+                </div>
+                <ul className="space-y-2.5">
+                  {inFlight.map((item) => (
+                    <li
+                      key={item.label}
+                      className="flex items-start justify-between gap-3"
+                    >
+                      <span className="min-w-0">
+                        <span className="block text-sm leading-snug text-foreground">
+                          {item.label}
+                        </span>
+                        <span className="block text-[12px] leading-snug text-muted-foreground">
+                          {item.detail}
+                        </span>
+                      </span>
+                      <span className="mt-0.5 flex-none rounded-full border border-border px-2 py-0.5 font-mono text-[9.5px] uppercase tracking-[0.14em] text-muted-foreground">
+                        {item.status}
+                      </span>
                     </li>
                   ))}
                 </ul>
