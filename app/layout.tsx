@@ -23,9 +23,11 @@ const jetbrains = JetBrains_Mono({
   display: "swap",
 });
 
-const SITE_URL = "https://chava-sai.github.io/Portfolio";
+// Both inlined by next.config.mjs so they track whichever host built this.
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://chava-sai.github.io/Portfolio";
 // Next does not apply basePath to metadata icon URLs, so prefix them here.
-const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/Portfolio";
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -98,6 +100,47 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${inter.variable} ${jetbrains.variable}`}
     >
       <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+        {/* Person schema — this is what lets a search for the name surface
+            the site with an identity panel rather than a bare blue link. */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: personal.name,
+              alternateName: "Sai Chava",
+              url: SITE_URL,
+              image: `${SITE_URL}/profile.png`,
+              jobTitle: "AI/ML Engineer",
+              description: personal.tagline,
+              email: personal.email,
+              alumniOf: [
+                {
+                  "@type": "CollegeOrUniversity",
+                  name: "Boston University",
+                },
+                {
+                  "@type": "CollegeOrUniversity",
+                  name: "Indian Institute of Information Technology Dharwad",
+                },
+              ],
+              knowsAbout: [
+                "Machine Learning",
+                "Natural Language Processing",
+                "Computer Vision",
+                "Retrieval-Augmented Generation",
+                "Code-Mixed NLP",
+                "Deep Learning",
+              ],
+              sameAs: [
+                personal.socials.github,
+                personal.socials.linkedin,
+                personal.socials.anthology,
+              ],
+            }),
+          }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

@@ -10,7 +10,8 @@ export function cn(...inputs: ClassValue[]) {
  * next/image and next/link handle this themselves; plain <img> tags do not.
  */
 export function assetPath(path: string): string {
-  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "/Portfolio";
+  // next.config.mjs inlines this: "/Portfolio" on Pages, "" on Vercel.
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   if (!path.startsWith("/")) return path;
   return `${base}${path}`;
 }
