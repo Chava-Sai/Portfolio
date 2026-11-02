@@ -73,8 +73,35 @@ export function Navbar() {
             href="#top"
             className="flex shrink-0 items-center gap-2.5 whitespace-nowrap pl-2 font-mono text-sm font-medium tracking-tight"
           >
-            <span className="relative flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-[hsl(var(--border-strong))] bg-card text-[11px] font-semibold shadow-[0_0_18px_-6px_hsl(var(--foreground)/0.4)]">
-              SH
+            <span className="relative flex h-7 w-7 shrink-0 items-center justify-center overflow-hidden rounded-md shadow-[0_0_18px_-6px_hsl(var(--foreground)/0.4)]">
+              {/* the hierarchy-fan mark, same glyph as the favicon */}
+              <svg viewBox="0 0 64 64" className="h-full w-full" aria-hidden="true">
+                <defs>
+                  <linearGradient id="nav-mark" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#8b5cf6" />
+                    <stop offset="52%" stopColor="#6366f1" />
+                    <stop offset="100%" stopColor="#22d3ee" />
+                  </linearGradient>
+                </defs>
+                <rect width="64" height="64" rx="15" fill="url(#nav-mark)" />
+                <g
+                  stroke="#0b0b12"
+                  strokeWidth="4.2"
+                  strokeLinecap="round"
+                  fill="none"
+                  opacity="0.92"
+                >
+                  <path d="M20 32 C 30 32, 32 17, 44 17" />
+                  <path d="M20 32 H 44" />
+                  <path d="M20 32 C 30 32, 32 47, 44 47" />
+                </g>
+                <g fill="#0b0b12" opacity="0.95">
+                  <circle cx="20" cy="32" r="6.6" />
+                  <circle cx="45" cy="17" r="4.6" />
+                  <circle cx="45" cy="32" r="4.6" />
+                  <circle cx="45" cy="47" r="4.6" />
+                </g>
+              </svg>
               <span className="absolute -inset-px rounded-md border border-foreground/10" />
             </span>
             <span className="hidden whitespace-nowrap sm:inline">{personal.name}</span>

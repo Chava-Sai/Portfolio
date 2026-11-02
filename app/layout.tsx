@@ -65,8 +65,10 @@ export const metadata: Metadata = {
     description: personal.tagline,
   },
   robots: { index: true, follow: true },
+  manifest: `${BASE_PATH}/manifest.json`,
   icons: {
     icon: [
+      { url: `${BASE_PATH}/logo.svg`, type: "image/svg+xml" },
       {
         url: `${BASE_PATH}/favicon-32x32.png`,
         sizes: "32x32",
