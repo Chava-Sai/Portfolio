@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="HateLens — hierarchical Tamil hate-speech detection">
+  <defs>
+    <linearGradient id="hl-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1410"/>
+      <stop offset="55%" stop-color="#0b1a16"/>
+      <stop offset="100%" stop-color="#0a0f14"/>
+    </linearGradient>
+    <linearGradient id="hl-accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#34d399"/>
+      <stop offset="100%" stop-color="#5eead4"/>
+    </linearGradient>
+    <radialGradient id="hl-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.30"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="hl-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#hl-bg)"/>
+  <rect width="1200" height="675" fill="url(#hl-grid)"/>
+  <ellipse cx="300" cy="140" rx="420" ry="300" fill="url(#hl-glow)"/>
+
+  <!-- hierarchy tree: one root fanning into five levels -->
+  <g stroke="url(#hl-accent)" stroke-opacity="0.55" stroke-width="2" fill="none">
+    <path d="M250 338 C 360 338, 380 150, 500 150"/>
+    <path d="M250 338 C 360 338, 380 244, 500 244"/>
+    <path d="M250 338 C 380 338, 400 338, 500 338"/>
+    <path d="M250 338 C 360 338, 380 432, 500 432"/>
+    <path d="M250 338 C 360 338, 380 526, 500 526"/>
+  </g>
+
+  <circle cx="250" cy="338" r="19" fill="#0a1410" stroke="url(#hl-accent)" stroke-width="3"/>
+  <circle cx="250" cy="338" r="7" fill="#34d399"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="19" fill="#9fe8cf">
+    <g>
+      <rect x="500" y="130" width="196" height="40" rx="9" fill="#0d1f1a" stroke="#34d399" stroke-opacity="0.45"/>
+      <text x="520" y="156">L1 · hate?</text>
+      <circle cx="672" cy="150" r="5" fill="#34d399"/>
+    </g>
+    <g>
+      <rect x="500" y="224" width="196" height="40" rx="9" fill="#0d1f1a" stroke="#34d399" stroke-opacity="0.38"/>
+      <text x="520" y="250">L2 · target</text>
+      <circle cx="672" cy="244" r="5" fill="#34d399" fill-opacity="0.8"/>
+    </g>
+    <g>
+      <rect x="500" y="318" width="196" height="40" rx="9" fill="#0d1f1a" stroke="#34d399" stroke-opacity="0.32"/>
+      <text x="520" y="344">L3 · severity</text>
+      <circle cx="672" cy="338" r="5" fill="#34d399" fill-opacity="0.65"/>
+    </g>
+    <g>
+      <rect x="500" y="412" width="196" height="40" rx="9" fill="#0d1f1a" stroke="#34d399" stroke-opacity="0.26"/>
+      <text x="520" y="438">L4 · rare</text>
+      <circle cx="672" cy="432" r="5" fill="#34d399" fill-opacity="0.5"/>
+    </g>
+    <g>
+      <rect x="500" y="506" width="196" height="40" rx="9" fill="#0d1f1a" stroke="#34d399" stroke-opacity="0.2"/>
+      <text x="520" y="532">L5 · hope</text>
+      <circle cx="672" cy="526" r="5" fill="#34d399" fill-opacity="0.38"/>
+    </g>
+  </g>
+
+  <!-- encoder stack -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="17" fill="#6ee7b7">
+    <rect x="770" y="186" width="250" height="46" rx="10" fill="#0d1f1a" stroke="#5eead4" stroke-opacity="0.35"/>
+    <text x="792" y="215">MuRIL + XLM-R</text>
+    <rect x="770" y="250" width="250" height="46" rx="10" fill="#0d1f1a" stroke="#5eead4" stroke-opacity="0.35"/>
+    <text x="792" y="279">QLoRA · 7B</text>
+    <rect x="770" y="314" width="250" height="46" rx="10" fill="#0d1f1a" stroke="#5eead4" stroke-opacity="0.35"/>
+    <text x="792" y="343">per-level ensemble</text>
+  </g>
+  <g stroke="#5eead4" stroke-opacity="0.3" stroke-width="2" stroke-dasharray="5 6">
+    <path d="M712 232 H 768"/>
+    <path d="M712 279 H 768"/>
+    <path d="M712 338 H 768"/>
+  </g>
+
+  <!-- title block -->
+  <text x="80" y="92" font-family="Inter, system-ui, sans-serif" font-size="46" font-weight="800" fill="#eafff6" letter-spacing="-1">HateLens</text>
+  <text x="80" y="128" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" fill="#5fcfae" letter-spacing="3">TAMIL · CODE-MIXED · 5 LEVELS</text>
+
+  <!-- result chips -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <rect x="80" y="560" width="190" height="62" rx="12" fill="#0d1f1a" stroke="#34d399" stroke-opacity="0.4"/>
+    <text x="100" y="589" font-size="25" font-weight="700" fill="#6ee7b7">1st / 9</text>
+    <text x="100" y="610" font-size="13" fill="#4f9e84" letter-spacing="2">LEADERBOARD</text>
+
+    <rect x="292" y="560" width="210" height="62" rx="12" fill="#0d1f1a" stroke="#34d399" stroke-opacity="0.4"/>
+    <text x="312" y="589" font-size="25" font-weight="700" fill="#6ee7b7">0.4603</text>
+    <text x="312" y="610" font-size="13" fill="#4f9e84" letter-spacing="2">MEAN MACRO-F1</text>
+  </g>
+</svg>
