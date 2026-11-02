@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { personal } from "@/lib/data";
 
 export function LoadingScreen() {
   const [done, setDone] = useState(false);
@@ -46,7 +45,21 @@ export function LoadingScreen() {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-border bg-card font-mono text-xl font-semibold"
             >
-              <span className="text-gradient">{personal.initials}</span>
+              {/* Neural Knot, matching the navbar and favicon. */}
+              <svg viewBox="0 0 64 64" className="h-9 w-9" aria-hidden="true">
+                <g fill="none" strokeLinecap="round">
+                  <path
+                    d="M20 32c-12-14 1-28 12-15l12 15c12 14-1 28-12 15Z"
+                    stroke="#86cfff"
+                    strokeWidth="7"
+                  />
+                  <path
+                    d="M20 32c-12 14 1 28 12 15l12-15c12-14-1-28-12-15Z"
+                    stroke="currentColor"
+                    strokeWidth="5"
+                  />
+                </g>
+              </svg>
               <span className="absolute inset-0 rounded-2xl border border-foreground/10 [mask-image:linear-gradient(180deg,white,transparent)]" />
             </motion.div>
             <div className="w-full space-y-2">
