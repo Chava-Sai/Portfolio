@@ -33,10 +33,7 @@ export function Sparkle({ density = 1, className, hue, seed = 1234 }: Props) {
     }));
   }, [density, seed]);
 
-  const color =
-    hue !== undefined
-      ? `hsl(${hue} 95% 75%)`
-      : "hsl(var(--foreground))";
+  const color = hue !== undefined ? `hsl(${hue} 95% 75%)` : "hsl(var(--foreground))";
 
   return (
     <div

@@ -19,8 +19,20 @@ const LINKS: Array<{
   external?: boolean;
 }> = [
   { href: personal.socials.email, label: "Email", icon: Mail, hue: 35, external: true },
-  { href: personal.socials.linkedin, label: "LinkedIn", icon: Linkedin, hue: 210, external: true },
-  { href: personal.socials.github, label: "GitHub", icon: Github, hue: 265, external: true },
+  {
+    href: personal.socials.linkedin,
+    label: "LinkedIn",
+    icon: Linkedin,
+    hue: 210,
+    external: true,
+  },
+  {
+    href: personal.socials.github,
+    label: "GitHub",
+    icon: Github,
+    hue: 265,
+    external: true,
+  },
   {
     href: personal.socials.anthology,
     label: "ACL Anthology",
@@ -54,8 +66,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col items-start gap-2 border-t border-border-strong/60 pt-6 text-[11px] text-muted-foreground sm:flex-row sm:items-center sm:justify-center">
           <p className="inline-flex items-center gap-1.5 font-mono">
-            Built by —{" "}
-            <span className="text-foreground">{personal.name}</span>
+            Built by — <span className="text-foreground">{personal.name}</span>
           </p>
         </div>
       </div>

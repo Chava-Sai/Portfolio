@@ -14,12 +14,10 @@ const buttonVariants = cva(
           "cta-aurora bg-foreground text-background shadow-[0_8px_24px_-12px_hsl(var(--shadow)/0.7)] hover:-translate-y-[1px] hover:shadow-[0_18px_40px_-18px_hsl(var(--foreground)/0.45)] active:scale-[0.98]",
         secondary:
           "glass-strong text-foreground hover:-translate-y-[1px] hover:border-foreground/40 hover:shadow-[0_18px_40px_-22px_hsl(var(--shadow)/0.55)]",
-        ghost:
-          "text-foreground hover:-translate-y-[1px] hover:bg-accent/70",
+        ghost: "text-foreground hover:-translate-y-[1px] hover:bg-accent/70",
         outline:
           "border border-[hsl(var(--border-strong))] bg-transparent text-foreground hover:-translate-y-[1px] hover:border-foreground/50 hover:bg-card/60",
-        glow:
-          "cta-aurora bg-foreground text-background shadow-[0_10px_30px_-12px_hsl(var(--foreground)/0.45)] hover:-translate-y-[1px] hover:shadow-[0_20px_50px_-18px_hsl(var(--foreground)/0.6)]",
+        glow: "cta-aurora bg-foreground text-background shadow-[0_10px_30px_-12px_hsl(var(--foreground)/0.45)] hover:-translate-y-[1px] hover:shadow-[0_20px_50px_-18px_hsl(var(--foreground)/0.6)]",
       },
       size: {
         sm: "h-9 px-3 text-xs",
@@ -33,7 +31,8 @@ const buttonVariants = cva(
 );
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean;
 }

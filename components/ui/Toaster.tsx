@@ -75,9 +75,7 @@ export function Toaster() {
             </div>
             <button
               type="button"
-              onClick={() =>
-                setToasts((s) => s.filter((x) => x.id !== t.id))
-              }
+              onClick={() => setToasts((s) => s.filter((x) => x.id !== t.id))}
               className="rounded-md p-1 text-muted-foreground transition hover:bg-accent hover:text-foreground"
               aria-label="Dismiss"
             >

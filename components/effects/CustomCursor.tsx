@@ -72,9 +72,7 @@ export function CustomCursor() {
           border: "1.5px solid hsl(var(--foreground) / 0.85)",
           boxShadow:
             "0 0 0 1px hsl(var(--background) / 0.7), 0 6px 22px hsl(0 0% 0% / 0.35), inset 0 0 0 1px hsl(var(--background) / 0.4)",
-          background: hovering
-            ? "hsl(var(--foreground) / 0.06)"
-            : "transparent",
+          background: hovering ? "hsl(var(--foreground) / 0.06)" : "transparent",
         }}
         transition={{ type: "spring", stiffness: 260, damping: 30 }}
       />

@@ -69,7 +69,13 @@ export function CommandPalette() {
     () => [
       { id: "top", label: "Go to top", group: "Navigate", icon: Home, href: "#top" },
       { id: "about", label: "About", group: "Navigate", icon: User, href: "#about" },
-      { id: "stack", label: "Tech stack", group: "Navigate", icon: Code2, href: "#stack" },
+      {
+        id: "stack",
+        label: "Tech stack",
+        group: "Navigate",
+        icon: Code2,
+        href: "#stack",
+      },
       {
         id: "experience",
         label: "Experience",
@@ -260,8 +266,8 @@ export function CommandPalette() {
                     <span>↑ ↓ navigate</span>
                     <span>↵ select</span>
                     <span>
-                      <span className="kbd">⌘</span>{" "}
-                      <span className="kbd">K</span> to toggle
+                      <span className="kbd">⌘</span> <span className="kbd">K</span> to
+                      toggle
                     </span>
                   </div>
                 </div>

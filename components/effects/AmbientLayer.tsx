@@ -100,7 +100,7 @@ export function AmbientLayer() {
       {/* Sparkles — Apple iPhone style glitter, deterministically placed */}
       <motion.div className="absolute inset-0" style={{ opacity: sparkleOpacity }}>
         {sparkles.map((s, i) => {
-          const top = ((i * 53) % 100);
+          const top = (i * 53) % 100;
           return (
             <span
               key={`spk-${i}`}

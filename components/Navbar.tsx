@@ -77,9 +77,7 @@ export function Navbar() {
               SH
               <span className="absolute -inset-px rounded-md border border-foreground/10" />
             </span>
-            <span className="hidden whitespace-nowrap sm:inline">
-              {personal.name}
-            </span>
+            <span className="hidden whitespace-nowrap sm:inline">{personal.name}</span>
           </Link>
 
           <div className="hidden items-center gap-1 md:flex">
@@ -188,7 +186,7 @@ function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  const current = mounted ? resolvedTheme ?? theme : "dark";
+  const current = mounted ? (resolvedTheme ?? theme) : "dark";
 
   return (
     <button

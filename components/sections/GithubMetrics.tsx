@@ -1,13 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  ArrowUpRight,
-  Code,
-  GitCommitVertical,
-  Github,
-  Star,
-} from "lucide-react";
+import { ArrowUpRight, Code, GitCommitVertical, Github, Star } from "lucide-react";
 import { useMemo } from "react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/effects/Reveal";
@@ -48,9 +42,7 @@ export function GithubMetrics() {
                     <Github className="h-4 w-4" />
                   </span>
                   <div>
-                    <p className="text-sm font-semibold">
-                      @{githubStats.username}
-                    </p>
+                    <p className="text-sm font-semibold">@{githubStats.username}</p>
                     <p className="font-mono text-[11px] text-muted-foreground">
                       Contribution graph · last 12 months
                     </p>
@@ -131,9 +123,24 @@ export function GithubMetrics() {
                   Activity signal
                 </p>
                 <div className="mt-3 space-y-2 text-xs">
-                  <Row icon={GitCommitVertical} label="Recent commit cadence" value="daily" hue={151} />
-                  <Row icon={Code} label="Primary languages" value="Python · TS · Java" hue={47} />
-                  <Row icon={Star} label="Areas of focus" value="LLMs · RAG · Backend" hue={265} />
+                  <Row
+                    icon={GitCommitVertical}
+                    label="Recent commit cadence"
+                    value="daily"
+                    hue={151}
+                  />
+                  <Row
+                    icon={Code}
+                    label="Primary languages"
+                    value="Python · TS · Java"
+                    hue={47}
+                  />
+                  <Row
+                    icon={Star}
+                    label="Areas of focus"
+                    value="LLMs · RAG · Backend"
+                    hue={265}
+                  />
                 </div>
               </div>
             </div>

@@ -37,7 +37,10 @@ export function Experience() {
           label="03 · Experience"
           title={
             <>
-              Engineering across <span className="text-gradient-accent">software development, research, and ML.</span>
+              Engineering across{" "}
+              <span className="text-gradient-accent">
+                software development, research, and ML.
+              </span>
             </>
           }
           description="Five roles spanning applied AI engineering, machine translation research, technical project management, contract instruction, and freelance computer vision delivery."
@@ -90,11 +93,17 @@ function TimelineCard({ job }: { job: (typeof experience)[number] }) {
         )}
         style={
           open
-            ? ({ boxShadow: `0 0 0 1px hsl(${hue} 80% 60% / 0.3), 0 24px 60px -28px hsl(${hue} 80% 30% / 0.55)` } as React.CSSProperties)
+            ? ({
+                boxShadow: `0 0 0 1px hsl(${hue} 80% 60% / 0.3), 0 24px 60px -28px hsl(${hue} 80% 30% / 0.55)`,
+              } as React.CSSProperties)
             : undefined
         }
       >
-        <Sparkle density={0.25} hue={hue} className="opacity-0 transition-opacity duration-500 group-hover:opacity-60" />
+        <Sparkle
+          density={0.25}
+          hue={hue}
+          className="opacity-0 transition-opacity duration-500 group-hover:opacity-60"
+        />
         <div
           aria-hidden
           className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full blur-3xl transition group-hover:scale-110"
@@ -108,12 +117,8 @@ function TimelineCard({ job }: { job: (typeof experience)[number] }) {
             >
               {job.role}
             </div>
-            <h3 className="mt-1 text-lg font-semibold tracking-tight">
-              {job.company}
-            </h3>
-            <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-              {job.summary}
-            </p>
+            <h3 className="mt-1 text-lg font-semibold tracking-tight">{job.company}</h3>
+            <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{job.summary}</p>
           </div>
           <div className="flex items-center gap-4 text-[11px] text-muted-foreground md:flex-col md:items-end md:gap-1">
             <span className="font-mono">{job.period}</span>
@@ -208,9 +213,7 @@ const HIGHLIGHT_TERMS = [
 
 function Highlight({ text }: { text: string }) {
   const pattern = new RegExp(
-    `(${HIGHLIGHT_TERMS.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join(
-      "|"
-    )})`,
+    `(${HIGHLIGHT_TERMS.map((t) => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("|")})`,
     "gi"
   );
   const parts = text.split(pattern);

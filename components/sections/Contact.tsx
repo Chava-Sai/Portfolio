@@ -53,9 +53,7 @@ const QUICK_LINKS = [
 ];
 
 export function Contact() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
-    "idle"
-  );
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -115,7 +113,8 @@ export function Contact() {
           label="07 · Contact"
           title={
             <>
-              Let&apos;s build something <span className="text-gradient-accent">together.</span>
+              Let&apos;s build something{" "}
+              <span className="text-gradient-accent">together.</span>
             </>
           }
           description="Open to Summer 2027 AI/ML and research internships, PhD opportunities, research collaborations, and conversations about low-resource NLP. Drop a note and I'll respond within 24 hours."
@@ -203,12 +202,12 @@ export function Contact() {
                     <span className="text-emerald-400">$</span> say --hello
                   </p>
                   <p className="mt-1">
-                    <span className="text-foreground">recruiters</span> — fastest
-                    reply via this form or LinkedIn.
+                    <span className="text-foreground">recruiters</span> — fastest reply
+                    via this form or LinkedIn.
                   </p>
                   <p>
-                    <span className="text-foreground">collaborators</span> — GitHub
-                    DMs work too.
+                    <span className="text-foreground">collaborators</span> — GitHub DMs
+                    work too.
                   </p>
                 </div>
               </div>
@@ -261,8 +260,8 @@ export function Contact() {
                   <span className="text-foreground">./compose-message --to sai</span>
                 </div>
                 <div className="text-muted-foreground">
-                  <span className="text-fuchsia-300">[info]</span> opening secure
-                  channel · awaiting input
+                  <span className="text-fuchsia-300">[info]</span> opening secure channel
+                  · awaiting input
                   <span className="ml-1 inline-block h-3 w-1.5 -translate-y-[1px] animate-caret-blink bg-foreground align-middle" />
                 </div>
               </div>
@@ -310,12 +309,7 @@ export function Contact() {
                 <div className="absolute -left-[9999px] top-0" aria-hidden>
                   <label>
                     Leave this empty
-                    <input
-                      type="text"
-                      name="website"
-                      tabIndex={-1}
-                      autoComplete="off"
-                    />
+                    <input type="text" name="website" tabIndex={-1} autoComplete="off" />
                   </label>
                 </div>
 
@@ -386,9 +380,7 @@ function Field({
           {label}
         </label>
         {optional ? (
-          <span className="font-mono text-[10px] text-muted-foreground/60">
-            optional
-          </span>
+          <span className="font-mono text-[10px] text-muted-foreground/60">optional</span>
         ) : null}
       </div>
       <div className="relative">
@@ -445,9 +437,7 @@ function Field({
           />
         )}
       </div>
-      {error ? (
-        <p className="font-mono text-[10px] text-red-400">{error}</p>
-      ) : null}
+      {error ? <p className="font-mono text-[10px] text-red-400">{error}</p> : null}
     </div>
   );
 }

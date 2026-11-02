@@ -21,8 +21,8 @@ export function About() {
           title={
             <>
               Engineer at the seam of{" "}
-              <span className="text-gradient-accent">AI research</span> and
-              production software.
+              <span className="text-gradient-accent">AI research</span> and production
+              software.
             </>
           }
           description="I work at the intersection of applied research and shipped software — multilingual NLP, weakly supervised vision, and retrieval-augmented systems — and I care most about whether a result survives a change of seed, dataset or domain."
@@ -30,7 +30,7 @@ export function About() {
 
         <div className="mt-14 grid grid-cols-1 gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <Reveal className="space-y-6 text-[15px] leading-relaxed text-muted-foreground">
-            {/* Avatar + identity strip — image lives at /public/profile_image.jpg */}
+            {/* Avatar + identity strip — image lives at /public/profile.png */}
             <div className="flex items-center gap-4">
               <div className="relative h-16 w-16 flex-none overflow-hidden rounded-full border border-[hsl(var(--border-strong))] bg-card shadow-[0_8px_24px_-12px_hsl(var(--shadow)/0.5)] sm:h-20 sm:w-20">
                 <SafeImage
@@ -64,31 +64,27 @@ export function About() {
 
             <p>
               I&apos;m an M.S. Artificial Intelligence student at{" "}
-              <span className="font-semibold text-foreground">
-                Boston University
-              </span>
-              , working across multilingual NLP, computer vision and
-              retrieval-augmented systems. My work runs from shared-task
-              research — a first-place finish on DravidianCodeMix 2026 and
-              papers in the ACL Anthology — to RAG pipelines and FastAPI
-              backends built for a solar operations team.
+              <span className="font-semibold text-foreground">Boston University</span>,
+              working across multilingual NLP, computer vision and retrieval-augmented
+              systems. My work runs from shared-task research — a first-place finish on
+              DravidianCodeMix 2026 and papers in the ACL Anthology — to RAG pipelines and
+              FastAPI backends built for a solar operations team.
             </p>
             <p>
               I move between{" "}
               <span className="font-semibold text-foreground">
                 applied research, ML engineering, and full-stack delivery
               </span>
-              . What I care about is whether a number holds up: across seeds,
-              across datasets, and on the cases a model was never shown.
+              . What I care about is whether a number holds up: across seeds, across
+              datasets, and on the cases a model was never shown.
             </p>
             <p>
-              The thread tying it together is low-resource and code-mixed
-              language, and the honest evaluation of{" "}
+              The thread tying it together is low-resource and code-mixed language, and
+              the honest evaluation of{" "}
               <span className="font-semibold text-foreground">
-                what retrieval-augmented and weakly supervised systems actually
-                know
-              </span>
-              {" "}— including where they fail.
+                what retrieval-augmented and weakly supervised systems actually know
+              </span>{" "}
+              — including where they fail.
             </p>
 
             {/* Subtle epigraph */}
@@ -105,7 +101,7 @@ export function About() {
               </figcaption>
             </figure>
 
-            {/* Banner strip — image lives at /public/banner_image.jpg */}
+            {/* Banner strip — gradient, no photo of our own */}
             <figure className="card-elevated relative aspect-[16/5] overflow-hidden rounded-xl">
               <div
                 aria-hidden
@@ -128,9 +124,7 @@ export function About() {
                   <MapPin className="h-3 w-3 text-amber-300" />
                   Boston, MA
                 </span>
-                <span className="text-foreground/80">
-                  Boston University
-                </span>
+                <span className="text-foreground/80">Boston University</span>
               </figcaption>
             </figure>
           </Reveal>
@@ -265,8 +259,7 @@ function EducationCard({
                 key={c}
                 className="rounded-md border border-border-strong/60 bg-background/60 px-2 py-0.5 font-mono text-[11px] text-muted-foreground transition-all duration-300 hover:-translate-y-[1px] hover:border-cyan-300/60 hover:text-foreground"
                 style={{
-                  boxShadow:
-                    "inset 0 0 0 1px hsl(195 95% 70% / 0)",
+                  boxShadow: "inset 0 0 0 1px hsl(195 95% 70% / 0)",
                 }}
               >
                 {c}
@@ -309,9 +302,7 @@ function CounterCard({
       const t = Math.min(1, frame / dur);
       const eased = 1 - Math.pow(1 - t, 3);
       const current = target * eased;
-      setDisplay(
-        `${isInt ? Math.round(current) : current.toFixed(decimals)}${suffix}`
-      );
+      setDisplay(`${isInt ? Math.round(current) : current.toFixed(decimals)}${suffix}`);
       if (t >= 1) clearInterval(id);
     }, 14);
     return () => clearInterval(id);

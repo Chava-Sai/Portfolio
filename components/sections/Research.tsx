@@ -19,7 +19,9 @@ export function Research() {
           label="05 · Research"
           title={
             <>
-              Published <span className="text-gradient-accent">research in International</span> journals.
+              Published{" "}
+              <span className="text-gradient-accent">research in International</span>{" "}
+              journals.
             </>
           }
           description="Workshop papers in the ACL Anthology on code-mixed hate speech and writing style classification, plus shared task working notes currently under review."
@@ -28,7 +30,11 @@ export function Research() {
         <div className="mt-14 space-y-4">
           {research.map((paper, i) => (
             <Reveal key={paper.title} delay={i * 0.05}>
-              <PaperCard paper={paper} index={i + 1} hue={PAPER_HUES[i % PAPER_HUES.length]} />
+              <PaperCard
+                paper={paper}
+                index={i + 1}
+                hue={PAPER_HUES[i % PAPER_HUES.length]}
+              />
             </Reveal>
           ))}
         </div>
@@ -56,11 +62,17 @@ function PaperCard({
       )}
       style={
         open
-          ? ({ boxShadow: `0 0 0 1px hsl(${hue} 80% 60% / 0.35), 0 24px 60px -28px hsl(${hue} 80% 30% / 0.6)` } as React.CSSProperties)
+          ? ({
+              boxShadow: `0 0 0 1px hsl(${hue} 80% 60% / 0.35), 0 24px 60px -28px hsl(${hue} 80% 30% / 0.6)`,
+            } as React.CSSProperties)
           : undefined
       }
     >
-      <Sparkle density={0.3} hue={hue} className="opacity-0 transition-opacity duration-500 group-hover:opacity-60" />
+      <Sparkle
+        density={0.3}
+        hue={hue}
+        className="opacity-0 transition-opacity duration-500 group-hover:opacity-60"
+      />
       <div
         aria-hidden
         className="pointer-events-none absolute -right-32 -top-32 h-64 w-64 rounded-full blur-3xl"
@@ -149,10 +161,7 @@ function PaperCard({
           >
             {open ? "Hide abstract" : "Read abstract"}
             <ChevronDown
-              className={cn(
-                "h-3.5 w-3.5 transition-transform",
-                open && "rotate-180"
-              )}
+              className={cn("h-3.5 w-3.5 transition-transform", open && "rotate-180")}
             />
           </button>
         </div>

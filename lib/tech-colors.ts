@@ -112,10 +112,7 @@ const CATEGORY_HUE: Record<string, string> = {
   Research: "305 80% 65%",
 };
 
-export function getTechAccent(
-  name: string,
-  category?: string
-): TechAccent {
+export function getTechAccent(name: string, category?: string): TechAccent {
   const key = name.toLowerCase().trim();
   const hsl =
     PALETTE[key] ??

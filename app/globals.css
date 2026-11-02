@@ -59,7 +59,10 @@
 
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1,
+      "ss01" 1;
   }
 
   ::selection {
@@ -167,7 +170,7 @@
   .glass-tinted-emerald {
     background: linear-gradient(
       180deg,
-      hsl(151 70% 55% / 0.10) 0%,
+      hsl(151 70% 55% / 0.1) 0%,
       hsl(151 70% 55% / 0.03) 100%
     );
     border-color: hsl(151 70% 60% / 0.35);
@@ -178,7 +181,7 @@
   .glass-tinted-amber {
     background: linear-gradient(
       180deg,
-      hsl(35 95% 60% / 0.10) 0%,
+      hsl(35 95% 60% / 0.1) 0%,
       hsl(35 95% 60% / 0.03) 100%
     );
     border-color: hsl(35 95% 60% / 0.35);
@@ -274,8 +277,10 @@
   }
 
   .hover-lift {
-    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-      border-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
   .hover-lift:hover {
     transform: translateY(-2px);
@@ -341,17 +346,17 @@
     padding: 1px;
     background: conic-gradient(
       from 180deg,
-      hsl(231 90% 70% / 0.0),
+      hsl(231 90% 70% / 0),
       hsl(231 90% 70% / 0.9),
       hsl(305 90% 70% / 0.9),
       hsl(45 95% 65% / 0.9),
-      hsl(231 90% 70% / 0.0)
+      hsl(231 90% 70% / 0)
     );
     -webkit-mask:
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
-            mask-composite: exclude;
+    mask-composite: exclude;
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
@@ -381,7 +386,7 @@
       linear-gradient(#000 0 0) content-box,
       linear-gradient(#000 0 0);
     -webkit-mask-composite: xor;
-            mask-composite: exclude;
+    mask-composite: exclude;
   }
   .tesla-trace::before {
     background: conic-gradient(
@@ -424,7 +429,7 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      hsl(195 95% 70% / 0.0) 30%,
+      hsl(195 95% 70% / 0) 30%,
       hsl(195 95% 70% / 0.4) 50%,
       hsl(305 95% 70% / 0.4) 60%,
       transparent 80%
@@ -436,7 +441,8 @@
   }
 
   @keyframes tesla-beam-sweep {
-    0%, 30% {
+    0%,
+    30% {
       transform: translateX(-100%);
     }
     60% {
@@ -456,21 +462,10 @@
     position: absolute;
     inset: -20%;
     border-radius: inherit;
-    background: radial-gradient(
-        ellipse at 30% 20%,
-        hsl(231 90% 65% / 0.25),
-        transparent 60%
-      ),
-      radial-gradient(
-        ellipse at 70% 80%,
-        hsl(305 90% 65% / 0.22),
-        transparent 60%
-      ),
-      radial-gradient(
-        ellipse at 50% 50%,
-        hsl(45 95% 60% / 0.18),
-        transparent 60%
-      );
+    background:
+      radial-gradient(ellipse at 30% 20%, hsl(231 90% 65% / 0.25), transparent 60%),
+      radial-gradient(ellipse at 70% 80%, hsl(305 90% 65% / 0.22), transparent 60%),
+      radial-gradient(ellipse at 50% 50%, hsl(45 95% 60% / 0.18), transparent 60%);
     filter: blur(40px);
     z-index: -1;
     opacity: 0.65;
@@ -489,11 +484,7 @@
   }
   .mask-radial {
     mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
-    -webkit-mask-image: radial-gradient(
-      ellipse at center,
-      black 40%,
-      transparent 75%
-    );
+    -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;

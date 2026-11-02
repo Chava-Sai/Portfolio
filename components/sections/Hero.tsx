@@ -1,7 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -188,9 +195,7 @@ function RoleCycler() {
 
   return (
     <span className="relative inline-block align-baseline leading-tight">
-      <span className="invisible block whitespace-nowrap pr-3">
-        {longest}
-      </span>
+      <span className="invisible block whitespace-nowrap pr-3">{longest}</span>
       <span className="absolute inset-0 overflow-hidden">
         <AnimatePresence mode="wait" initial={false}>
           <motion.span
@@ -219,12 +224,16 @@ const TERMINAL_LINES: Array<
   { kind: "out", line: "srinivasa_sai_chava" },
   { kind: "prompt", cmd: "cat /etc/profile.json" },
   { kind: "out", line: "{" },
-  { kind: "kv", key: "  program", value: "\"M.S. AI @ Boston University\"" },
-  { kind: "kv", key: "  graduation", value: "\"Dec 2026\"" },
-  { kind: "kv", key: "  focus", value: "[\"NLP\", \"vision\", \"RAG\"]" },
-  { kind: "kv", key: "  building", value: "\"HateLens · VideoMAE · RAG eval · Auto Grader\"" },
+  { kind: "kv", key: "  program", value: '"M.S. AI @ Boston University"' },
+  { kind: "kv", key: "  graduation", value: '"Dec 2026"' },
+  { kind: "kv", key: "  focus", value: '["NLP", "vision", "RAG"]' },
+  {
+    kind: "kv",
+    key: "  building",
+    value: '"HateLens · VideoMAE · RAG eval · Auto Grader"',
+  },
   { kind: "kv", key: "  papers", value: "3" },
-  { kind: "kv", key: "  open_to", value: "\"AI/ML & Research Internships\"" },
+  { kind: "kv", key: "  open_to", value: '"AI/ML & Research Internships"' },
   { kind: "out", line: "}" },
   { kind: "prompt", cmd: "ls ~/projects | head" },
   { kind: "out", line: "frozen-videomae-weakly-supervised/", muted: true },
@@ -283,8 +292,7 @@ function Terminal() {
                 <div key={idx} className="text-foreground">
                   <span className="text-emerald-400">➜</span>{" "}
                   <span className="text-indigo-300">~/portfolio</span>{" "}
-                  <span className="text-muted-foreground">$</span>{" "}
-                  <span>{l.cmd}</span>
+                  <span className="text-muted-foreground">$</span> <span>{l.cmd}</span>
                 </div>
               );
             if (l.kind === "kv")

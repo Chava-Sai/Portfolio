@@ -12,10 +12,7 @@ import { motion } from "framer-motion";
  */
 export function GlobalGrid() {
   return (
-    <div
-      aria-hidden
-      className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
-    >
+    <div aria-hidden className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
       <motion.div
         className="absolute inset-[-2px] bg-grid-pattern opacity-60 [background-size:48px_48px]"
         initial={{ backgroundPosition: "0 0" }}

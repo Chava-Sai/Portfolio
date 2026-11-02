@@ -43,7 +43,10 @@ const CATEGORIES: Array<Project["category"] | "All"> = [
   "Mobile",
 ];
 
-const CATEGORY_ICON: Record<Project["category"], React.ComponentType<{ className?: string }>> = {
+const CATEGORY_ICON: Record<
+  Project["category"],
+  React.ComponentType<{ className?: string }>
+> = {
   "AI / ML": Sparkles,
   Research: FileText,
   "Full-Stack": Database,
@@ -87,7 +90,8 @@ export function Projects() {
           label="04 · Projects"
           title={
             <>
-              Production-grade <span className="text-gradient-accent">engineering work.</span>
+              Production-grade{" "}
+              <span className="text-gradient-accent">engineering work.</span>
             </>
           }
           description="Selected work spanning weakly supervised vision, code-mixed NLP, retrieval-augmented systems and civic data — each with the numbers it actually produced."
@@ -292,8 +296,7 @@ function ProjectRail({ projects: items }: { projects: Project[] }) {
       const trackWidth = trackRef.current.scrollWidth;
       // documentElement.clientWidth excludes vertical scrollbar — true visible
       // width, unlike window.innerWidth which overstates by ~15px on Windows.
-      const viewportWidth =
-        document.documentElement.clientWidth || window.innerWidth;
+      const viewportWidth = document.documentElement.clientWidth || window.innerWidth;
       // Small +80 buffer + the pr-* track padding give the last card a
       // comfortable margin from the viewport edge without leaving dead space.
       setMaxShift(Math.max(0, trackWidth - viewportWidth + 80));
@@ -317,11 +320,7 @@ function ProjectRail({ projects: items }: { projects: Project[] }) {
   const x = useTransform(scrollYProgress, [0, 0.85], [0, -maxShift]);
 
   // Slight depth-of-field on the inner cards
-  const innerScaleRaw = useTransform(
-    scrollYProgress,
-    [0, 0.5, 1],
-    [0.97, 1, 0.97]
-  );
+  const innerScaleRaw = useTransform(scrollYProgress, [0, 0.5, 1], [0.97, 1, 0.97]);
   const innerScale = useSpring(innerScaleRaw, {
     stiffness: 90,
     damping: 26,
@@ -343,10 +342,7 @@ function ProjectRail({ projects: items }: { projects: Project[] }) {
         <RailHeader />
         <div className="no-scrollbar -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2">
           {items.map((p, i) => (
-            <div
-              key={p.slug}
-              className="w-[min(92vw,420px)] flex-none snap-start"
-            >
+            <div key={p.slug} className="w-[min(92vw,420px)] flex-none snap-start">
               <Reveal delay={i * 0.04}>
                 <ProjectCard project={p} />
               </Reveal>
@@ -443,12 +439,9 @@ function MoreOnGithubCard() {
             </span>
           </h4>
           <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
-            Source code, case studies, and side experiments — explore the full
-            engineering portfolio at{" "}
-            <span className="font-mono text-foreground/80">
-              github.com/Chava-Sai
-            </span>
-            .
+            Source code, case studies, and side experiments — explore the full engineering
+            portfolio at{" "}
+            <span className="font-mono text-foreground/80">github.com/Chava-Sai</span>.
           </p>
         </div>
         <a
@@ -537,9 +530,7 @@ function ProjectCard({ project }: { project: Project }) {
             </div>
           </div>
 
-          <h3 className="mt-3 text-lg font-semibold tracking-tight">
-            {project.title}
-          </h3>
+          <h3 className="mt-3 text-lg font-semibold tracking-tight">{project.title}</h3>
           <p className="mt-1 text-sm text-muted-foreground">{project.subtitle}</p>
 
           <div className="mt-4 flex flex-wrap gap-1.5">
@@ -572,10 +563,7 @@ function ProjectCard({ project }: { project: Project }) {
           >
             {open ? "Hide architecture" : "Expand architecture"}
             <ChevronDown
-              className={cn(
-                "h-3.5 w-3.5 transition-transform",
-                open && "rotate-180"
-              )}
+              className={cn("h-3.5 w-3.5 transition-transform", open && "rotate-180")}
             />
           </button>
 
@@ -590,7 +578,7 @@ function ProjectCard({ project }: { project: Project }) {
               >
                 <div className="hairline mt-3 rounded-xl bg-background/70 p-2.5">
                   <pre className="overflow-x-auto font-mono text-[10.5px] leading-snug text-muted-foreground">
-{generateAsciiArchitecture(project)}
+                    {generateAsciiArchitecture(project)}
                   </pre>
                 </div>
                 <p className="mt-2.5 text-[11.5px] leading-snug text-muted-foreground">
@@ -630,11 +618,7 @@ function ProjectPreview({
     typeof project.imageWidth === "number" &&
     typeof project.imageHeight === "number";
 
-  const aspectClass = hasNaturalSize
-    ? ""
-    : compact
-      ? "aspect-[2/1]"
-      : "aspect-[5/3]";
+  const aspectClass = hasNaturalSize ? "" : compact ? "aspect-[2/1]" : "aspect-[5/3]";
 
   const containerStyle: React.CSSProperties = {
     background: `radial-gradient(120% 80% at 30% 0%, hsl(${hue} 80% 55% / 0.18), transparent 60%), radial-gradient(120% 80% at 80% 100%, hsl(${(hue + 40) % 360} 90% 60% / 0.18), transparent 60%), hsl(var(--card))`,
@@ -660,9 +644,7 @@ function ProjectPreview({
           alt={`${project.title} preview`}
           fill
           sizes={
-            compact
-              ? "(min-width: 768px) 440px, 92vw"
-              : "(min-width: 1024px) 540px, 92vw"
+            compact ? "(min-width: 768px) 440px, 92vw" : "(min-width: 1024px) 540px, 92vw"
           }
           priority={!compact}
           className="object-cover object-center transition-transform duration-700 group-hover:scale-[1.04]"
@@ -738,7 +720,10 @@ function PlaceholderTimeseries({ hue }: { hue: number }) {
       s = (s * 1103515245 + 12345) & 0x7fffffff;
       return s / 0x7fffffff;
     };
-    return Array.from({ length: 60 }, (_, i) => 32 + Math.sin(i * 0.35) * 18 + (r() - 0.5) * 6);
+    return Array.from(
+      { length: 60 },
+      (_, i) => 32 + Math.sin(i * 0.35) * 18 + (r() - 0.5) * 6
+    );
   }, []);
   const path = points
     .map((y, i) => `${i === 0 ? "M" : "L"} ${(i / (points.length - 1)) * 100} ${y}`)
@@ -767,7 +752,12 @@ function PlaceholderTimeseries({ hue }: { hue: number }) {
           r="1.2"
           fill={`hsl(${(hue + 30) % 360} 95% 70%)`}
         >
-          <animate attributeName="r" values="1.2;2.4;1.2" dur="2.4s" repeatCount="indefinite" />
+          <animate
+            attributeName="r"
+            values="1.2;2.4;1.2"
+            dur="2.4s"
+            repeatCount="indefinite"
+          />
         </circle>
       ))}
       <text
@@ -905,7 +895,11 @@ function PlaceholderPlatformer({ hue }: { hue: number }) {
         <defs>
           <linearGradient id="duck-sky" x1="0" x2="0" y1="0" y2="1">
             <stop offset="0%" stopColor={`hsl(${hue} 95% 70%)`} stopOpacity="0.3" />
-            <stop offset="100%" stopColor={`hsl(${(hue + 40) % 360} 95% 65%)`} stopOpacity="0.1" />
+            <stop
+              offset="100%"
+              stopColor={`hsl(${(hue + 40) % 360} 95% 65%)`}
+              stopOpacity="0.1"
+            />
           </linearGradient>
         </defs>
         <rect width="100" height="60" fill="url(#duck-sky)" />
@@ -925,7 +919,10 @@ function PlaceholderPlatformer({ hue }: { hue: number }) {
         <g transform="translate(20 30)">
           <circle r="3.5" fill={`hsl(${(hue - 10 + 360) % 360} 95% 70%)`} />
           <circle cx="2" cy="-1.5" r="0.8" fill="black" />
-          <path d="M 3 0 L 6 -0.5 L 5 1 Z" fill={`hsl(${(hue - 30 + 360) % 360} 80% 50%)`} />
+          <path
+            d="M 3 0 L 6 -0.5 L 5 1 Z"
+            fill={`hsl(${(hue - 30 + 360) % 360} 80% 50%)`}
+          />
         </g>
         <text
           x="2"

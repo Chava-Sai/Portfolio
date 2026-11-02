@@ -266,9 +266,7 @@ export const projects: Project[] = [
       { label: "Unit cost", value: "$0.03" },
       { label: "Grading gap", value: "14 → 2" },
     ],
-    links: [
-      { label: "GitHub", href: "https://github.com/BU-Spark/ml-bu-autograder" },
-    ],
+    links: [{ label: "GitHub", href: "https://github.com/BU-Spark/ml-bu-autograder" }],
     category: "AI / ML",
     accentHue: 210,
     image: "/projects/AI_Auto_Grader.png",

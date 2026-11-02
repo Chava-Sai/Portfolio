@@ -24,11 +24,13 @@ const jetbrains = JetBrains_Mono({
 });
 
 const SITE_URL = "https://chava-sai.github.io/Portfolio";
+// Next does not apply basePath to metadata icon URLs, so prefix them here.
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "/Portfolio";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${personal.name} · Software & AI/ML Engineer`,
+    default: `${personal.name} · AI/ML Engineer`,
     template: `%s · ${personal.name}`,
   },
   description: personal.tagline,
@@ -37,36 +39,45 @@ export const metadata: Metadata = {
   creator: personal.name,
   keywords: [
     "Srinivasa Sai Chava",
-    "Software Engineer",
-    "Machine Learning Engineer",
     "AI Engineer",
-    "Data Scientist",
+    "Machine Learning Engineer",
+    "NLP",
+    "Computer Vision",
     "Boston University",
-    "GraphRAG",
-    "LLMs",
+    "Retrieval-Augmented Generation",
+    "Code-Mixed NLP",
     "Transformers",
-    "Next.js",
     "PyTorch",
+    "QLoRA",
   ],
   openGraph: {
     type: "website",
     url: SITE_URL,
-    title: `${personal.name} · Software & AI/ML Engineer`,
+    title: `${personal.name} · AI/ML Engineer`,
     description: personal.tagline,
     siteName: personal.name,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${personal.name} · Software & AI/ML Engineer`,
+    title: `${personal.name} · AI/ML Engineer`,
     description: personal.tagline,
   },
   robots: { index: true, follow: true },
   icons: {
     icon: [
-      { url: "/favicon_image.png", type: "image/png" },
+      {
+        url: `${BASE_PATH}/favicon-32x32.png`,
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: `${BASE_PATH}/favicon-16x16.png`,
+        sizes: "16x16",
+        type: "image/png",
+      },
     ],
-    shortcut: [{ url: "/favicon_image.png", type: "image/png" }],
-    apple: [{ url: "/favicon_image.png", type: "image/png" }],
+    shortcut: [{ url: `${BASE_PATH}/favicon.ico` }],
+    apple: [{ url: `${BASE_PATH}/apple-touch-icon.png`, sizes: "180x180" }],
   },
 };
 
@@ -79,11 +90,7 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
       lang="en"

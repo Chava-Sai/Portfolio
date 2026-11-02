@@ -76,7 +76,7 @@ const config: Config = {
           "0%": { transform: "translate3d(0, 0, 0)" },
           "100%": { transform: "translate3d(40px, 40px, 0)" },
         },
-        "shimmer": {
+        shimmer: {
           "0%": { backgroundPosition: "-200% 0" },
           "100%": { backgroundPosition: "200% 0" },
         },
@@ -88,11 +88,11 @@ const config: Config = {
           "0%, 70%, 100%": { opacity: "1" },
           "20%, 50%": { opacity: "0" },
         },
-        "float": {
+        float: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-6px)" },
         },
-        "sparkle": {
+        sparkle: {
           "0%, 100%": { opacity: "0", transform: "scale(0.4) rotate(0deg)" },
           "50%": { opacity: "1", transform: "scale(1) rotate(180deg)" },
         },
@@ -103,7 +103,7 @@ const config: Config = {
         "spin-slow": {
           to: { transform: "rotate(360deg)" },
         },
-        "aurora": {
+        aurora: {
           "0%, 100%": { backgroundPosition: "0% 50%" },
           "50%": { backgroundPosition: "100% 50%" },
         },
@@ -111,14 +111,14 @@ const config: Config = {
       animation: {
         "fade-in": "fade-in 0.6s ease-out",
         "grid-pan": "grid-pan 20s linear infinite",
-        "shimmer": "shimmer 3s linear infinite",
+        shimmer: "shimmer 3s linear infinite",
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
         "caret-blink": "caret-blink 1.25s ease-out infinite",
-        "float": "float 6s ease-in-out infinite",
-        "sparkle": "sparkle 3.6s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
+        sparkle: "sparkle 3.6s ease-in-out infinite",
         "shine-sweep": "shine-sweep 1.4s ease-out",
         "spin-slow": "spin-slow 28s linear infinite",
-        "aurora": "aurora 18s ease-in-out infinite",
+        aurora: "aurora 18s ease-in-out infinite",
       },
       backgroundImage: {
         "grid-pattern":
@@ -127,10 +127,11 @@ const config: Config = {
           "radial-gradient(ellipse at center, transparent 0%, hsl(var(--background)) 70%)",
       },
       boxShadow: {
-        "card": "0 1px 0 hsl(var(--border)), 0 8px 24px -12px hsl(var(--shadow) / 0.5)",
+        card: "0 1px 0 hsl(var(--border)), 0 8px 24px -12px hsl(var(--shadow) / 0.5)",
         "card-hover":
           "0 1px 0 hsl(var(--foreground) / 0.08), 0 18px 50px -22px hsl(var(--shadow) / 0.6)",
-        "glow-soft": "0 0 0 1px hsl(var(--border)), 0 0 40px -8px hsl(var(--foreground) / 0.18)",
+        "glow-soft":
+          "0 0 0 1px hsl(var(--border)), 0 0 40px -8px hsl(var(--foreground) / 0.18)",
         "glow-indigo":
           "0 0 0 1px hsl(231 80% 70% / 0.35), 0 0 40px -8px hsl(231 90% 70% / 0.35)",
         "glow-amber":

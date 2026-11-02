@@ -43,7 +43,8 @@ export function TechStack() {
           label="02 · Stack"
           title={
             <>
-              The toolchain I&apos;ve <span className="text-gradient-accent">shipped with.</span>
+              The toolchain I&apos;ve{" "}
+              <span className="text-gradient-accent">shipped with.</span>
             </>
           }
           description="Languages, frameworks and ML tooling I use end-to-end — from a prototype notebook through to a deployed service. Hover any pill to see its brand accent."
@@ -81,9 +82,7 @@ export function TechStack() {
                       >
                         <Icon className="h-4 w-4" />
                       </span>
-                      <h3 className="text-sm font-semibold tracking-tight">
-                        {group}
-                      </h3>
+                      <h3 className="text-sm font-semibold tracking-tight">{group}</h3>
                     </div>
                     <span className="font-mono text-[10px] text-muted-foreground">
                       0{i + 1}
@@ -91,12 +90,7 @@ export function TechStack() {
                   </div>
                   <div className="relative mt-5 flex flex-wrap gap-1.5">
                     {items.map((tech) => (
-                      <TechPill
-                        key={tech}
-                        tech={tech}
-                        category={group}
-                        size="sm"
-                      />
+                      <TechPill key={tech} tech={tech} category={group} size="sm" />
                     ))}
                   </div>
                 </motion.div>
