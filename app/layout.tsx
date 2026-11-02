@@ -82,6 +82,15 @@ export const metadata: Metadata = {
     ],
     shortcut: [{ url: `${BASE_PATH}/favicon.ico` }],
     apple: [{ url: `${BASE_PATH}/apple-touch-icon.png`, sizes: "180x180" }],
+    // Safari pinned tabs mask the SVG to a flat colour, so it ships
+    // monochrome and the tint comes from this attribute.
+    other: [
+      {
+        rel: "mask-icon",
+        url: `${BASE_PATH}/safari-pinned-tab.svg`,
+        color: "#86cfff",
+      },
+    ],
   },
 };
 

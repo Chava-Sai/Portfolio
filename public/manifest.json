@@ -1,10 +1,10 @@
 {
   "short_name": "Sai Chava",
-  "name": "Srinivasa Sai Chava \u2014 AI/ML Engineer",
+  "name": "Srinivasa Sai Chava — AI/ML Engineer",
   "icons": [
     {
       "src": "favicon.ico",
-      "sizes": "32x32 48x48 64x64",
+      "sizes": "16x16 32x32 48x48 64x64",
       "type": "image/x-icon"
     },
     {
@@ -26,7 +26,7 @@
       "src": "icon-512.png",
       "type": "image/png",
       "sizes": "512x512",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ],
   "start_url": ".",
