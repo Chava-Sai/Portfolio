@@ -53,15 +53,15 @@ DOIs and review status stated plainly.
 
 ## Stack
 
-| | |
-| --- | --- |
-| Framework | Next.js 14 (App Router), static export |
-| Language | TypeScript 5.6 |
-| Styling | Tailwind CSS 3.4 |
-| Animation | framer-motion 11 |
-| Icons | lucide-react |
-| UI primitives | Radix (`dialog`, `slot`) |
-| Theming | next-themes |
+|               |                                        |
+| ------------- | -------------------------------------- |
+| Framework     | Next.js 14 (App Router), static export |
+| Language      | TypeScript 5.6                         |
+| Styling       | Tailwind CSS 3.4                       |
+| Animation     | framer-motion 11                       |
+| Icons         | lucide-react                           |
+| UI primitives | Radix (`dialog`, `slot`)               |
+| Theming       | next-themes                            |
 
 ## Architecture notes
 
@@ -129,14 +129,6 @@ All copy, metrics and project data live in
 `techStack`, `experience`, `projects`, `research`, `awards` and
 `pinnedRepos`. Editing that one file updates the whole site; no component
 changes needed to add a project or paper.
-
-## Credits
-
-The design system and component architecture are adapted from
-[shubham-hadawle/shubhams-website-portfolio](https://github.com/shubham-hadawle/shubhams-website-portfolio)
-by **Shubham Hadawle**, used with his permission.
-
-All content, copy, data, figures, imagery and the logo mark are my own.
 
 ## License
 
