@@ -119,7 +119,12 @@ export function Hero() {
               </Link>
             </Button>
             <Button asChild size="lg" variant="secondary">
-              <Link href={personal.resumeUrl} target="_blank" rel="noreferrer">
+              <Link
+                href={personal.resumeUrl}
+                target="_blank"
+                rel="noreferrer"
+                prefetch={false}
+              >
                 <Download className="h-4 w-4" /> Resume
               </Link>
             </Button>

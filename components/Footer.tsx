@@ -92,6 +92,7 @@ function FooterLink({
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noreferrer" : undefined}
+      prefetch={external ? false : undefined}
       className="group/flnk inline-flex items-center justify-between gap-2 text-muted-foreground transition-colors hover:text-foreground"
     >
       <span className="inline-flex items-center gap-2">
