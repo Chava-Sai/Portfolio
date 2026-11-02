@@ -8,10 +8,15 @@
 const isVercel = process.env.VERCEL === "1";
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? (isVercel ? "" : "/Portfolio");
 
+// Vercel injects the project's real production domain (the custom one once
+// it's attached, otherwise the generated *.vercel.app). Reading it beats
+// hardcoding a guess, which silently points canonical/OG at a dead host.
+const vercelHost = process.env.VERCEL_PROJECT_PRODUCTION_URL;
+
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  (isVercel
-    ? "https://srinivasa-sai-chava.vercel.app"
+  (vercelHost
+    ? `https://${vercelHost}`
     : "https://chava-sai.github.io/Portfolio");
 
 const nextConfig = {
