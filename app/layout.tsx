@@ -29,6 +29,12 @@ const SITE_URL =
 // Next does not apply basePath to metadata icon URLs, so prefix them here.
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
+// Browsers cache favicons outside the normal HTTP cache — Safari keeps its
+// own store that survives reloads and ignores must-revalidate — so anyone
+// who visited before a mark change keeps seeing the old icon. Bump this
+// whenever the icons change to make them look like new resources.
+const ICON_V = "2";
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -68,26 +74,26 @@ export const metadata: Metadata = {
   manifest: `${BASE_PATH}/manifest.json`,
   icons: {
     icon: [
-      { url: `${BASE_PATH}/logo.svg`, type: "image/svg+xml" },
+      { url: `${BASE_PATH}/logo.svg?v=${ICON_V}`, type: "image/svg+xml" },
       {
-        url: `${BASE_PATH}/favicon-32x32.png`,
+        url: `${BASE_PATH}/favicon-32x32.png?v=${ICON_V}`,
         sizes: "32x32",
         type: "image/png",
       },
       {
-        url: `${BASE_PATH}/favicon-16x16.png`,
+        url: `${BASE_PATH}/favicon-16x16.png?v=${ICON_V}`,
         sizes: "16x16",
         type: "image/png",
       },
     ],
-    shortcut: [{ url: `${BASE_PATH}/favicon.ico` }],
-    apple: [{ url: `${BASE_PATH}/apple-touch-icon.png`, sizes: "180x180" }],
+    shortcut: [{ url: `${BASE_PATH}/favicon.ico?v=${ICON_V}` }],
+    apple: [{ url: `${BASE_PATH}/apple-touch-icon.png?v=${ICON_V}`, sizes: "180x180" }],
     // Safari pinned tabs mask the SVG to a flat colour, so it ships
     // monochrome and the tint comes from this attribute.
     other: [
       {
         rel: "mask-icon",
-        url: `${BASE_PATH}/safari-pinned-tab.svg`,
+        url: `${BASE_PATH}/safari-pinned-tab.svg?v=${ICON_V}`,
         color: "#86cfff",
       },
     ],
