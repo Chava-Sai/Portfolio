@@ -48,34 +48,50 @@ export function CustomCursor() {
   // busy backgrounds without resorting to mix-blend hacks.
   return (
     <>
+      {/* Position and centring are split across two nodes on purpose: motion
+          drives x/y through the same transform property that Tailwind's
+          -translate-x-1/2 writes, so putting both on one node dropped the
+          centring and left the cursor down-right of the real pointer. The
+          z also now clears the dialogs (181) and command palette (171),
+          which were painting over it. */}
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[155] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{
-          x,
-          y,
-          width: 8,
-          height: 8,
-          background: "hsl(var(--foreground))",
-          boxShadow:
-            "0 0 0 1.5px hsl(var(--background)), 0 0 0 2.5px hsl(var(--foreground) / 0.85), 0 4px 18px hsl(0 0% 0% / 0.45)",
-        }}
-      />
+        className="pointer-events-none fixed left-0 top-0 z-[250]"
+        style={{ x, y }}
+      >
+        <div
+          className="-translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            width: 8,
+            height: 8,
+            background: "hsl(var(--foreground))",
+            boxShadow:
+              "0 0 0 1.5px hsl(var(--background)), 0 0 0 2.5px hsl(var(--foreground) / 0.85), 0 4px 18px hsl(0 0% 0% / 0.45)",
+          }}
+        />
+      </motion.div>
       <motion.div
         aria-hidden
-        className="pointer-events-none fixed left-0 top-0 z-[154] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{
-          x: ringX,
-          y: ringY,
-          width: hovering ? 46 : 30,
-          height: hovering ? 46 : 30,
-          border: "1.5px solid hsl(var(--foreground) / 0.85)",
-          boxShadow:
-            "0 0 0 1px hsl(var(--background) / 0.7), 0 6px 22px hsl(0 0% 0% / 0.35), inset 0 0 0 1px hsl(var(--background) / 0.4)",
-          background: hovering ? "hsl(var(--foreground) / 0.06)" : "transparent",
-        }}
-        transition={{ type: "spring", stiffness: 260, damping: 30 }}
-      />
+        className="pointer-events-none fixed left-0 top-0 z-[249]"
+        style={{ x: ringX, y: ringY }}
+      >
+        {/* Width and height are not transforms, so this node can animate its
+            size and still keep the translate classes that centre it. */}
+        <motion.div
+          className="-translate-x-1/2 -translate-y-1/2 rounded-full"
+          animate={{
+            width: hovering ? 46 : 30,
+            height: hovering ? 46 : 30,
+            background: hovering ? "hsl(var(--foreground) / 0.06)" : "transparent",
+          }}
+          transition={{ type: "spring", stiffness: 260, damping: 30 }}
+          style={{
+            border: "1.5px solid hsl(var(--foreground) / 0.85)",
+            boxShadow:
+              "0 0 0 1px hsl(var(--background) / 0.7), 0 6px 22px hsl(0 0% 0% / 0.35), inset 0 0 0 1px hsl(var(--background) / 0.4)",
+          }}
+        />
+      </motion.div>
     </>
   );
 }

@@ -56,6 +56,11 @@ const CATEGORY_ICON: Record<
   "Data Science": LineChart,
 };
 
+const SPOTLIGHT_BY_FILTER: Partial<Record<(typeof CATEGORIES)[number], string>> = {
+  All: "violence-detection",
+  "AI / ML": "auto-grader",
+};
+
 export function Projects() {
   const [filter, setFilter] = useState<(typeof CATEGORIES)[number]>("All");
   const filtered = useMemo(
@@ -63,7 +68,15 @@ export function Projects() {
     [filter]
   );
   const [spotlight, rest] = useMemo(() => {
-    const featured = filtered.find((p) => p.featured) ?? filtered[0];
+    // Which project leads each view. Without this the `featured` flag wins
+    // everywhere, so Weakly-Supervised headed AI / ML too and Auto Grader
+    // could never lead anything. Anything not listed falls back to the
+    // featured project, then to whatever sorts first.
+    const pinned = SPOTLIGHT_BY_FILTER[filter];
+    const featured =
+      (pinned && filtered.find((p) => p.slug === pinned)) ||
+      filtered.find((p) => p.featured) ||
+      filtered[0];
     const remaining = filtered.filter((p) => p.slug !== featured?.slug);
     // Explicit rail ordering — slugs not in the list keep their relative order
     // and are appended at the front, while listed slugs render in this exact
@@ -84,7 +97,7 @@ export function Projects() {
     ).filter((p): p is Project => Boolean(p));
     const ordered: Project[] = [...others, ...sorted];
     return [featured, ordered] as [Project | undefined, Project[]];
-  }, [filtered]);
+  }, [filtered, filter]);
 
   return (
     <section id="projects" className="relative scroll-mt-24 py-32">
@@ -141,6 +154,7 @@ export function Projects() {
 function SpotlightCard({ project }: { project: Project }) {
   const Icon = CATEGORY_ICON[project.category];
   const [archOpen, setArchOpen] = useState(false);
+  const [archOrigin, setArchOrigin] = useState<DOMRect | null>(null);
   const ref = useRef<HTMLDivElement | null>(null);
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -245,7 +259,10 @@ function SpotlightCard({ project }: { project: Project }) {
 
             <button
               type="button"
-              onClick={() => setArchOpen(true)}
+              onClick={() => {
+                setArchOrigin(ref.current?.getBoundingClientRect() ?? null);
+                setArchOpen(true);
+              }}
               className="shine focus-ring inline-flex items-center gap-2 rounded-lg border border-[hsl(var(--border-strong))] px-3.5 py-2 text-xs font-semibold text-muted-foreground transition-all duration-300 hover:-translate-y-[2px] hover:text-foreground"
             >
               <Maximize2 className="h-3 w-3" />
@@ -257,6 +274,7 @@ function SpotlightCard({ project }: { project: Project }) {
             project={project}
             open={archOpen}
             onOpenChange={setArchOpen}
+            originRect={archOrigin}
           />
         </div>
 
@@ -540,9 +558,17 @@ function ScrollProgressBar({
 function ProjectCard({ project }: { project: Project }) {
   const Icon = CATEGORY_ICON[project.category];
   const [open, setOpen] = useState(false);
+  const cardRef = useRef<HTMLElement | null>(null);
+  const [origin, setOrigin] = useState<DOMRect | null>(null);
+
+  const openArchitecture = () => {
+    setOrigin(cardRef.current?.getBoundingClientRect() ?? null);
+    setOpen(true);
+  };
 
   return (
     <motion.article
+      ref={cardRef}
       whileHover={{ y: -4 }}
       transition={{ type: "spring", stiffness: 240, damping: 24 }}
       className="card-elevated shine relative flex h-full flex-col overflow-hidden rounded-2xl p-0"
@@ -616,14 +642,19 @@ function ProjectCard({ project }: { project: Project }) {
               clips overflow, so anything taller than the card was unreachable. */}
           <button
             type="button"
-            onClick={() => setOpen(true)}
+            onClick={openArchitecture}
             className="mt-4 inline-flex items-center gap-1.5 self-start font-mono text-[11px] text-muted-foreground transition hover:text-foreground"
           >
             View architecture
             <Maximize2 className="h-3.5 w-3.5" />
           </button>
 
-          <ArchitectureDialog project={project} open={open} onOpenChange={setOpen} />
+          <ArchitectureDialog
+            project={project}
+            open={open}
+            onOpenChange={setOpen}
+            originRect={origin}
+          />
         </div>
       </div>
     </motion.article>
@@ -638,12 +669,33 @@ function ArchitectureDialog({
   project,
   open,
   onOpenChange,
+  originRect,
 }: {
   project: Project;
   open: boolean;
   onOpenChange: (v: boolean) => void;
+  originRect?: DOMRect | null;
 }) {
   const hue = project.accentHue;
+  const Icon = CATEGORY_ICON[project.category];
+
+  // Zoom out of the card that was clicked rather than fading in from nowhere,
+  // then back into it on close. Derived from the card's on-screen rect, so the
+  // motion reads as the card growing into the dialog.
+  const from = useMemo(() => {
+    if (!originRect || typeof window === "undefined") {
+      return { opacity: 0, scale: 0.96, x: 0, y: 0 };
+    }
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const panelWidth = Math.min(1180, vw - 32);
+    return {
+      opacity: 0,
+      scale: Math.max(0.2, Math.min(1, originRect.width / panelWidth)),
+      x: originRect.left + originRect.width / 2 - vw / 2,
+      y: originRect.top + originRect.height / 2 - vh / 2,
+    };
+  }, [originRect]);
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -655,45 +707,39 @@ function ArchitectureDialog({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.15 }}
+                transition={{ duration: 0.2 }}
                 className="fixed inset-0 z-[180] bg-background/80 backdrop-blur-md"
               />
             </Dialog.Overlay>
+
             {/* Centring lives on this wrapper, which animates opacity only.
                 Framer Motion writes an inline transform while it animates and
                 resets it to none afterwards, which silently wipes Tailwind's
-                -translate-x-1/2, so a transform-centred panel lands at 50%
-                rather than centred. pointer-events-none lets clicks reach the
-                overlay underneath so click-outside still closes. */}
+                -translate-x-1/2 and drops a transform-centred panel at 50%
+                instead of centre. pointer-events-none lets clicks reach the
+                overlay so click-outside still closes. */}
             <Dialog.Content asChild>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.18, ease: "easeOut" }}
+                transition={{ duration: 0.18 }}
                 className="pointer-events-none fixed inset-0 z-[181] flex items-center justify-center p-4"
               >
                 <motion.div
-                  initial={{ y: 12, scale: 0.985 }}
-                  animate={{ y: 0, scale: 1 }}
-                  transition={{ duration: 0.2, ease: "easeOut" }}
-                  className="pointer-events-auto flex max-h-[88vh] w-[min(1120px,calc(100vw-2rem))] flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border-strong))] bg-card shadow-2xl"
+                  initial={from}
+                  animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                  exit={from}
+                  transition={{ type: "spring", stiffness: 240, damping: 28, mass: 0.9 }}
+                  className="pointer-events-auto flex max-h-[88vh] w-[min(1180px,calc(100vw-2rem))] flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border-strong))] bg-card shadow-2xl"
                 >
-                  <div className="flex items-start justify-between gap-4 border-b border-border/60 px-5 py-4">
-                    <div className="min-w-0">
-                      <p
-                        className="font-mono text-[10px] uppercase tracking-[0.18em]"
-                        style={{ color: `hsl(${hue} 90% 70%)` }}
-                      >
-                        Architecture
-                      </p>
-                      <Dialog.Title className="mt-1 truncate text-base font-semibold tracking-tight">
-                        {project.title}
-                      </Dialog.Title>
-                      <Dialog.Description className="mt-0.5 truncate text-xs text-muted-foreground">
-                        {project.subtitle}
-                      </Dialog.Description>
-                    </div>
+                  <div className="flex items-center justify-between gap-4 border-b border-border/60 px-5 py-3.5">
+                    <p
+                      className="font-mono text-[10px] uppercase tracking-[0.18em]"
+                      style={{ color: `hsl(${hue} 90% 70%)` }}
+                    >
+                      Project · Architecture
+                    </p>
                     <Dialog.Close
                       aria-label="Close architecture"
                       className="focus-ring shrink-0 rounded-full border border-border/60 p-1.5 text-muted-foreground transition hover:text-foreground"
@@ -702,51 +748,144 @@ function ArchitectureDialog({
                     </Dialog.Close>
                   </div>
 
-                  {/* The dialog owns its own scroll, so the diagram is reachable
-                    no matter how tall it is — the rail behind stays put. */}
-                  <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5">
-                    {project.architectureImage ? (
-                      <figure>
-                        {/* Paper figures are drawn on white; a light plate keeps
-                          them legible instead of inverting their fills. */}
-                        <div className="overflow-x-auto rounded-xl bg-white p-3">
-                          <Image
-                            src={assetPath(project.architectureImage)}
-                            alt={`${project.title} architecture diagram`}
-                            width={project.architectureWidth ?? 2400}
-                            height={project.architectureHeight ?? 840}
-                            className="h-auto w-full min-w-[720px]"
-                            sizes="(max-width: 1120px) 100vw, 1080px"
-                          />
+                  {/* The dialog owns its scroll, so the diagram is reachable
+                      however tall it is and the rail behind never moves. */}
+                  <div className="min-h-0 flex-1 overflow-y-auto">
+                    <div className="grid gap-6 p-5 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:gap-7">
+                      {/* Left — the project itself */}
+                      <div className="min-w-0">
+                        <div className="overflow-hidden rounded-xl">
+                          <ProjectPreview project={project} compact />
                         </div>
-                        <figcaption className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-                          Scroll sideways on narrow screens to follow the pipeline.
-                        </figcaption>
-                      </figure>
-                    ) : (
-                      <div className="hairline rounded-xl bg-background/70 p-4">
-                        <pre className="overflow-x-auto font-mono text-[11px] leading-relaxed text-muted-foreground">
-                          {generateAsciiArchitecture(project)}
-                        </pre>
-                      </div>
-                    )}
 
-                    <div className="mt-5 grid gap-4 sm:grid-cols-2">
-                      <div>
-                        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/80">
-                          Problem
-                        </p>
-                        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                          {project.problem}
-                        </p>
+                        <div
+                          className="mt-4 inline-flex items-center gap-2 rounded-full border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.18em]"
+                          style={{
+                            color: `hsl(${hue} 90% 70%)`,
+                            borderColor: `hsl(${hue} 80% 70% / 0.4)`,
+                            background: `hsl(${hue} 80% 60% / 0.08)`,
+                          }}
+                        >
+                          <Icon className="h-3 w-3" />
+                          {project.category}
+                        </div>
+
+                        <Dialog.Title className="mt-3 text-lg font-semibold tracking-tight">
+                          {project.title}
+                        </Dialog.Title>
+                        <Dialog.Description className="mt-1 text-sm text-muted-foreground">
+                          {project.subtitle}
+                        </Dialog.Description>
+
+                        <div className="mt-4 flex flex-wrap gap-1.5">
+                          {project.stack.map((t) => (
+                            <TechPill key={t} tech={t} category={project.category} />
+                          ))}
+                        </div>
+
+                        <div className="mt-4 grid grid-cols-3 gap-2">
+                          {project.metrics.map((m) => (
+                            <div
+                              key={m.label}
+                              className="hairline rounded-lg bg-background/70 p-2"
+                            >
+                              <div
+                                className="text-xs font-semibold"
+                                style={{ color: `hsl(${hue} 90% 70%)` }}
+                              >
+                                {m.value}
+                              </div>
+                              <div className="mt-0.5 font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
+                                {m.label}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="mt-4 flex flex-wrap items-center gap-2">
+                          {project.links.length ? (
+                            project.links.map((l) => (
+                              <a
+                                key={l.href}
+                                href={l.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="shine focus-ring inline-flex items-center gap-1.5 rounded-lg border border-[hsl(var(--border-strong))] bg-foreground px-3 py-1.5 text-[11px] font-semibold text-background transition-all duration-300 hover:-translate-y-[1px]"
+                              >
+                                <ExternalLink className="h-3 w-3" />
+                                Link · {l.label}
+                                <ArrowUpRight className="h-3 w-3" />
+                              </a>
+                            ))
+                          ) : (
+                            <span className="font-mono text-[11px] text-muted-foreground">
+                              Internal / academic — code on request
+                            </span>
+                          )}
+                        </div>
                       </div>
-                      <div>
+
+                      {/* Right — how it is built */}
+                      <div className="min-w-0">
                         <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/80">
-                          Solution
+                          Architecture
                         </p>
-                        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                          {project.solution}
-                        </p>
+
+                        {project.architectureImage ? (
+                          <figure className="mt-2">
+                            {/* Paper figures are drawn on white; a light plate
+                                keeps them legible instead of inverting fills. */}
+                            <div className="overflow-x-auto rounded-xl bg-white p-3">
+                              <Image
+                                src={assetPath(project.architectureImage)}
+                                alt={`${project.title} architecture diagram`}
+                                width={project.architectureWidth ?? 2400}
+                                height={project.architectureHeight ?? 840}
+                                className="h-auto w-full min-w-[560px]"
+                                sizes="(max-width: 1180px) 100vw, 660px"
+                              />
+                            </div>
+                          </figure>
+                        ) : (
+                          <div className="hairline mt-2 rounded-xl bg-background/70 p-3.5">
+                            <pre className="overflow-x-auto font-mono text-[11px] leading-relaxed text-muted-foreground">
+                              {generateAsciiArchitecture(project)}
+                            </pre>
+                          </div>
+                        )}
+
+                        <div className="mt-5 space-y-4 text-sm leading-relaxed text-muted-foreground">
+                          <div>
+                            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/80">
+                              Problem
+                            </p>
+                            <p className="mt-1">{project.problem}</p>
+                          </div>
+                          <div>
+                            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/80">
+                              Solution
+                            </p>
+                            <p className="mt-1">{project.solution}</p>
+                          </div>
+                          {project.highlights.length > 0 && (
+                            <div>
+                              <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/80">
+                                Result
+                              </p>
+                              <ul className="mt-1 space-y-1.5">
+                                {project.highlights.map((h, i) => (
+                                  <li key={i} className="flex gap-2.5">
+                                    <span
+                                      className="mt-2 inline-block h-1 w-1 flex-none rounded-full"
+                                      style={{ background: `hsl(${hue} 90% 65%)` }}
+                                    />
+                                    <span>{h}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
