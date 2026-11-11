@@ -338,18 +338,28 @@ function ProjectRail({ projects: items }: { projects: Project[] }) {
         setMaxShift(0);
         return;
       }
-      // Measure where the cards actually end rather than track.scrollWidth:
-      // the trailing spacer after the last card would otherwise inflate the
-      // width and convince a rail that already fits that it needs to pan.
-      // Both rects shift with the x transform, so their difference does not.
-      const trackLeft = track.getBoundingClientRect().left;
-      const contentWidth = last.getBoundingClientRect().right - trackLeft;
+      // Layout metrics only. getBoundingClientRect reports *rendered*
+      // geometry, and these cards carry a 0.97–1 scale that rides the scroll,
+      // so a rect-based width is short by whatever the scale happens to be
+      // at measure time and the rail stops panning before the last card
+      // clears the viewport. scrollWidth ignores transforms; subtracting the
+      // last card's own margin takes the trailing spacer back out, so a rail
+      // that already fits is not told it has to pan.
+      const spacer = parseFloat(getComputedStyle(last).marginRight) || 0;
+      const contentWidth = track.scrollWidth - spacer;
       // documentElement.clientWidth excludes vertical scrollbar — true visible
       // width, unlike window.innerWidth which overstates by ~15px on Windows.
       const viewportWidth = document.documentElement.clientWidth || window.innerWidth;
-      // Small +80 buffer + the pr-* track padding give the last card a
-      // comfortable margin from the viewport edge without leaving dead space.
-      setMaxShift(Math.max(0, contentWidth - viewportWidth + 80));
+      // The rail sits inside container-tight, so the track starts at the
+      // container's inset rather than the viewport edge, and that offset has
+      // to be panned through as well or the last card stops short of clearing
+      // the screen. The section carries no transform, so its left is a stable
+      // read. The old scrollWidth formula hid this by over-counting the
+      // trailing spacer, which happened to be wider than the inset.
+      const sectionLeft = sectionRef.current?.getBoundingClientRect().left ?? 0;
+      // +80 leaves the last card a margin from the right edge rather than
+      // parking it flush against the bezel.
+      setMaxShift(Math.max(0, sectionLeft + contentWidth - viewportWidth + 80));
     };
 
     measure();
@@ -395,10 +405,10 @@ function ProjectRail({ projects: items }: { projects: Project[] }) {
     return (
       <div className="relative mt-10">
         <RailHeader />
-        <div className="no-scrollbar -mx-6 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2">
+        <div className="no-scrollbar -mx-6 flex snap-x snap-mandatory items-stretch gap-4 overflow-x-auto px-6 pb-2">
           {items.map((p, i) => (
             <div key={p.slug} className="w-[min(92vw,420px)] flex-none snap-start">
-              <Reveal delay={i * 0.04}>
+              <Reveal delay={i * 0.04} className="h-full">
                 <ProjectCard project={p} />
               </Reveal>
             </div>
@@ -453,7 +463,11 @@ function ProjectRail({ projects: items }: { projects: Project[] }) {
                   isLast && pans && "mr-[440px]"
                 )}
               >
-                <Reveal delay={i * 0.06}>
+                {/* h-full matters: the wrapper stretches to the tallest card
+                    via items-stretch, but Reveal renders its own div in
+                    between, and without this the chain breaks there and every
+                    card falls back to its own content height. */}
+                <Reveal delay={i * 0.06} className="h-full">
                   <ProjectCard project={p} />
                 </Reveal>
               </motion.div>
