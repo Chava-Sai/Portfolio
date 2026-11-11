@@ -101,15 +101,19 @@ const PALETTE: Record<string, string> = {
   "facebook prophet": "210 70% 55%",
 };
 
+// One hue per stack group, spaced far enough apart around the wheel that no
+// two cards read as the same colour. Keys must match the group names in
+// techStack exactly — anything unmatched falls back to neutral grey, which is
+// how five of these cards ended up identical when the taxonomy was renamed.
 const CATEGORY_HUE: Record<string, string> = {
-  Languages: "47 95% 60%",
-  "AI / ML": "265 75% 65%",
-  Backend: "150 65% 50%",
-  Frontend: "195 90% 55%",
-  Databases: "210 75% 55%",
-  "Cloud / DevOps": "30 95% 55%",
-  Tools: "265 65% 60%",
-  Research: "305 80% 65%",
+  Languages: "45 95% 62%", // amber
+  "Machine Learning": "18 90% 60%", // orange
+  "Deep Learning": "345 85% 66%", // rose
+  "NLP & Vision": "300 72% 70%", // magenta
+  "LLM Systems": "265 80% 70%", // violet
+  Backend: "150 65% 52%", // green
+  Frontend: "190 85% 56%", // cyan
+  "Cloud & Tooling": "225 85% 66%", // blue
 };
 
 export function getTechAccent(name: string, category?: string): TechAccent {

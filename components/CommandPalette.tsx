@@ -204,73 +204,85 @@ export function CommandPalette() {
                 className="fixed inset-0 z-[170] bg-background/70 backdrop-blur-md"
               />
             </Dialog.Overlay>
+            {/* Centring lives on this wrapper, which animates opacity only.
+                Framer Motion writes an inline transform while it animates and
+                clears it to none afterwards, taking Tailwind's -translate-x-1/2
+                with it — which left the palette sitting at 50% rather than
+                centred. pointer-events-none keeps click-outside working. */}
             <Dialog.Content asChild>
               <motion.div
-                initial={{ opacity: 0, y: -8, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -8, scale: 0.98 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 0.18, ease: "easeOut" }}
-                className="fixed left-1/2 top-[12vh] z-[171] w-[min(640px,calc(100vw-2rem))] -translate-x-1/2"
+                className="pointer-events-none fixed inset-0 z-[171] flex items-start justify-center px-4 pt-[12vh]"
               >
-                <Dialog.Title className="sr-only">Command palette</Dialog.Title>
-                <Dialog.Description className="sr-only">
-                  Quickly navigate to sections and external links.
-                </Dialog.Description>
-                <div className="glass-strong overflow-hidden rounded-2xl shadow-2xl">
-                  <div className="flex items-center gap-3 border-b border-border/60 px-4">
-                    <Search className="h-4 w-4 text-muted-foreground" />
-                    <input
-                      ref={inputRef}
-                      value={q}
-                      onChange={(e) => setQ(e.target.value)}
-                      placeholder="Search sections, links, actions…"
-                      className="h-12 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
-                    />
-                    <span className="kbd">esc</span>
-                  </div>
-                  <div className="max-h-[60vh] overflow-y-auto p-2">
-                    {groups.length === 0 ? (
-                      <p className="px-3 py-8 text-center text-sm text-muted-foreground">
-                        No matches for &quot;{q}&quot;
-                      </p>
-                    ) : (
-                      groups.map((g) => (
-                        <div key={g.group} className="mb-2 last:mb-0">
-                          <div className="px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                            {g.group}
+                <motion.div
+                  initial={{ y: -8, scale: 0.98 }}
+                  animate={{ y: 0, scale: 1 }}
+                  transition={{ duration: 0.18, ease: "easeOut" }}
+                  className="pointer-events-auto w-[min(640px,calc(100vw-2rem))]"
+                >
+                  <Dialog.Title className="sr-only">Command palette</Dialog.Title>
+                  <Dialog.Description className="sr-only">
+                    Quickly navigate to sections and external links.
+                  </Dialog.Description>
+                  <div className="glass-strong overflow-hidden rounded-2xl shadow-2xl">
+                    <div className="flex items-center gap-3 border-b border-border/60 px-4">
+                      <Search className="h-4 w-4 text-muted-foreground" />
+                      <input
+                        ref={inputRef}
+                        value={q}
+                        onChange={(e) => setQ(e.target.value)}
+                        placeholder="Search sections, links, actions…"
+                        className="h-12 flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
+                      />
+                      <span className="kbd">esc</span>
+                    </div>
+                    <div className="max-h-[60vh] overflow-y-auto p-2">
+                      {groups.length === 0 ? (
+                        <p className="px-3 py-8 text-center text-sm text-muted-foreground">
+                          No matches for &quot;{q}&quot;
+                        </p>
+                      ) : (
+                        groups.map((g) => (
+                          <div key={g.group} className="mb-2 last:mb-0">
+                            <div className="px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                              {g.group}
+                            </div>
+                            {g.items.map((item) => (
+                              <button
+                                key={item.id}
+                                type="button"
+                                onClick={() => handleSelect(item)}
+                                className={cn(
+                                  "group flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition hover:bg-accent"
+                                )}
+                              >
+                                <item.icon className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
+                                <span className="flex-1">{item.label}</span>
+                                {item.hint ? (
+                                  <span className="font-mono text-[11px] text-muted-foreground">
+                                    {item.hint}
+                                  </span>
+                                ) : null}
+                                <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground opacity-0 transition group-hover:opacity-100" />
+                              </button>
+                            ))}
                           </div>
-                          {g.items.map((item) => (
-                            <button
-                              key={item.id}
-                              type="button"
-                              onClick={() => handleSelect(item)}
-                              className={cn(
-                                "group flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left text-sm transition hover:bg-accent"
-                              )}
-                            >
-                              <item.icon className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
-                              <span className="flex-1">{item.label}</span>
-                              {item.hint ? (
-                                <span className="font-mono text-[11px] text-muted-foreground">
-                                  {item.hint}
-                                </span>
-                              ) : null}
-                              <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground opacity-0 transition group-hover:opacity-100" />
-                            </button>
-                          ))}
-                        </div>
-                      ))
-                    )}
+                        ))
+                      )}
+                    </div>
+                    <div className="flex items-center justify-between border-t border-border/60 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                      <span>↑ ↓ navigate</span>
+                      <span>↵ select</span>
+                      <span>
+                        <span className="kbd">⌘</span> <span className="kbd">K</span> to
+                        toggle
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex items-center justify-between border-t border-border/60 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-                    <span>↑ ↓ navigate</span>
-                    <span>↵ select</span>
-                    <span>
-                      <span className="kbd">⌘</span> <span className="kbd">K</span> to
-                      toggle
-                    </span>
-                  </div>
-                </div>
+                </motion.div>
               </motion.div>
             </Dialog.Content>
           </Dialog.Portal>

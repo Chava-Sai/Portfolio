@@ -206,6 +206,10 @@ export type Project = {
   image?: string;
   imageWidth?: number;
   imageHeight?: number;
+  /** Real architecture figure, shown in the dialog instead of the ASCII fallback. */
+  architectureImage?: string;
+  architectureWidth?: number;
+  architectureHeight?: number;
   accentHue: number;
 };
 
@@ -239,6 +243,34 @@ export const projects: Project[] = [
     category: "AI / ML",
     accentHue: 265,
     image: "/projects/ivc.png",
+  },
+  {
+    slug: "codemix-rag",
+    title: "Faithful but Wrong — Silent Failure in Code-Mixed RAG",
+    subtitle: "Romanized code-mixed retrieval · ta · te · hi · 421 validated queries",
+    problem:
+      "Hundreds of millions of people type their own language in Latin script, mixing in English, and retrieval-augmented generation handles it badly. Worse, the faithfulness metrics production systems watch cannot see the damage: they score an answer against the passages that were retrieved, which says nothing about whether the right passages were retrieved at all.",
+    solution:
+      "Built a 421-query testbed in Tamil, Telugu and Hindi with every romanized query validated by a native speaker, then measured what romanization costs end to end — retrieval, answer correctness, and both lexical groundedness and NLI faithfulness — across dense encoders and BM25, and tested rule-based transliteration, LLM rewriting and reciprocal rank fusion as mitigations.",
+    highlights: [
+      "Romanizing a query costs more than asking it in a different language altogether.",
+      "Answer correctness falls 21.6 points while lexical groundedness does not move at all.",
+      "NLI faithfulness is three to five times less sensitive to the same intervention.",
+      "421/421 rows human-validated at 96.4% annotator agreement.",
+    ],
+    stack: ["Python", "PyTorch", "Hugging Face", "RAG", "BM25", "Transformers"],
+    metrics: [
+      { label: "Correctness drop", value: "21.6 pts" },
+      { label: "Human agreement", value: "96.4%" },
+      { label: "Faithfulness lag", value: "3–5×" },
+    ],
+    links: [],
+    category: "Research",
+    accentHue: 0,
+    image: "/projects/codemix-rag.svg",
+    architectureImage: "/projects/codemix-rag-architecture.png",
+    architectureWidth: 2400,
+    architectureHeight: 840,
   },
   {
     slug: "hatelens",

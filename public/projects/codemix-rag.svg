@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Faithful but Wrong — romanized code-mixed queries break retrieval while faithfulness metrics barely move">
+  <defs>
+    <linearGradient id="cr-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#150a0d"/>
+      <stop offset="55%" stop-color="#170d12"/>
+      <stop offset="100%" stop-color="#0a0d14"/>
+    </linearGradient>
+    <linearGradient id="cr-drop" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f87171"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <linearGradient id="cr-flat" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#64748b"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <radialGradient id="cr-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="cr-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#cr-bg)"/>
+  <rect width="1200" height="675" fill="url(#cr-grid)"/>
+  <ellipse cx="880" cy="420" rx="430" ry="320" fill="url(#cr-glow)"/>
+
+  <!-- the query, rewritten into Latin script -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <text x="72" y="92" fill="#94a3b8" font-size="19" letter-spacing="3.4">THE SAME QUESTION, TWICE</text>
+
+    <rect x="72" y="118" width="376" height="62" rx="12" fill="#ffffff" fill-opacity="0.05" stroke="#ffffff" stroke-opacity="0.16"/>
+    <text x="94" y="144" fill="#64748b" font-size="15" letter-spacing="2.2">NATIVE SCRIPT</text>
+    <text x="94" y="167" fill="#e2e8f0" font-size="18">ta &#183; te &#183; hi</text>
+
+    <path d="M470 149h44" stroke="#ef4444" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="7 6"/>
+    <path d="M508 142l10 7-10 7" fill="none" stroke="#ef4444" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect x="536" y="118" width="400" height="62" rx="12" fill="#ef4444" fill-opacity="0.11" stroke="#ef4444" stroke-opacity="0.5"/>
+    <text x="558" y="144" fill="#fca5a5" font-size="15" letter-spacing="2.2">ROMANIZED &#183; CODE-MIXED</text>
+    <text x="558" y="167" fill="#fecaca" font-size="18">typed in Latin, mixed with English</text>
+  </g>
+
+  <!-- what the intervention does to each metric -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <text x="72" y="262" fill="#94a3b8" font-size="19" letter-spacing="3.4">WHAT MOVES, AND WHAT DOES NOT</text>
+
+    <!-- correctness collapses -->
+    <text x="72" y="312" fill="#fca5a5" font-size="17" letter-spacing="1.6">answer correctness</text>
+    <rect x="72" y="326" width="760" height="18" rx="9" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="72" y="326" width="300" height="18" rx="9" fill="url(#cr-drop)"/>
+    <path d="M380 335h74" stroke="#ef4444" stroke-width="2" stroke-linecap="round"/>
+    <path d="M448 329l8 6-8 6" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="470" y="341" fill="#f87171" font-size="21" font-weight="700">&#8722;21.6 pts</text>
+
+    <!-- groundedness does not -->
+    <text x="72" y="392" fill="#cbd5e1" font-size="17" letter-spacing="1.6">lexical groundedness</text>
+    <rect x="72" y="406" width="760" height="18" rx="9" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="72" y="406" width="744" height="18" rx="9" fill="url(#cr-flat)"/>
+    <text x="840" y="421" fill="#94a3b8" font-size="21" font-weight="700">unmoved</text>
+
+    <!-- nli faithfulness barely does -->
+    <text x="72" y="472" fill="#cbd5e1" font-size="17" letter-spacing="1.6">NLI faithfulness</text>
+    <rect x="72" y="486" width="760" height="18" rx="9" fill="#ffffff" fill-opacity="0.06"/>
+    <rect x="72" y="486" width="672" height="18" rx="9" fill="url(#cr-flat)"/>
+    <text x="840" y="501" fill="#94a3b8" font-size="21" font-weight="700">3&#8211;5&#215; less</text>
+  </g>
+
+  <!-- the conclusion -->
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <rect x="72" y="546" width="1056" height="74" rx="14" fill="#ef4444" fill-opacity="0.1" stroke="#ef4444" stroke-opacity="0.45"/>
+    <text x="96" y="578" fill="#fca5a5" font-size="16" letter-spacing="2.6">SILENT FAILURE &#160;=&#160; GROUNDED &#8743; NOT CORRECT</text>
+    <text x="96" y="604" fill="#e2e8f0" font-size="16">scoring an answer against what was retrieved cannot reveal the wrong passages were retrieved</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <text x="1128" y="92" fill="#64748b" font-size="17" letter-spacing="2.6" text-anchor="end">421 QUERIES &#183; ta &#183; te &#183; hi</text>
+  </g>
+</svg>

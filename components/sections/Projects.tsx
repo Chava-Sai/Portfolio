@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import * as Dialog from "@radix-ui/react-dialog";
 import {
   AnimatePresence,
   motion,
@@ -11,7 +12,6 @@ import {
 } from "framer-motion";
 import {
   ArrowUpRight,
-  ChevronDown,
   ChevronRight,
   CircuitBoard,
   Database,
@@ -21,11 +21,13 @@ import {
   LineChart,
   GitBranch,
   Github,
+  Maximize2,
   MousePointer2,
   ScanLine,
   Sparkles,
   Star,
   Volume2,
+  X,
 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
@@ -67,6 +69,7 @@ export function Projects() {
     // and are appended at the front, while listed slugs render in this exact
     // sequence (question-paper-t5 stays pinned to the very end).
     const RAIL_ORDER: ReadonlyArray<string> = [
+      "codemix-rag",
       "hatelens",
       "auto-grader",
       "sidewalk-validator",
@@ -137,6 +140,7 @@ export function Projects() {
 
 function SpotlightCard({ project }: { project: Project }) {
   const Icon = CATEGORY_ICON[project.category];
+  const [archOpen, setArchOpen] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
@@ -238,7 +242,22 @@ function SpotlightCard({ project }: { project: Project }) {
                 Internal / academic — code on request
               </span>
             )}
+
+            <button
+              type="button"
+              onClick={() => setArchOpen(true)}
+              className="shine focus-ring inline-flex items-center gap-2 rounded-lg border border-[hsl(var(--border-strong))] px-3.5 py-2 text-xs font-semibold text-muted-foreground transition-all duration-300 hover:-translate-y-[2px] hover:text-foreground"
+            >
+              <Maximize2 className="h-3 w-3" />
+              View architecture
+            </button>
           </div>
+
+          <ArchitectureDialog
+            project={project}
+            open={archOpen}
+            onOpenChange={setArchOpen}
+          />
         </div>
 
         {/* Visual preview side */}
@@ -282,6 +301,7 @@ function ProjectRail({ projects: items }: { projects: Project[] }) {
   const reduced = useReducedMotion();
   const [maxShift, setMaxShift] = useState(0);
   const [isDesktop, setIsDesktop] = useState(true);
+  const itemsKey = items.map((p) => p.slug).join("|");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -289,23 +309,37 @@ function ProjectRail({ projects: items }: { projects: Project[] }) {
     const measure = () => {
       const desktop = window.innerWidth >= 768;
       setIsDesktop(desktop);
-      if (!desktop || !trackRef.current) {
+      const track = trackRef.current;
+      if (!desktop || !track) {
         setMaxShift(0);
         return;
       }
-      const trackWidth = trackRef.current.scrollWidth;
+      const cards = track.querySelectorAll<HTMLElement>("[data-rail-card]");
+      const last = cards[cards.length - 1];
+      if (!last) {
+        setMaxShift(0);
+        return;
+      }
+      // Measure where the cards actually end rather than track.scrollWidth:
+      // the trailing spacer after the last card would otherwise inflate the
+      // width and convince a rail that already fits that it needs to pan.
+      // Both rects shift with the x transform, so their difference does not.
+      const trackLeft = track.getBoundingClientRect().left;
+      const contentWidth = last.getBoundingClientRect().right - trackLeft;
       // documentElement.clientWidth excludes vertical scrollbar — true visible
       // width, unlike window.innerWidth which overstates by ~15px on Windows.
       const viewportWidth = document.documentElement.clientWidth || window.innerWidth;
       // Small +80 buffer + the pr-* track padding give the last card a
       // comfortable margin from the viewport edge without leaving dead space.
-      setMaxShift(Math.max(0, trackWidth - viewportWidth + 80));
+      setMaxShift(Math.max(0, contentWidth - viewportWidth + 80));
     };
 
     measure();
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
-  }, [items.length]);
+    // Keyed on the slugs, not the count: two filters can yield the same number
+    // of cards, and a stale measurement survives that.
+  }, [itemsKey]);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -335,6 +369,9 @@ function ProjectRail({ projects: items }: { projects: Project[] }) {
     return Math.round(100 + maxShift * 0.2);
   }, [isDesktop, maxShift]);
 
+  // Whether the rail has anything to pan. Everything pinned hangs off this.
+  const pans = isDesktop && !reduced && maxShift > 0;
+
   // Mobile / reduced-motion fallback: native horizontal scroll, no parallax.
   if (!isDesktop || reduced) {
     return (
@@ -357,30 +394,45 @@ function ProjectRail({ projects: items }: { projects: Project[] }) {
     <section
       ref={sectionRef}
       className="relative mt-10"
-      style={{ height: `${heightVh}vh` }}
+      // Only claim scroll height while the rail actually pans. A filtered view
+      // fits on screen, which made heightVh 0 while the sticky child stayed a
+      // full screen tall — so it escaped the section and covered whatever came
+      // next. Unpinned, the section just grows with its content.
+      style={pans ? { height: `${heightVh}vh` } : undefined}
     >
-      <div className="sticky top-0 flex min-h-screen flex-col justify-start overflow-hidden pb-6 pt-6 sm:pt-8">
+      <div
+        className={cn(
+          "flex flex-col justify-start pb-6 pt-6 sm:pt-8",
+          pans && "sticky top-0 min-h-screen overflow-hidden"
+        )}
+      >
         <div className="container-tight">
-          <RailHeader />
+          <RailHeader pans={pans} />
         </div>
 
         <motion.div
           ref={trackRef}
           style={{ x }}
-          className="mt-6 flex w-max items-stretch gap-6 pl-6 sm:pl-10"
+          className={cn(
+            "mt-6 flex w-max items-stretch gap-6",
+            pans ? "pl-6 sm:pl-10" : "px-6 sm:px-10"
+          )}
         >
           {items.map((p, i) => {
             const isLast = i === items.length - 1;
             return (
               <motion.div
                 key={p.slug}
+                data-rail-card
                 style={{ scale: innerScale }}
                 className={cn(
                   "w-[440px] flex-none",
                   // Trailing spacer after the last card = exactly one card's
                   // width (440px) of blank space, so the rail visually ends
-                  // where an "imaginary fifth card" would have sat.
-                  isLast && "mr-[440px]"
+                  // where an "imaginary fifth card" would have sat. Without a
+                  // pan there is no overflow to hide it, so it would simply
+                  // push the page sideways.
+                  isLast && pans && "mr-[440px]"
                 )}
               >
                 <Reveal delay={i * 0.06}>
@@ -391,13 +443,13 @@ function ProjectRail({ projects: items }: { projects: Project[] }) {
           })}
         </motion.div>
 
-        <ScrollProgressBar progress={scrollYProgress} />
+        {pans && <ScrollProgressBar progress={scrollYProgress} />}
       </div>
     </section>
   );
 }
 
-function RailHeader() {
+function RailHeader({ pans = true }: { pans?: boolean }) {
   return (
     <div className="mb-3 flex items-center justify-between">
       <div>
@@ -405,13 +457,17 @@ function RailHeader() {
           More Projects
         </p>
         <p className="mt-1 text-sm text-muted-foreground">
-          Scroll down to drive the rail across.
+          {pans
+            ? "Scroll down to drive the rail across."
+            : "The rest of the work in this category."}
         </p>
       </div>
-      <div className="hidden items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground md:inline-flex">
-        <MousePointer2 className="h-3 w-3" />
-        scroll ↓ · pans →
-      </div>
+      {pans && (
+        <div className="hidden items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground md:inline-flex">
+          <MousePointer2 className="h-3 w-3" />
+          scroll ↓ · pans →
+        </div>
+      )}
     </div>
   );
 }
@@ -555,42 +611,152 @@ function ProjectCard({ project }: { project: Project }) {
             ))}
           </div>
 
+          {/* Opens a dialog rather than expanding in place: these cards live in
+              a pinned rail where vertical scroll pans sideways and the track
+              clips overflow, so anything taller than the card was unreachable. */}
           <button
             type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
+            onClick={() => setOpen(true)}
             className="mt-4 inline-flex items-center gap-1.5 self-start font-mono text-[11px] text-muted-foreground transition hover:text-foreground"
           >
-            {open ? "Hide architecture" : "Expand architecture"}
-            <ChevronDown
-              className={cn("h-3.5 w-3.5 transition-transform", open && "rotate-180")}
-            />
+            View architecture
+            <Maximize2 className="h-3.5 w-3.5" />
           </button>
 
-          <AnimatePresence initial={false}>
-            {open && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                className="overflow-hidden"
-              >
-                <div className="hairline mt-3 rounded-xl bg-background/70 p-2.5">
-                  <pre className="overflow-x-auto font-mono text-[10.5px] leading-snug text-muted-foreground">
-                    {generateAsciiArchitecture(project)}
-                  </pre>
-                </div>
-                <p className="mt-2.5 text-[11.5px] leading-snug text-muted-foreground">
-                  <span className="text-foreground">Problem:</span> {project.problem}{" "}
-                  <span className="text-foreground">Solution:</span> {project.solution}
-                </p>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          <ArchitectureDialog project={project} open={open} onOpenChange={setOpen} />
         </div>
       </div>
     </motion.article>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  ArchitectureDialog — the architecture on its own surface                  */
+/* -------------------------------------------------------------------------- */
+
+function ArchitectureDialog({
+  project,
+  open,
+  onOpenChange,
+}: {
+  project: Project;
+  open: boolean;
+  onOpenChange: (v: boolean) => void;
+}) {
+  const hue = project.accentHue;
+
+  return (
+    <Dialog.Root open={open} onOpenChange={onOpenChange}>
+      <AnimatePresence>
+        {open && (
+          <Dialog.Portal forceMount>
+            <Dialog.Overlay asChild>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.15 }}
+                className="fixed inset-0 z-[180] bg-background/80 backdrop-blur-md"
+              />
+            </Dialog.Overlay>
+            {/* Centring lives on this wrapper, which animates opacity only.
+                Framer Motion writes an inline transform while it animates and
+                resets it to none afterwards, which silently wipes Tailwind's
+                -translate-x-1/2, so a transform-centred panel lands at 50%
+                rather than centred. pointer-events-none lets clicks reach the
+                overlay underneath so click-outside still closes. */}
+            <Dialog.Content asChild>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.18, ease: "easeOut" }}
+                className="pointer-events-none fixed inset-0 z-[181] flex items-center justify-center p-4"
+              >
+                <motion.div
+                  initial={{ y: 12, scale: 0.985 }}
+                  animate={{ y: 0, scale: 1 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                  className="pointer-events-auto flex max-h-[88vh] w-[min(1120px,calc(100vw-2rem))] flex-col overflow-hidden rounded-2xl border border-[hsl(var(--border-strong))] bg-card shadow-2xl"
+                >
+                  <div className="flex items-start justify-between gap-4 border-b border-border/60 px-5 py-4">
+                    <div className="min-w-0">
+                      <p
+                        className="font-mono text-[10px] uppercase tracking-[0.18em]"
+                        style={{ color: `hsl(${hue} 90% 70%)` }}
+                      >
+                        Architecture
+                      </p>
+                      <Dialog.Title className="mt-1 truncate text-base font-semibold tracking-tight">
+                        {project.title}
+                      </Dialog.Title>
+                      <Dialog.Description className="mt-0.5 truncate text-xs text-muted-foreground">
+                        {project.subtitle}
+                      </Dialog.Description>
+                    </div>
+                    <Dialog.Close
+                      aria-label="Close architecture"
+                      className="focus-ring shrink-0 rounded-full border border-border/60 p-1.5 text-muted-foreground transition hover:text-foreground"
+                    >
+                      <X className="h-4 w-4" />
+                    </Dialog.Close>
+                  </div>
+
+                  {/* The dialog owns its own scroll, so the diagram is reachable
+                    no matter how tall it is — the rail behind stays put. */}
+                  <div className="min-h-0 flex-1 overflow-y-auto px-5 py-5">
+                    {project.architectureImage ? (
+                      <figure>
+                        {/* Paper figures are drawn on white; a light plate keeps
+                          them legible instead of inverting their fills. */}
+                        <div className="overflow-x-auto rounded-xl bg-white p-3">
+                          <Image
+                            src={assetPath(project.architectureImage)}
+                            alt={`${project.title} architecture diagram`}
+                            width={project.architectureWidth ?? 2400}
+                            height={project.architectureHeight ?? 840}
+                            className="h-auto w-full min-w-[720px]"
+                            sizes="(max-width: 1120px) 100vw, 1080px"
+                          />
+                        </div>
+                        <figcaption className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                          Scroll sideways on narrow screens to follow the pipeline.
+                        </figcaption>
+                      </figure>
+                    ) : (
+                      <div className="hairline rounded-xl bg-background/70 p-4">
+                        <pre className="overflow-x-auto font-mono text-[11px] leading-relaxed text-muted-foreground">
+                          {generateAsciiArchitecture(project)}
+                        </pre>
+                      </div>
+                    )}
+
+                    <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                      <div>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/80">
+                          Problem
+                        </p>
+                        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                          {project.problem}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-foreground/80">
+                          Solution
+                        </p>
+                        <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                          {project.solution}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </motion.div>
+            </Dialog.Content>
+          </Dialog.Portal>
+        )}
+      </AnimatePresence>
+    </Dialog.Root>
   );
 }
 

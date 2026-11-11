@@ -3,14 +3,14 @@
 import { motion } from "framer-motion";
 import {
   Atom,
-  Boxes,
   BrainCircuit,
+  Cloud,
   Code2,
-  Database,
+  Eye,
   LayoutDashboard,
-  Microscope,
+  Network,
   Server,
-  Wrench,
+  Sigma,
 } from "lucide-react";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Reveal } from "@/components/effects/Reveal";
@@ -19,15 +19,17 @@ import { Sparkle } from "@/components/effects/Sparkle";
 import { techStack } from "@/lib/data";
 import { getCategoryAccent } from "@/lib/tech-colors";
 
+// Keys must match the group names in techStack exactly; Atom is only a
+// safety net for a group added to the data without an icon here.
 const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   Languages: Code2,
-  "AI / ML": BrainCircuit,
+  "Machine Learning": Sigma,
+  "Deep Learning": BrainCircuit,
+  "NLP & Vision": Eye,
+  "LLM Systems": Network,
   Backend: Server,
   Frontend: LayoutDashboard,
-  Databases: Database,
-  "Cloud / DevOps": Boxes,
-  Tools: Wrench,
-  Research: Microscope,
+  "Cloud & Tooling": Cloud,
 };
 
 export function TechStack() {
