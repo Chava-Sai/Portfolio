@@ -373,8 +373,33 @@ function ProjectRail({ projects: items }: { projects: Project[] }) {
     };
 
     measure();
+
+    // A single measurement after mount is not enough. On a cold load it can
+    // run before the track has its final width, come out as 0, and leave the
+    // rail unpinned until something else happens to trigger a resize — which
+    // is exactly what shipped: the section stayed static with every card
+    // spilling off the right. Re-measure once layout has actually painted,
+    // and again when webfonts settle, since both can change the track.
+    const raf1 = requestAnimationFrame(() => {
+      measure();
+      requestAnimationFrame(measure);
+    });
+    if (typeof document !== "undefined" && document.fonts?.ready) {
+      document.fonts.ready.then(measure).catch(() => {});
+    }
+
+    // Observing the track covers anything else that resizes it later. This
+    // cannot loop — the spacer maxShift adds is subtracted back out, so the
+    // computed value is stable and React drops the no-op state update.
+    const ro = new ResizeObserver(measure);
+    if (trackRef.current) ro.observe(trackRef.current);
+    if (sectionRef.current) ro.observe(sectionRef.current);
     window.addEventListener("resize", measure);
-    return () => window.removeEventListener("resize", measure);
+    return () => {
+      cancelAnimationFrame(raf1);
+      ro.disconnect();
+      window.removeEventListener("resize", measure);
+    };
     // Keyed on the slugs, not the count: two filters can yield the same number
     // of cards, and a stale measurement survives that.
   }, [itemsKey]);
