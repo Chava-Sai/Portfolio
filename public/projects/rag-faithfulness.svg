@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675" role="img" aria-label="Evaluating faithfulness and attribution in RAG systems">
+  <defs>
+    <linearGradient id="rf-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#120b1a"/>
+      <stop offset="55%" stop-color="#140d1f"/>
+      <stop offset="100%" stop-color="#0a0c14"/>
+    </linearGradient>
+    <linearGradient id="rf-bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="100%" stop-color="#c084fc"/>
+    </linearGradient>
+    <radialGradient id="rf-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="rf-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#rf-bg)"/>
+  <rect width="1200" height="675" fill="url(#rf-grid)"/>
+  <ellipse cx="330" cy="420" rx="430" ry="320" fill="url(#rf-glow)"/>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <text x="72" y="92" fill="#94a3b8" font-size="19" letter-spacing="3.4">IS THE ANSWER ACTUALLY IN THE PASSAGES?</text>
+
+    <!-- faithfulness is low across the board; the scale is 0 to 1 -->
+    <text x="72" y="150" fill="#cbd5e1" font-size="17" letter-spacing="1.6">claims entailed by a retrieved passage</text>
+
+    <g>
+      <text x="72" y="206" fill="#e2e8f0" font-size="16">plain prompt</text>
+      <rect x="300" y="190" width="760" height="20" rx="10" fill="#ffffff" fill-opacity="0.06"/>
+      <rect x="300" y="190" width="68" height="20" rx="10" fill="url(#rf-bar)"/>
+      <text x="1080" y="206" fill="#f0abfc" font-size="19" font-weight="700">0.089</text>
+
+      <text x="72" y="256" fill="#e2e8f0" font-size="16">grounded prompt</text>
+      <rect x="300" y="240" width="760" height="20" rx="10" fill="#ffffff" fill-opacity="0.06"/>
+      <rect x="300" y="240" width="76" height="20" rx="10" fill="url(#rf-bar)"/>
+      <text x="1080" y="256" fill="#f0abfc" font-size="19" font-weight="700">0.100</text>
+
+      <text x="72" y="306" fill="#e2e8f0" font-size="16">chain of thought</text>
+      <rect x="300" y="290" width="760" height="20" rx="10" fill="#ffffff" fill-opacity="0.06"/>
+      <rect x="300" y="290" width="52" height="20" rx="10" fill="#64748b"/>
+      <text x="1080" y="306" fill="#94a3b8" font-size="19" font-weight="700">0.068</text>
+    </g>
+
+    <text x="300" y="344" fill="#64748b" font-size="15">0.0</text>
+    <text x="1030" y="344" fill="#64748b" font-size="15">1.0</text>
+
+    <!-- the result that makes the metric suspect -->
+    <rect x="72" y="382" width="1056" height="124" rx="14" fill="#a855f7" fill-opacity="0.1" stroke="#a855f7" stroke-opacity="0.45"/>
+    <text x="96" y="420" fill="#e9d5ff" font-size="16" letter-spacing="2.6">INSERT CONTRADICTORY PASSAGES &#8212; AND THE SCORE GOES UP</text>
+    <text x="96" y="456" fill="#f0abfc" font-size="30" font-weight="700">0.086 &#8594; 0.205</text>
+    <text x="330" y="456" fill="#cbd5e1" font-size="17">reported support more than doubles after distractor insertion</text>
+    <text x="96" y="488" fill="#c4b5fd" font-size="16">claims are sampled at random, not matched to the question &#8212; so this measures the metric, not the model</text>
+  </g>
+
+  <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace">
+    <rect x="72" y="536" width="336" height="84" rx="12" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.12"/>
+    <text x="96" y="572" fill="#f0abfc" font-size="26" font-weight="700">&#954; = &#8722;0.18</text>
+    <text x="96" y="600" fill="#94a3b8" font-size="15">NLI vs manual labels &#183; exploratory</text>
+
+    <rect x="432" y="536" width="336" height="84" rx="12" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.12"/>
+    <text x="456" y="572" fill="#f0abfc" font-size="26" font-weight="700">5</text>
+    <text x="456" y="600" fill="#94a3b8" font-size="15">ablations &#183; E1&#8211;E5 on NQ and ASQA</text>
+
+    <rect x="792" y="536" width="336" height="84" rx="12" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.12"/>
+    <text x="816" y="572" fill="#f0abfc" font-size="26" font-weight="700">&#964; = 0.5</text>
+    <text x="816" y="600" fill="#94a3b8" font-size="15">DeBERTa-v3 entailment threshold</text>
+  </g>
+
+  <text x="1128" y="92" fill="#64748b" font-size="17" letter-spacing="2.6" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace">NQ &#183; ASQA &#183; FEVER</text>
+</svg>

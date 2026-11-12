@@ -210,6 +210,9 @@ export type Project = {
   architectureImage?: string;
   architectureWidth?: number;
   architectureHeight?: number;
+  /** True when the figure is drawn on white (a paper extract) and needs a light
+   *  plate behind it. Figures drawn for this site are already dark. */
+  architectureOnWhite?: boolean;
   accentHue: number;
 };
 
@@ -271,6 +274,68 @@ export const projects: Project[] = [
     architectureImage: "/projects/codemix-rag-architecture.png",
     architectureWidth: 2400,
     architectureHeight: 840,
+    architectureOnWhite: true,
+  },
+  {
+    slug: "rag-faithfulness",
+    title: "Evaluating Faithfulness and Attribution in RAG Systems",
+    subtitle: "NLI-grounded evaluation · NQ · ASQA · FEVER · five ablations",
+    problem:
+      "A retrieval-augmented system can answer correctly while ignoring everything it retrieved, falling back on parametric memory — and the faithfulness metrics meant to catch that are themselves barely validated.",
+    solution:
+      "Built an NLI-grounded evaluation pipeline that splits each answer into claims and scores entailment against the retrieved passages, then ran five ablations across retrievers, generators, prompt styles, top-k and adversarial passages, publishing the limitations of each measure alongside its numbers.",
+    highlights: [
+      "Faithfulness is low throughout: 0.089 plain, 0.100 grounded, 0.068 with chain-of-thought — so grounded prompting helps 12% and CoT hurts 24%.",
+      "Inserting random FEVER distractors more than doubles reported support, 0.086 to 0.205 — a property of the metric, not robustness.",
+      "NLI scores and manual labels disagree (κ = −0.18), from one annotator over 50 examples, reported as exploratory.",
+      "Limitations stated with the results: attribution precision is currently equivalent to the faithfulness score, and RFG's sign is not causal evidence.",
+    ],
+    stack: ["Python", "PyTorch", "Hugging Face", "RAG", "BM25", "FAISS", "Transformers"],
+    metrics: [
+      { label: "Plain faithfulness", value: "0.089" },
+      { label: "Grounded vs plain", value: "+12%" },
+      { label: "CoT vs plain", value: "−24%" },
+    ],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/Chava-Sai/Evaluating-Faithfulness-and-Attribution-in-Retrieval-Augmented-Generation-Systems",
+      },
+    ],
+    category: "Research",
+    accentHue: 290,
+    image: "/projects/rag-faithfulness.svg",
+    architectureImage: "/projects/rag-faithfulness-architecture.svg",
+    architectureWidth: 2000,
+    architectureHeight: 1000,
+  },
+  {
+    slug: "parksure",
+    title: "ParkSure — Read the Whole Pole, Know If You Can Park",
+    subtitle: "Android · Kotlin · Jetpack Compose · Gemini · on-device first",
+    problem:
+      "A driver at a pole with four signs — a two-hour limit, Tuesday street cleaning, a resident permit window, a tow warning — has about ten seconds to work out whether they will be ticketed, and getting it wrong costs the car.",
+    solution:
+      "Gemini only reads: it turns one photograph into structured JSON describing the signs. A pure-Kotlin rule engine with no Android dependencies then decides what that means right now — stacked signs, opposing arrows, midnight crossings, week-of-month cleaning, seasons, holidays, permits and daylight saving — because models read well and do date arithmetic badly, and that split makes the hard half testable with no network, phone or API key.",
+    highlights: [
+      "0 false 'allowed' across 34 hand-labelled sign poles, with 31/31 decisive verdicts correct.",
+      "The benchmark's headline metric is false-allowed rather than accuracy, because the two errors do not cost the same.",
+      "Measuring the offline path showed it refused parking on 11 of 36 legal kerbs — a phone reads words, not arrows — so it now shows the rules it read and gives no verdict.",
+      "Boston's 6,955 meters and 8,422 road fragments ship as offline assets; 287 instrumented tests plus the full unit suite.",
+    ],
+    stack: ["Kotlin", "Jetpack Compose", "Gemini", "Room", "CameraX", "Hilt", "ML Kit"],
+    metrics: [
+      { label: "False allowed", value: "0" },
+      { label: "Decisive verdicts", value: "31/31" },
+      { label: "Instrumented tests", value: "287" },
+    ],
+    links: [],
+    category: "Mobile",
+    accentHue: 95,
+    image: "/projects/parksure.png",
+    architectureImage: "/projects/parksure-architecture.svg",
+    architectureWidth: 2000,
+    architectureHeight: 1040,
   },
   {
     slug: "hatelens",

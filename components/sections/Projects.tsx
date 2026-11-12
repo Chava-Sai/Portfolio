@@ -5,11 +5,13 @@ import * as Dialog from "@radix-ui/react-dialog";
 import {
   AnimatePresence,
   motion,
+  useMotionValue,
   useReducedMotion,
   useScroll,
   useSpring,
   useTransform,
 } from "framer-motion";
+import type { MotionValue } from "framer-motion";
 import {
   ArrowUpRight,
   ChevronRight,
@@ -56,6 +58,12 @@ const CATEGORY_ICON: Record<
   "Data Science": LineChart,
 };
 
+// Fraction of the section's scroll over which the rail pans. The remainder is
+// a deliberate pause with the rail parked at its end so the last card can be
+// read. The progress bar has to use the same number or it reports travel that
+// is no longer happening.
+const PAN_END = 0.85;
+
 const SPOTLIGHT_BY_FILTER: Partial<Record<(typeof CATEGORIES)[number], string>> = {
   All: "violence-detection",
   "AI / ML": "auto-grader",
@@ -83,6 +91,8 @@ export function Projects() {
     // sequence (question-paper-t5 stays pinned to the very end).
     const RAIL_ORDER: ReadonlyArray<string> = [
       "codemix-rag",
+      "rag-faithfulness",
+      "parksure",
       "hatelens",
       "auto-grader",
       "sidewalk-validator",
@@ -369,17 +379,39 @@ function ProjectRail({ projects: items }: { projects: Project[] }) {
     // of cards, and a stale measurement survives that.
   }, [itemsKey]);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"],
-  });
+  // Progress is computed from the section's live rect on every scroll rather
+  // than with useScroll. The section's height is derived from maxShift, so it
+  // changes after the first measurement, and useScroll keeps the offsets it
+  // cached — which left the pan short of its end once the rail grew past a
+  // few cards, with the error hidden until it exceeded the settle margin.
+  const scrollYProgress = useMotionValue(0);
+  useEffect(() => {
+    const read = () => {
+      const el = sectionRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const range = rect.height - window.innerHeight;
+      if (range <= 0) {
+        scrollYProgress.set(0);
+        return;
+      }
+      scrollYProgress.set(Math.min(1, Math.max(0, -rect.top / range)));
+    };
+    read();
+    window.addEventListener("scroll", read, { passive: true });
+    window.addEventListener("resize", read);
+    return () => {
+      window.removeEventListener("scroll", read);
+      window.removeEventListener("resize", read);
+    };
+  }, [scrollYProgress, maxShift]);
 
   // x is mapped directly from scroll progress with NO spring — eliminates the
   // ~0.6s settling lag that was leaving the last card half-clipped. The 0.85
   // upper bound means x reaches -maxShift at 85% of section scroll, and the
   // remaining 15% is a settle-pause where the rail sits motionless at its end
   // position so the user has clear time to read the last card.
-  const x = useTransform(scrollYProgress, [0, 0.85], [0, -maxShift]);
+  const x = useTransform(scrollYProgress, [0, PAN_END], [0, -maxShift]);
 
   // Slight depth-of-field on the inner cards
   const innerScaleRaw = useTransform(scrollYProgress, [0, 0.5, 1], [0.97, 1, 0.97]);
@@ -547,12 +579,9 @@ function MoreOnGithubCard() {
   );
 }
 
-function ScrollProgressBar({
-  progress,
-}: {
-  progress: ReturnType<typeof useScroll>["scrollYProgress"];
-}) {
-  const width = useTransform(progress, [0, 1], ["0%", "100%"]);
+function ScrollProgressBar({ progress }: { progress: MotionValue<number> }) {
+  // Full exactly when the rail reaches its end, not when the section does.
+  const width = useTransform(progress, [0, PAN_END], ["0%", "100%"]);
   return (
     <div className="container-tight mt-6">
       <div className="relative h-px overflow-hidden bg-border-strong/40">
@@ -847,9 +876,17 @@ function ArchitectureDialog({
 
                         {project.architectureImage ? (
                           <figure className="mt-2">
-                            {/* Paper figures are drawn on white; a light plate
-                                keeps them legible instead of inverting fills. */}
-                            <div className="overflow-x-auto rounded-xl bg-white p-3">
+                            {/* Only a figure drawn on white needs a light plate.
+                                Diagrams authored for this site are already dark,
+                                and a white plate just frames them awkwardly. */}
+                            <div
+                              className={cn(
+                                "overflow-x-auto rounded-xl",
+                                project.architectureOnWhite
+                                  ? "bg-white p-3"
+                                  : "hairline bg-background/70 p-2"
+                              )}
+                            >
                               <Image
                                 src={assetPath(project.architectureImage)}
                                 alt={`${project.title} architecture diagram`}
