@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1040" width="2000" height="1040" role="img" aria-label="ParkSure architecture — the model reads, a rule engine decides">
+  <defs>
+    <marker id="ps-arrow" viewBox="0 0 10 10" refX="9.2" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#94a3b8"/>
+    </marker>
+    <marker id="ps-arrow-lime" viewBox="0 0 10 10" refX="9.2" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#a3e635"/>
+    </marker>
+    <marker id="ps-arrow-amber" viewBox="0 0 10 10" refX="9.2" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#fbbf24"/>
+    </marker>
+    <pattern id="ps-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.035" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="2000" height="1040" fill="#0b0f12"/>
+  <rect width="2000" height="1040" fill="url(#ps-grid)"/>
+
+  <g font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif">
+
+    <!-- ── on the phone ───────────────────────────────────────── -->
+    <text x="60" y="58" fill="#64748b" font-size="20" font-family="ui-monospace, Menlo, monospace" letter-spacing="3">1 &#183; ON THE PHONE</text>
+    <g fill="#0f1720" stroke="#1e293b" stroke-width="2">
+      <rect x="60"  y="78" width="300" height="100" rx="12"/>
+      <rect x="420" y="78" width="330" height="100" rx="12"/>
+      <rect x="810" y="78" width="300" height="100" rx="12"/>
+    </g>
+    <g fill="#e2e8f0" font-size="25" font-weight="600">
+      <text x="84"  y="118">One photo of the pole</text>
+      <text x="444" y="118">Faces blurred &#183; ML Kit</text>
+      <text x="834" y="118">Downsized copy</text>
+    </g>
+    <g fill="#94a3b8" font-size="20" font-family="ui-monospace, Menlo, monospace">
+      <text x="84"  y="150">CameraX</text>
+      <text x="444" y="150">nothing leaves unchecked</text>
+      <text x="834" y="150">the only thing uploaded</text>
+    </g>
+    <g stroke="#94a3b8" stroke-width="2.5" fill="none" marker-end="url(#ps-arrow)">
+      <path d="M360 128 H 410"/>
+      <path d="M750 128 H 800"/>
+    </g>
+
+    <!-- ── the model reads, and only reads ────────────────────── -->
+    <text x="60" y="258" fill="#64748b" font-size="20" font-family="ui-monospace, Menlo, monospace" letter-spacing="3">2 &#183; READING</text>
+    <rect x="60" y="278" width="560" height="124" rx="12" fill="#13201a" stroke="#4d7c0f" stroke-width="2"/>
+    <text x="84" y="320" fill="#d9f99d" font-size="27" font-weight="600">Gemini Flash-Lite</text>
+    <text x="84" y="352" fill="#bef264" font-size="21">reads the photograph into structured JSON</text>
+    <text x="84" y="384" fill="#a3e635" font-size="21" font-family="ui-monospace, Menlo, monospace">no dates &#183; no arithmetic &#183; no verdict</text>
+
+    <path d="M960 178 V 228 H 340 V 268" stroke="#94a3b8" stroke-width="2.5" fill="none" marker-end="url(#ps-arrow)"/>
+
+    <rect x="700" y="278" width="420" height="124" rx="12" fill="#0f1720" stroke="#1e293b" stroke-width="2"/>
+    <text x="724" y="320" fill="#e2e8f0" font-size="25" font-weight="600">Structured sign JSON</text>
+    <text x="724" y="352" fill="#94a3b8" font-size="21">limits, windows, arrows, permits,</text>
+    <text x="724" y="382" fill="#94a3b8" font-size="21">tow zones, seasonal dates</text>
+    <path d="M620 340 H 690" stroke="#a3e635" stroke-width="2.5" fill="none" marker-end="url(#ps-arrow-lime)"/>
+
+    <!-- ── the engine decides ─────────────────────────────────── -->
+    <text x="1200" y="258" fill="#64748b" font-size="20" font-family="ui-monospace, Menlo, monospace" letter-spacing="3">3 &#183; DECIDING</text>
+    <rect x="1200" y="278" width="740" height="124" rx="12" fill="#13201a" stroke="#4d7c0f" stroke-width="2"/>
+    <text x="1224" y="320" fill="#d9f99d" font-size="27" font-weight="600">Kotlin rule engine &#8212; no Android dependencies</text>
+    <text x="1224" y="352" fill="#bef264" font-size="21">stacked signs &#183; opposing arrows &#183; midnight crossings</text>
+    <text x="1224" y="384" fill="#bef264" font-size="21">week-of-month cleaning &#183; seasons &#183; holidays &#183; permits &#183; DST</text>
+    <path d="M1120 340 H 1190" stroke="#a3e635" stroke-width="2.5" fill="none" marker-end="url(#ps-arrow-lime)"/>
+
+    <text x="84" y="466" fill="#64748b" font-size="20" font-style="italic">Models read well and do arithmetic over dates badly. Splitting them that way also makes the hard half testable with no network, no phone and no API key.</text>
+
+    <!-- ── the answer ─────────────────────────────────────────── -->
+    <text x="60" y="520" fill="#64748b" font-size="20" font-family="ui-monospace, Menlo, monospace" letter-spacing="3">4 &#183; THE ANSWER</text>
+    <path d="M1570 402 V 470 H 700 V 540" stroke="#a3e635" stroke-width="2.5" fill="none" marker-end="url(#ps-arrow-lime)"/>
+
+    <rect x="60"  y="550" width="580" height="132" rx="12" fill="#0d2318" stroke="#15803d" stroke-width="2"/>
+    <text x="84"  y="592" fill="#86efac" font-size="27" font-weight="600">Allowed</text>
+    <text x="84"  y="626" fill="#4ade80" font-size="21">with the time you have</text>
+    <text x="84"  y="656" fill="#4ade80" font-size="21">to leave by</text>
+
+    <rect x="680" y="550" width="580" height="132" rx="12" fill="#2a1115" stroke="#b91c1c" stroke-width="2"/>
+    <text x="704" y="592" fill="#fca5a5" font-size="27" font-weight="600">Not allowed</text>
+    <text x="704" y="626" fill="#f87171" font-size="21">with the rule that forbids</text>
+    <text x="704" y="656" fill="#f87171" font-size="21">it, named</text>
+
+    <rect x="1300" y="550" width="640" height="132" rx="12" fill="#2a2110" stroke="#b45309" stroke-width="2"/>
+    <text x="1324" y="592" fill="#fcd34d" font-size="27" font-weight="600">Not sure</text>
+    <text x="1324" y="626" fill="#fbbf24" font-size="21">when a sign is hidden, readings disagree,</text>
+    <text x="1324" y="656" fill="#fbbf24" font-size="21">or a condition cannot be checked</text>
+
+    <!-- ── what measurement changed ───────────────────────────── -->
+    <text x="60" y="736" fill="#64748b" font-size="20" font-family="ui-monospace, Menlo, monospace" letter-spacing="3">5 &#183; THE OFFLINE PATH, AFTER MEASURING IT</text>
+    <rect x="60" y="756" width="900" height="150" rx="12" fill="#0f1720" stroke="#1e293b" stroke-width="2"/>
+    <text x="84" y="798" fill="#e2e8f0" font-size="25" font-weight="600">No signal, or the free quota is spent</text>
+    <text x="84" y="830" fill="#94a3b8" font-size="21">On-device text recognition parses the pole instead. It first answered</text>
+    <text x="84" y="860" fill="#94a3b8" font-size="21">&#8220;no&#8221; whenever it clearly read a prohibition.</text>
+    <text x="84" y="892" fill="#fbbf24" font-size="21" font-family="ui-monospace, Menlo, monospace">it refused 11 of 36 kerbs where parking was legal</text>
+
+    <path d="M960 830 H 1030" stroke="#fbbf24" stroke-width="2.5" fill="none" marker-end="url(#ps-arrow-amber)"/>
+    <rect x="1040" y="756" width="900" height="150" rx="12" fill="#2a2110" stroke="#b45309" stroke-width="2"/>
+    <text x="1064" y="798" fill="#fcd34d" font-size="25" font-weight="600">So it stopped giving a verdict</text>
+    <text x="1064" y="830" fill="#fbbf24" font-size="21">A phone reads words, not arrows &#8212; so every sign it reads looks like it</text>
+    <text x="1064" y="860" fill="#fbbf24" font-size="21">applies to both sides of the pole, and half of them point the other way.</text>
+    <text x="1064" y="892" fill="#fcd34d" font-size="21" font-family="ui-monospace, Menlo, monospace">it now shows the rules it read and says nobody checked them</text>
+
+    <!-- ── the asymmetry the whole design rests on ────────────── -->
+    <rect x="60" y="938" width="1880" height="78" rx="12" fill="#13201a" stroke="#4d7c0f" stroke-width="2" stroke-dasharray="10 7"/>
+    <text x="84" y="976" fill="#d9f99d" font-size="24" font-weight="600">Telling someone they cannot park costs a parking space. Telling them they can when they cannot costs the car.</text>
+    <text x="84" y="1004" fill="#bef264" font-size="21">So the benchmark&#8217;s headline number is false-allowed, not accuracy: 0 across 34 hand-labelled poles, 31/31 decisive verdicts correct.</text>
+  </g>
+</svg>
